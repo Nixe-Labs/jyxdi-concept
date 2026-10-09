@@ -1,0 +1,3485 @@
+{
+"works": [
+{
+"h": "the-first-offering",
+"t": "The First Offering",
+"c": "Divine",
+"img": "the-first-offering",
+"sizes": [
+600
+],
+"ar": 0.7905,
+"d": "A young Ganesha in a misted forest, making his first offering at the Shiva lingam.",
+"v": {
+"16x20|Poster|Classic": [
+46677935194308,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+46677935227076,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+46677935259844,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+46677935292612,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+46677935325380,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+46677935358148,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+46677935390916,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+46677935423684,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+46677935456452,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+46677935489220,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+46677935521988,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+46677935554756,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+46677935587524,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+46677935620292,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+46677935653060,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+46677935685828,
+2850.0,
+true
+]
+},
+"date": "2026-09",
+"slug": "the-first-offering",
+"created": "2026-09-13T15:44:33-04:00"
+},
+{
+"h": "sai-baba",
+"t": "Sai Baba",
+"c": "Divine",
+"img": "sai-baba",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7499,
+"d": "Sai Baba, painted close and luminous against a field of fire, a peacock feather at his side.",
+"v": {
+"16x20|Poster|Classic": [
+46249801187524,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+46249801220292,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+46249801253060,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+46249801285828,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+46249801318596,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+46249801351364,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+46249801384132,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+46249801416900,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+46249801449668,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+46249801482436,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+46249801515204,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+46249801547972,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+46249801580740,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+46249801613508,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+46249801646276,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+46249801679044,
+2850.0,
+true
+]
+},
+"date": "2026-06",
+"slug": "sai-baba",
+"created": "2026-06-13T09:39:56-04:00"
+},
+{
+"h": "birth-of-murugan",
+"t": "Birth of Murugan",
+"c": "Divine",
+"img": "birth-of-murugan",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7499,
+"d": "Shiva and Parvati cradle the newborn Murugan among lotuses, the Himalaya rising behind them.",
+"v": {
+"16x20|Poster|Classic": [
+46195660456132,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+46195660488900,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+46195660521668,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+46195660554436,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+46195660587204,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+46195660619972,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+46195660652740,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+46195660685508,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+46195660718276,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+46195660751044,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+46195660783812,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+46195660816580,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+46195660849348,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+46195660882116,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+46195660914884,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+46195660947652,
+2850.0,
+true
+]
+},
+"date": "2026-05",
+"slug": "birth-of-murugan",
+"created": "2026-05-29T09:56:19-04:00"
+},
+{
+"h": "the-death-of-ego-kali-x-shiva",
+"t": "The Death of Ego — Kali x Shiva",
+"c": "Goddess",
+"img": "the-death-of-ego-kali-x-shiva",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Kali, many-armed and unafraid, steps upon Shiva. The ego is surrendered at her feet.",
+"v": {
+"16x20|Poster|Classic": [
+46062177681604,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+46062177714372,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+46062177747140,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+46062177779908,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+46062177812676,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+46062177845444,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+46062177878212,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+46062177910980,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+46062177943748,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+46062177976516,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+46062178009284,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+46062178042052,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+46062178074820,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+46062178107588,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+46062178140356,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+46062178173124,
+2850.0,
+true
+]
+},
+"date": "2026-04",
+"slug": "the-death-of-ego-kali-x-shiva",
+"created": "2026-04-16T10:33:35-04:00"
+},
+{
+"h": "the-light-of-shiva",
+"t": "The Light of Shiva",
+"c": "Divine",
+"img": "the-light-of-shiva",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "A dancer in white, small beneath the vast and watchful eyes of Shiva, his third eye burning.",
+"v": {
+"16x20|Poster|Classic": [
+46033227284676,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+46033227317444,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+46033227350212,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+46033227382980,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+46033227415748,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+46033227448516,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+46033227481284,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+46033227514052,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+46033227546820,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+46033227579588,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+46033227612356,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+46033227645124,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+46033227677892,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+46033227710660,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+46033227743428,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+46033227776196,
+2850.0,
+true
+]
+},
+"date": "2026-04",
+"slug": "the-light-of-shiva",
+"created": "2026-04-08T10:35:33-04:00"
+},
+{
+"h": "bloom",
+"t": "Bloom",
+"c": "Divine",
+"img": "bloom",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Ganesha at rest in a pond of pink lotuses, sweets glowing gold beside him.",
+"v": {
+"16x20|Poster|Classic": [
+45650305974468,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45650306007236,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45650306040004,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45650306072772,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45650306105540,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45650306138308,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45650306171076,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45650306203844,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45650306236612,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45650306269380,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45650306302148,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45650306334916,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45650306367684,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45650306400452,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45650306433220,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45650306465988,
+2850.0,
+true
+]
+},
+"date": "2026-01",
+"slug": "bloom",
+"created": "2026-01-04T08:19:39-05:00"
+},
+{
+"h": "kalki",
+"t": "Kalki",
+"c": "Divine",
+"img": "kalki",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7499,
+"d": "Kalki, the prophesied tenth avatar, rides his white horse through a storm of blue light.",
+"v": {
+"16x20|Poster|Classic": [
+45529379406020,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45529379438788,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45529379471556,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45529379504324,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45529379537092,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45529379569860,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45529379602628,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45529379635396,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45529379668164,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45529379700932,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45529379733700,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45529379766468,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45529379799236,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45529379832004,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45529379864772,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45529379897540,
+2850.0,
+true
+]
+},
+"date": "2025-12",
+"slug": "kalki",
+"created": "2025-12-12T09:52:57-05:00"
+},
+{
+"h": "pashupatinath",
+"t": "Pashupatinath",
+"c": "Divine",
+"img": "pashupatinath",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Shiva in deep meditation on a floating stone, a tropical sunset blazing behind him.",
+"v": {
+"16x20|Poster|Classic": [
+45445792989380,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45445793022148,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45445793054916,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45445793087684,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45445793120452,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45445793153220,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45445793185988,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45445793218756,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45445793251524,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45445793284292,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45445793317060,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45445793349828,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45445793382596,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45445793415364,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45445793448132,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45445793480900,
+2850.0,
+true
+]
+},
+"date": "2025-12",
+"slug": "pashupatinath",
+"created": "2025-12-05T10:27:52-05:00"
+},
+{
+"h": "arthanareeswarar",
+"t": "Arthanareeswarar",
+"c": "Goddess",
+"img": "arthanareeswarar",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7143,
+"d": "Shiva and Shakti as one body. Half ash and indigo, half fire and gold.",
+"v": {
+"16x20|Poster|Classic": [
+45409488306372,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45409488339140,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45409488371908,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45409488404676,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45409488437444,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45409488470212,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45409488502980,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45409488535748,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45409488568516,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45409488601284,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45409488634052,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45409488666820,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45409488699588,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45409488732356,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45409488765124,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45409488797892,
+2850.0,
+true
+]
+},
+"date": "2025-11",
+"slug": "arthanareeswarar",
+"created": "2025-11-21T10:21:14-05:00"
+},
+{
+"h": "karrupusaamy",
+"t": "Karrupusaamy",
+"c": "Divine",
+"img": "karrupusaamy",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "The guardian Karrupusaamy, chained and serene in a forest at dusk. Under UV light, he ignites.",
+"v": {
+"16x20|Poster|Classic": [
+45392541253828,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45392541286596,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45392541319364,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45392541352132,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45392541384900,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45392541417668,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45392541450436,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45392541483204,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45392541515972,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45392541548740,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45392541581508,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45392541614276,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45392541647044,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45392541679812,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45392541712580,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45392541745348,
+2850.0,
+true
+]
+},
+"date": "2025-11",
+"slug": "karrupusaamy",
+"created": "2025-11-17T11:53:21-05:00"
+},
+{
+"h": "copy-murugan",
+"t": "Lalita",
+"c": "Goddess",
+"img": "copy-murugan",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7966,
+"d": "Lalita, enthroned on a great red lotus between stalks of sugarcane, crowned in gold.",
+"v": {
+"16x20|Poster|Classic": [
+45379909779652,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45379909812420,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45379909845188,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45379909877956,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45379909910724,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45379909943492,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45379909976260,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45379910009028,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45379910041796,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45379910074564,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45379910107332,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45379910140100,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45379910172868,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45379910205636,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45379910238404,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45379910271172,
+2850.0,
+true
+]
+},
+"date": "2025-11",
+"slug": "copy-murugan",
+"created": "2025-11-12T09:51:40-05:00"
+},
+{
+"h": "murugan",
+"t": "Murugan",
+"c": "Divine",
+"img": "murugan",
+"sizes": [
+800,
+1400
+],
+"ar": 0.8,
+"d": "Murugan with his vel, haloed in gold. Photographed at the foot of his own golden statue.",
+"v": {
+"16x20|Poster|Classic": [
+45343911968964,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45343912001732,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45343912034500,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45343912067268,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45343912100036,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45343912132804,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45343912165572,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45343912198340,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45343912231108,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45343912263876,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45343912296644,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45343912329412,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45343912362180,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45343912394948,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45343912427716,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45343912460484,
+2850.0,
+true
+]
+},
+"date": "2025-10",
+"slug": "murugan",
+"created": "2025-10-30T11:13:50-04:00"
+},
+{
+"h": "ethereal-code",
+"t": "Ethereal Code",
+"c": "Cosmos",
+"img": "ethereal-code",
+"sizes": [
+800
+],
+"ar": 0.8132,
+"d": "A blue-skinned deity plays the cello among the planets, Saturn's ring circling like a halo.",
+"v": {
+"16x20|Poster|Classic": [
+45287270154436,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45287270187204,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45287270219972,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45287270252740,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45287270285508,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45287270318276,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45287270351044,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45287270383812,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45287270416580,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45287270449348,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45287270482116,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45287270514884,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45287270547652,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45287270580420,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45287270613188,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45287270645956,
+2850.0,
+true
+]
+},
+"date": "2025-10",
+"slug": "ethereal-code",
+"created": "2025-10-23T09:14:41-04:00"
+},
+{
+"h": "obstacle-remover",
+"t": "Obstacle Remover",
+"c": "Divine",
+"img": "obstacle-remover",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Ganesha, remover of obstacles, blazing in reds and golds with a bowl of sweets in hand.",
+"v": {
+"16x20|Poster|Classic": [
+45190419972292,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45190420005060,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45190420037828,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45190420070596,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45190420103364,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45190420136132,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45190420168900,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45190420201668,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45190420234436,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45190420267204,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45190420299972,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45190420332740,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45190420365508,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45190420398276,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45190420431044,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45190420463812,
+2850.0,
+true
+]
+},
+"date": "2025-09",
+"slug": "obstacle-remover",
+"created": "2025-09-19T09:21:59-04:00"
+},
+{
+"h": "saraswati-1",
+"t": "Saraswati",
+"c": "Goddess",
+"img": "saraswati-1",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Saraswati with her veena on a lotus pond, a white swan gliding at her side.",
+"v": {
+"16x20|Poster|Classic": [
+45169744281796,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45169744314564,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45169744347332,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45169744380100,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45169744412868,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45169744445636,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45169744478404,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45169744511172,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45169744543940,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45169744576708,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45169744609476,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45169744642244,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45169744675012,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45169744707780,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45169744740548,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45169744773316,
+2850.0,
+true
+]
+},
+"date": "2025-09",
+"slug": "saraswati-1",
+"created": "2025-09-11T10:22:00-04:00"
+},
+{
+"h": "saraswati",
+"t": "Shuffle of Wisdom",
+"c": "Goddess",
+"img": "saraswati",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Saraswati reimagined as a playing card: the goddess and her veena, mirrored on deep red.",
+"v": {
+"16x20|Poster|Classic": [
+45116577513668,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45116577546436,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45116577579204,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45116577611972,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45116577644740,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45116577677508,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45116577710276,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45116577743044,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45116577775812,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45116577808580,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45116577841348,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45116577874116,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45116577906884,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45116577939652,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45116577972420,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45116578005188,
+2850.0,
+true
+]
+},
+"date": "2025-08",
+"slug": "saraswati",
+"created": "2025-08-20T10:55:46-04:00"
+},
+{
+"h": "kali",
+"t": "Kali",
+"c": "Goddess",
+"img": "kali",
+"sizes": [
+800,
+1400
+],
+"ar": 0.8,
+"d": "Kali in full fury: blue-skinned, many-armed, garlanded and ablaze.",
+"v": {
+"16x20|Poster|Classic": [
+45046117564612,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45046117597380,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45046117630148,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45046117662916,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45046117695684,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45046117728452,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45046117761220,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45046117793988,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45046117826756,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45046117859524,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45046117892292,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45046117925060,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45046117957828,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45046117990596,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45046118023364,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45046118056132,
+2850.0,
+true
+]
+},
+"date": "2025-07",
+"slug": "kali",
+"created": "2025-07-25T11:26:12-04:00"
+},
+{
+"h": "lakshmi",
+"t": "Lakshmi",
+"c": "Goddess",
+"img": "lakshmi",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Lakshmi on a pink lotus, flanked by elephants, gold spilling from her open palm.",
+"v": {
+"16x20|Poster|Classic": [
+45007681650884,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+45007681683652,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+45007681716420,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+45007681749188,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+45007681781956,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+45007681814724,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+45007681847492,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+45007681880260,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+45007681913028,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+45007681945796,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+45007681978564,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+45007682011332,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+45007682044100,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+45007682076868,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+45007682109636,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+45007682142404,
+2850.0,
+true
+]
+},
+"date": "2025-07",
+"slug": "lakshmi",
+"created": "2025-07-10T12:15:46-04:00"
+},
+{
+"h": "the-dual-dharma",
+"t": "The Dual Dharma",
+"c": "Divine",
+"img": "the-dual-dharma",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Ganesha in streetwear on a neon-soaked city night. The sacred, walking among us.",
+"v": {
+"16x20|Poster|Classic": [
+44930486468804,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44930486501572,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44930486534340,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44930486567108,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44930486599876,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44930486632644,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44930486665412,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44930486698180,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44930486730948,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44930486763716,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44930486796484,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44930486829252,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44930486862020,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44930486894788,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44930486927556,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44930486960324,
+2850.0,
+true
+]
+},
+"date": "2025-06",
+"slug": "the-dual-dharma",
+"created": "2025-06-10T11:29:54-04:00"
+},
+{
+"h": "krishna-radha",
+"t": "Radha Krishna",
+"c": "Divine",
+"img": "krishna-radha",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Krishna's flute and Radha's dance beneath a moonlit tree.",
+"v": {
+"16x20|Poster|Classic": [
+44822115352772,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44822115385540,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44822115418308,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44822115451076,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44822115483844,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44822115516612,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44822115549380,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44822115582148,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44822115614916,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44822115647684,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44822115680452,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44822115713220,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44822115745988,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44822115778756,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44822115811524,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44822115844292,
+2850.0,
+true
+]
+},
+"date": "2025-05",
+"slug": "krishna-radha",
+"created": "2025-05-05T10:10:50-04:00"
+},
+{
+"h": "தடம்-thadam",
+"t": "தடம் (Thadam)",
+"c": "Cosmos",
+"img": "thadam",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "தடம் means trace, or footprint. A woman in a half-sari, seated tall and unbothered in a neon city.",
+"v": {
+"16x20|Poster|Classic": [
+44803450732740,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44803450765508,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44803450798276,
+500.0,
+true
+],
+"16x20|Canvas|UV": [
+44803450831044,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44803450863812,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44803450896580,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44803450929348,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44803450962116,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44803450994884,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44803451027652,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44803451060420,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44803451093188,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44803451125956,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44803451158724,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44803451191492,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44803451224260,
+2850.0,
+true
+]
+},
+"date": "2025-04",
+"slug": "thadam",
+"created": "2025-04-26T09:05:18-04:00"
+},
+{
+"h": "twin-flame",
+"t": "Twin Flame",
+"c": "Cosmos",
+"img": "twin-flame",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Two souls, indigo and crimson, joined at the centre of a burning cosmic ring.",
+"v": {
+"16x20|Poster|Classic": [
+44723832488132,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44723832520900,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44723832553668,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44723832586436,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44723832619204,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44723832651972,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44723832684740,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44723832717508,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44723832750276,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44723832783044,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44723832815812,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44723832848580,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44723832881348,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44723832914116,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44723832946884,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44723832979652,
+2850.0,
+true
+]
+},
+"date": "2025-03",
+"slug": "twin-flame",
+"created": "2025-03-26T01:25:34-04:00"
+},
+{
+"h": "kalabhairava",
+"t": "Kalabhairava",
+"c": "Divine",
+"img": "kalabhairava",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Kalabhairava, Shiva's fierce form, striding down from the mountains with his hound.",
+"v": {
+"16x20|Poster|Classic": [
+44643685007556,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44643685040324,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44643685073092,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44643685105860,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44643685138628,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44643685171396,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44643685204164,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44643685236932,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44643685269700,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44643685302468,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44643685335236,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44643685368004,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44643685400772,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44643685433540,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44643685466308,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44643685499076,
+2850.0,
+true
+]
+},
+"date": "2025-02",
+"slug": "kalabhairava",
+"created": "2025-02-27T00:18:32-05:00"
+},
+{
+"h": "indigo-child",
+"t": "Indigo Child",
+"c": "Cosmos",
+"img": "indigo-child",
+"sizes": [
+800,
+1400
+],
+"ar": 0.8,
+"d": "In a cosmic portrait, a man with a serene expression becomes one with the universe, his third eye open, symbolizing enlightenment and a deep connection to the cosmos. Planets and stars orbit around him against a backdrop of nebulous galaxies, suggesting his thoughts and spirit transcend earthly confines.",
+"v": {
+"16x20|Poster|Classic": [
+43002724843716,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+43003518386372,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+43002724876484,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+43003518419140,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+43002724909252,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+43003518451908,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+43002724942020,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+43003518484676,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+43002724974788,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+43003518517444,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+43002725007556,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+43003518550212,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+43002725040324,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+43003518582980,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+43002725073092,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+43003518615748,
+2850.0,
+true
+]
+},
+"date": "2024-03",
+"slug": "indigo-child",
+"created": "2024-03-08T19:57:01-05:00"
+},
+{
+"h": "king",
+"t": "King",
+"c": "Cosmos",
+"img": "king",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "A lion crowned in gold, his mane dissolving into flame and smoke.",
+"v": {
+"16x20|Poster|Classic": [
+44643427418308,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44643427451076,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44643427483844,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44643427516612,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44643427549380,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44643427582148,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44643427614916,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44643427647684,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44643427680452,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44643427713220,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44643427745988,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44643427778756,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44643427811524,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44643427844292,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44643427877060,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44643427909828,
+2850.0,
+true
+]
+},
+"date": "2025-02",
+"slug": "king",
+"created": "2025-02-26T22:24:56-05:00"
+},
+{
+"h": "astral-serpent-1",
+"t": "Astral Serpent",
+"c": "Divine",
+"img": "astral-serpent-1",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7533,
+"d": "Shiva enthroned above a cosmic serpent-dragon, glowing orbs in orbit around him.",
+"v": {
+"16x20|Poster|Classic": [
+44621484392644,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44621484425412,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44621484458180,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44621484490948,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44621484523716,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44621484556484,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44621484589252,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44621484622020,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44621484654788,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44621484687556,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44621484720324,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44621484753092,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44621484785860,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44621484818628,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44621484851396,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44621484884164,
+2850.0,
+true
+]
+},
+"date": "2025-02",
+"slug": "astral-serpent-1",
+"created": "2025-02-19T19:00:59-05:00"
+},
+{
+"h": "astral-serpent",
+"t": "Astral Serpent (charcoal version)",
+"c": "Divine",
+"img": "astral-serpent",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7999,
+"d": "The same vision, rendered in charcoal: smoke, stone and shadow.",
+"v": {
+"16x20|Poster|Classic": [
+44499876118724,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44499876151492,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44499876184260,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44499876217028,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44499876249796,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44499876282564,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44499876315332,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44499876348100,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44499876380868,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44499876413636,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44499876446404,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44499876479172,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44499876511940,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44499876544708,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44499876577476,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44499876610244,
+2850.0,
+true
+]
+},
+"date": "2025-01",
+"slug": "astral-serpent",
+"created": "2025-01-04T08:45:20-05:00"
+},
+{
+"h": "durgai",
+"t": "Durgai",
+"c": "Goddess",
+"img": "durgai",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Durgai, the warrior mother, enthroned upon her tiger, her many arms bearing the weapons of the gods.",
+"v": {
+"16x20|Poster|Classic": [
+44394367287492,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44394367320260,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44394367353028,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44394367385796,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44394367418564,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44394367451332,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44394367484100,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44394367516868,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44394367549636,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44394367582404,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44394367615172,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44394367647940,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44394367680708,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44394367713476,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44394367746244,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44394367779012,
+2850.0,
+true
+]
+},
+"date": "2024-11",
+"slug": "durgai",
+"created": "2024-11-20T13:13:33-05:00"
+},
+{
+"h": "hanuman",
+"t": "Hanuman",
+"c": "Divine",
+"img": "hanuman",
+"sizes": [
+600
+],
+"ar": 0.7985,
+"d": "Hanuman striding out of a burning field at sunset, mace in hand.",
+"v": {
+"16x20|Poster|Classic": [
+44377987776708,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44377987809476,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44377987842244,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44377987875012,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44377987907780,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44377987940548,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44377987973316,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44377988006084,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44377988038852,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44377988071620,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44377988104388,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44377988137156,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44377988169924,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44377988202692,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44377988235460,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44377988268228,
+2850.0,
+true
+]
+},
+"date": "2024-11",
+"slug": "hanuman",
+"created": "2024-11-15T09:58:49-05:00"
+},
+{
+"h": "ganesh-x-shiva",
+"t": "Ganesh x Shiva",
+"c": "Divine",
+"img": "ganesh-x-shiva",
+"sizes": [
+800,
+1400
+],
+"ar": 0.8,
+"d": "Painting of Lord Ganesha, the remover of obstacles, gently embracing a Shiva Lingam, symbolizing Lord Shiva. In the painting, Ganesha’s large, gentle form radiates warmth and devotion.",
+"v": {
+"16x20|Poster|Classic": [
+44134745145540,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+44134745178308,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+44134745243844,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+44134745276612,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+44134745309380,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+44134745342148,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+44134745374916,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+44134745407684,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+44134745440452,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+44134745473220,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+44134745505988,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+44134745538756,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+44134745571524,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+44134745604292,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+44134745637060,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+44134745669828,
+2850.0,
+true
+]
+},
+"date": "2024-09",
+"slug": "ganesh-x-shiva",
+"created": "2024-09-05T19:59:16-04:00"
+},
+{
+"h": "gaia",
+"t": "Gaia",
+"c": "Cosmos",
+"img": "gaia",
+"sizes": [
+800,
+1400
+],
+"ar": 0.7369,
+"d": "The artwork presents a serene figure in meditation, each chakra depicted as a vibrant, glowing symbol along the body, resonating with energy and balance. The figure's blue skin and the lotus upon which they sit symbolize tranquility and purity within the chaos of existence, represented by the abstract, warm backdrop.",
+"v": {
+"16x20|Poster|Classic": [
+43002728022212,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+43003515732164,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+43002728054980,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+43003515764932,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+43002728087748,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+43003515797700,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+43002728120516,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+43003515830468,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+43002728153284,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+43003515863236,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+43002728186052,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+43003515896004,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+43002728218820,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+43003515928772,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+43002728251588,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+43003515961540,
+2850.0,
+true
+]
+},
+"date": "2024-03",
+"slug": "gaia",
+"created": "2024-03-08T19:57:58-05:00"
+},
+{
+"h": "ganesh",
+"t": "Ganesh",
+"c": "Divine",
+"img": "ganesh",
+"sizes": [
+800,
+1400
+],
+"ar": 0.75,
+"d": "This depiction of the deity Ganesha is rich with texture and symbolism, using golds and reds to evoke a sense of spiritual wealth and passion. The elephant head, a hallmark of Ganesha, is rendered with intricate details that suggest both wisdom and gentleness.",
+"v": {
+"16x20|Poster|Classic": [
+43002726285508,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+43003516747972,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+43002726318276,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+43003516780740,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+43002726351044,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+43003516813508,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+43002726383812,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+43003516846276,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+43002726416580,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+43003516879044,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+43002726449348,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+43003516911812,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+43002726482116,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+43003516944580,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+43002726514884,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+43003516977348,
+2850.0,
+true
+]
+},
+"date": "2024-03",
+"slug": "ganesh",
+"created": "2024-03-08T19:57:29-05:00"
+},
+{
+"h": "rise-from-the-ashes",
+"t": "Rise From The Ashes",
+"c": "Cosmos",
+"img": "rise-from-the-ashes",
+"sizes": [
+800,
+1400
+],
+"ar": 0.9622,
+"d": "This vibrant artwork captures a powerful figure emanating the fiery essence of a phoenix, symbolizing rebirth and strength. Her poised demeanor and outstretched arms suggest control and harmony with the mythical creature that blazes behind her.",
+"v": {
+"16x20|Poster|Classic": [
+43002722418884,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+43003519533252,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+43002722451652,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+43003519566020,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+43002722484420,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+43003519598788,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+43002722517188,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+43003519631556,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+43002722549956,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+43003519664324,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+43002722582724,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+43003519697092,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+43002722615492,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+43003519729860,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+43002722648260,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+43003519762628,
+2850.0,
+true
+]
+},
+"date": "2024-03",
+"slug": "rise-from-the-ashes",
+"created": "2024-03-08T19:56:31-05:00"
+},
+{
+"h": "the-egg",
+"t": "The Egg",
+"c": "Cosmos",
+"img": "the-egg",
+"sizes": [
+800,
+1400
+],
+"ar": 0.6469,
+"d": "Enshrouded in a hooded cloak, a figure is silhouetted against a cosmic tapestry, cradling a celestial egg that seems to birth stars into the universe. The stark contrast between the monochrome figure and the vibrant, starry expanse emphasizes the creation narrative.",
+"v": {
+"16x20|Poster|Classic": [
+43002719535300,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+43003521302724,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+43002719568068,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+43003521335492,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+43002719600836,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+43003521368260,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+43002719633604,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+43003521401028,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+43002719666372,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+43003521433796,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+43002719699140,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+43003521466564,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+43002719731908,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+43003521499332,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+43002719764676,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+43003521532100,
+2850.0,
+true
+]
+},
+"date": "2024-03",
+"slug": "the-egg",
+"created": "2024-03-08T19:56:00-05:00"
+},
+{
+"h": "universe-within",
+"t": "Universe Within",
+"c": "Cosmos",
+"img": "universe-within",
+"sizes": [
+800,
+1400
+],
+"ar": 0.72,
+"d": "A portrait immersed in cosmic beauty, this artwork showcases a woman whose presence is as enigmatic as the universe itself. Her gaze, directed upwards, symbolizes hope and aspiration, as if seeking answers in the stars.",
+"v": {
+"16x20|Poster|Classic": [
+43002717405380,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+43003521958084,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+43002717438148,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+43003521990852,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+43002717470916,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+43003522023620,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+43002717503684,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+43003522056388,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+43002717536452,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+43003522089156,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+43002717569220,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+43003522121924,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+43002717601988,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+43003522154692,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+43002717634756,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+43003522187460,
+2850.0,
+true
+]
+},
+"date": "2024-03",
+"slug": "universe-within",
+"created": "2024-03-08T19:55:29-05:00"
+},
+{
+"h": "yugan",
+"t": "Yugan",
+"c": "Divine",
+"img": "yugan",
+"sizes": [
+800,
+1400
+],
+"ar": 0.8,
+"d": "A blue-skinned deity from Hindu mythology, depicted in a state of divine meditation. The figure's multiple arms, a symbol of power and spiritual capability, float in harmony against a backdrop of cosmic blues and fiery oranges, capturing the essence of creation and the universe's boundless energy.",
+"v": {
+"16x20|Poster|Classic": [
+43002715570372,
+90.0,
+true
+],
+"16x20|Poster|UV": [
+43003522810052,
+50.0,
+false
+],
+"16x20|Canvas|Classic": [
+43002715603140,
+450.0,
+true
+],
+"16x20|Canvas|UV": [
+43003522842820,
+550.0,
+true
+],
+"24x30|Poster|Classic": [
+43002715635908,
+150.0,
+true
+],
+"24x30|Poster|UV": [
+43003522875588,
+50.0,
+false
+],
+"24x30|Canvas|Classic": [
+43002715668676,
+800.0,
+true
+],
+"24x30|Canvas|UV": [
+43003522908356,
+1500.0,
+true
+],
+"30x40|Poster|Classic": [
+43002715701444,
+230.0,
+true
+],
+"30x40|Poster|UV": [
+43003522941124,
+50.0,
+false
+],
+"30x40|Canvas|Classic": [
+43002715734212,
+1300.0,
+true
+],
+"30x40|Canvas|UV": [
+43003522973892,
+2200.0,
+true
+],
+"48x60|Poster|Classic": [
+43002715766980,
+370.0,
+true
+],
+"48x60|Poster|UV": [
+43003523006660,
+50.0,
+false
+],
+"48x60|Canvas|Classic": [
+43002715799748,
+1750.0,
+true
+],
+"48x60|Canvas|UV": [
+43003523039428,
+2850.0,
+true
+]
+},
+"date": "2024-03",
+"slug": "yugan",
+"created": "2024-03-08T19:54:56-05:00"
+}
+],
+"manga": {
+"h": "spirit-gates-vol-1",
+"slug": "spirit-gates-vol-1",
+"t": "Spirit Gates Vol. 1",
+"variantId": 43002762789060,
+"price": 49.0,
+"available": true
+}
+}
