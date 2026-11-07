@@ -1,0 +1,93 @@
+/* ══════════════════════════════════════════════════════════════
+   FAQ (fq-)
+   cream: the questions, with a quiet index beside them that marks
+   the group you are reading → burgundy: still curious? → black footer.
+   ══════════════════════════════════════════════════════════════ */
+
+.fq-top { padding: clamp(36px, 7vh, 80px) var(--gutter) clamp(90px, 13vh, 160px); }
+.fq-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); align-items: end; gap: 24px 60px; max-width: 1320px; margin: 0 auto clamp(48px, 9vh, 100px); padding-bottom: clamp(28px, 5vh, 48px); border-bottom: 1px solid var(--hair); }
+.fq-title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(56px, 7.4vw, 124px); line-height: .92; letter-spacing: -.025em; margin: 0; }
+.fq-title em { font-style: italic; color: var(--accent); padding-right: .06em; }
+.fq-head .lede { margin: 0; text-wrap: pretty; }
+
+.fq-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: start; gap: clamp(30px, 7vw, 120px); max-width: 1320px; margin: 0 auto; }
+
+/* the index: a hairline track; the group in view (or hovered) gets a burgundy mark.
+   the current group is marked by .is-current (set in the page script). */
+.fq-nav { position: sticky; top: calc(var(--nav-h) + 40px); display: grid; border-left: 1px solid var(--line); scroll-target-group: auto; }
+.fq-nav a { position: relative; display: flex; align-items: baseline; gap: 14px; padding: 10px 0 10px 22px; font-family: var(--font-serif); font-size: 22px; line-height: 1.2; color: var(--color-graphite); transition: color .35s; }
+.fq-nav a span { flex: none; font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--color-pencil); }
+.fq-nav a::before { content: ""; position: absolute; left: -1px; top: 10px; bottom: 10px; width: 2px; background: var(--accent); transform: scaleY(0); transition: transform .5s var(--ease); }
+@media (hover: hover) { .fq-nav a:hover { color: var(--color-ink); } .fq-nav a:hover::before { transform: none; } }
+
+/* anchors land below the floating nav. scroll-padding (not scroll-margin): the index marks the group you jumped to, and focused elements stay clear of the nav */
+html:has(.fq-top) { scroll-padding-top: calc(var(--nav-h) + 28px); }
+.fq-group + .fq-group { margin-top: clamp(56px, 9vh, 96px); }
+.fq-group h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(36px, 3.2vw, 52px); line-height: 1; letter-spacing: -.01em; margin: 0 0 18px; }
+
+/* the questions: serif, a hairline between each; they open smoothly where the browser can animate to auto height */
+.fq-acc { border-top: 1px solid var(--hair); interpolate-size: allow-keywords; }
+.fq-acc details { border-bottom: 1px solid var(--line); }
+.fq-acc summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 64px; padding: 16px 0; list-style: none; cursor: pointer; font-family: var(--font-serif); font-size: clamp(20px, 1.6vw, 25px); line-height: 1.25; color: var(--color-ink); transition: color .3s; }
+.fq-acc summary::-webkit-details-marker { display: none; }
+.fq-acc summary::after { content: ""; flex: none; width: 15px; height: 15px; color: var(--accent); background: linear-gradient(currentColor 0 0) center / 100% 1.5px no-repeat, linear-gradient(currentColor 0 0) center / 1.5px 100% no-repeat; transition: transform .55s var(--ease); }
+.fq-acc details[open] > summary::after { transform: rotate(135deg); }
+@media (hover: hover) { .fq-acc summary:hover { color: var(--accent); } }
+.fq-acc details::details-content { block-size: 0; overflow: clip; transition: block-size .55s var(--ease), content-visibility .55s allow-discrete; }
+.fq-acc details[open]::details-content { block-size: auto; }
+.fq-acc details > div { max-width: 66ch; padding: 0 0 28px; font-size: 16px; line-height: 1.7; color: var(--color-graphite); }
+.fq-acc details > div > :first-child { margin-top: 0; }
+.fq-acc details > div > :last-child { margin-bottom: 0; }
+.fq-acc details > div > p + p { margin-top: .45em; }
+.fq-acc b { font-weight: 600; color: var(--color-ink); }
+.fq-acc a { color: var(--color-ink); text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: var(--hair); text-underline-offset: 5px; transition: color .3s; }
+.fq-acc a:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+/* the price table */
+.fq-table { overflow-x: auto; }
+.fq-acc table { width: 100%; border-collapse: collapse; font-variant-numeric: lining-nums tabular-nums; }
+.fq-acc th, .fq-acc td { padding: 13px 12px 13px 0; border-bottom: 1px solid var(--line); text-align: right; font-weight: 400; white-space: nowrap; vertical-align: baseline; }
+.fq-acc :is(th, td):first-child { text-align: left; }
+.fq-acc :is(th, td):last-child { padding-right: 0; }
+.fq-acc thead th { padding-top: 4px; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--color-pencil); }
+.fq-acc tbody th { font-family: var(--font-serif); font-size: 22px; line-height: 1; color: var(--color-ink); }
+.fq-acc tbody th small { display: block; margin-top: 5px; font-family: var(--font-sans); font-size: 11px; letter-spacing: .06em; color: var(--color-pencil); }
+.fq-acc td { font-size: 15px; color: var(--color-ink); }
+.fq-note { margin-top: 14px; font-size: 13px; }
+
+/* daylight and blacklight, side by side */
+.fq-uv { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 420px; margin: 22px 0 4px; }
+.fq-uv figure { margin: 0; }
+.fq-uv img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+.fq-uv figcaption { margin-top: 8px; font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--color-pencil); }
+
+.fq-acc .pay { gap: 8px; }
+.fq-acc .pay span { padding: 6px 13px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--color-ink); }
+
+/* ── still curious? (burgundy) ── */
+.fq-ask { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: center; gap: clamp(36px, 7vw, 120px); min-height: 84vh; max-width: 1320px; margin: 0 auto; padding: clamp(90px, 13vh, 160px) var(--gutter); }
+.fq-ask__media { justify-self: center; width: min(100%, 440px); margin: 0; }
+.fq-ask__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: var(--radius-lg); box-shadow: 0 40px 70px -44px rgb(34 27 29 / .7); }
+.fq-ask .c-h2 { text-wrap: balance; }
+.fq-ask .lede { margin: 22px 0 0; text-wrap: pretty; }
+.fq-ask__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; margin-top: 36px; }
+.fq-ask__mail { max-width: 520px; margin: 40px 0 0; padding-top: 22px; border-top: 1px solid var(--hair); font-size: 14px; line-height: 1.7; color: var(--color-graphite); }
+.fq-ask__mail a { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 5px; }
+.fq-ask__mail a:hover { color: var(--accent); }
+
+@media (max-width: 899px) {
+  .fq-head { grid-template-columns: minmax(0, 1fr); }
+  .fq-body { grid-template-columns: minmax(0, 1fr); }
+  /* phones: the index becomes a row of chips to swipe */
+  .fq-nav { position: static; display: flex; gap: 8px; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 4px; overflow-x: auto; border-left: 0; scrollbar-width: none; }
+  .fq-nav::-webkit-scrollbar { display: none; }
+  .fq-nav a { flex: none; padding: 9px 16px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 18px; }
+  .fq-nav a::before { display: none; }
+  .fq-ask { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .fq-ask__media { width: min(100%, 340px); }
+}
+
+/* the group in view (set by a small observer; works in every browser) */
+.fq-nav a.is-current { color: var(--color-ink); }
+.fq-nav a.is-current::before { transform: none; }
+@media (max-width: 899px) { .fq-nav a.is-current { border-color: var(--color-ink); } }

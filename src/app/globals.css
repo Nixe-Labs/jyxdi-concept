@@ -20,7 +20,7 @@
   --color-uv-hi: #b69bff;
   --color-uv-green: #49ffb0;
   --font-serif: var(--nf-serif), var(--nf-tamil), Georgia, serif;
-  --font-hand: var(--nf-hand), "Comic Sans MS", cursive;
+  --font-hand: var(--font-serif); /* the handwriting font is retired; any leftover rule falls back to the serif */
   --font-sans: var(--nf-sans), system-ui, sans-serif;
 }
 

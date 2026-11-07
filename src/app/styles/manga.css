@@ -1,0 +1,150 @@
+/* ══════════════════════════════════════════════════════════════
+   MANGA · SPIRIT GATES, VOL. 1 (prefix mg-)
+   black: the volume glowing in an arched gate, the title, the price
+   → cream: the story told in a book whose pages turn as you scroll
+   → burgundy: the signing note, a gold seal for the first 100 copies
+   ══════════════════════════════════════════════════════════════ */
+
+/* the hero starts under the floating nav (its pill takes 74px of flow, 66px on phones) */
+.mg > :first-child { margin-top: -74px; }
+@media (max-width: 899px) { .mg > :first-child { margin-top: -66px; } }
+
+/* ── hero ── */
+.mg-hero { position: relative; overflow: clip; color: var(--color-ink); }
+.mg-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); align-items: center; gap: clamp(30px, 5vw, 90px); max-width: 1320px; min-height: max(700px, 100svh); margin: 0 auto; padding: calc(74px + clamp(24px, 5vh, 56px)) var(--gutter) clamp(40px, 7vh, 80px); }
+.mg-hero__title { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: clamp(84px, 10vw, 176px); line-height: .86; letter-spacing: -.03em; }
+.mg-line { display: block; overflow: hidden; padding: 0 .08em .1em 0; margin-bottom: -.1em; }
+.mg-line > * { display: inline-block; }
+.mg-hero__title em { font-style: italic; padding-left: .5em; color: var(--accent); }
+.mg-hero__vol { display: flex; align-items: center; gap: 14px; margin: clamp(16px, 2.6vh, 26px) 0 0; font-size: 11px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--gold-ink); }
+.mg-hero__vol::before { content: ""; flex: none; width: 44px; height: 1px; background: var(--deco); }
+.mg-hero__copy .lede { margin: clamp(18px, 3vh, 28px) 0 0; max-width: 44ch; }
+.mg-price { display: flex; align-items: baseline; gap: 12px; margin: clamp(22px, 4vh, 36px) 0 18px; font-family: var(--font-serif); font-size: clamp(44px, 3.8vw, 60px); line-height: 1; }
+.mg-price small { font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: .2em; color: var(--color-pencil); }
+.mg-buy { display: flex; flex-wrap: wrap; gap: 12px; }
+.mg-facts { display: grid; gap: 10px; max-width: 520px; margin: clamp(24px, 4vh, 36px) 0 0; padding: 20px 0 0; border-top: 1px solid var(--hair); list-style: none; font-size: 13px; line-height: 1.5; color: var(--color-graphite); }
+.mg-facts li::before { content: "✦"; margin-right: 12px; font-size: 9px; color: var(--deco); vertical-align: .2em; }
+.mg-hero__art { position: relative; justify-self: center; margin: 0; perspective: 1400px; }
+.mg-hero__aura { position: absolute; inset: -20% -34%; z-index: -1; background: radial-gradient(closest-side, color-mix(in srgb, var(--p-gold) 24%, transparent), transparent 74%); pointer-events: none; }
+/* an arched window, like a gate, for the volume */
+.mg-arch { position: relative; display: block; width: min(34vw, 500px, calc((100svh - 74px - 110px) * .74)); aspect-ratio: .74; border-radius: 999px 999px var(--radius-lg) var(--radius-lg); overflow: hidden; background: var(--color-paper-3); box-shadow: 0 80px 120px -60px rgb(34 27 29 / .95); will-change: transform; }
+.mg-arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.mg-hero__cap { margin: 22px 0 0; font-size: 10px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; text-align: center; color: var(--color-pencil); }
+@media (prefers-reduced-motion: no-preference) {
+  .mg-arch { animation: mg-open 1.7s .1s cubic-bezier(.7, 0, .2, 1) both; }
+  .mg-arch img { animation: mg-settle 2.8s .1s var(--ease) both; }
+  .mg-hero__aura { animation: mg-fade 2.4s .6s var(--ease) both; }
+  .mg-line > * { animation: lh-up 1.3s var(--ease) both; }
+  .mg-line:nth-child(1) > * { animation-delay: .15s; }
+  .mg-line:nth-child(2) > * { animation-delay: .28s; }
+  .mg-hero__copy > :not(.mg-hero__title) { animation: c-rise 1.2s var(--ease) both; }
+  .mg-hero__copy > .c-kicker { animation-delay: .05s; }
+  .mg-hero__copy > .mg-hero__vol { animation-delay: .42s; }
+  .mg-hero__copy > .lede { animation-delay: .52s; }
+  .mg-hero__copy > .mg-price { animation-delay: .62s; }
+  .mg-hero__copy > .mg-buy { animation-delay: .7s; }
+  .mg-hero__copy > .mg-facts { animation-delay: .8s; }
+}
+@keyframes mg-open { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes mg-settle { from { transform: scale(1.18); } }
+@keyframes mg-fade { from { opacity: 0; } }
+@media (max-width: 899px) {
+  .mg-hero__grid { grid-template-columns: 1fr; gap: 36px; min-height: 0; padding-top: calc(66px + 28px); padding-bottom: 70px; }
+  .mg-hero__art { order: -1; }
+  .mg-arch { width: min(72vw, 330px); }
+  .mg-hero__title { font-size: clamp(76px, 23vw, 112px); }
+}
+
+/* ── the story, as a book: each scroll turns a page ── */
+.mg-story { padding-inline: 0; }
+.mg-stage { position: relative; display: grid; justify-items: center; gap: clamp(18px, 3vh, 30px); padding: 0 var(--gutter); }
+.mg-stage__head { text-align: center; }
+.mg-stage__head .c-kicker { margin: 0; }
+.mg-stage__hint { margin: 0; font-size: 10px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--color-pencil); }
+.mg-book { --paper: color-mix(in srgb, var(--p-cream) 93%, var(--p-gold)); position: relative; color: var(--p-ink); }
+.mg-page { position: relative; overflow: hidden; background: var(--paper); }
+/* the fold: a soft shadow along the spine of every page */
+.mg-page::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.mg-page--l::before { background: linear-gradient(to left, rgb(34 27 29 / .2), rgb(34 27 29 / .05) 7%, rgb(34 27 29 / 0) 16%); }
+.mg-page--r::before { background: linear-gradient(to right, rgb(34 27 29 / .2), rgb(34 27 29 / .05) 7%, rgb(34 27 29 / 0) 16%); }
+.mg-page--photo img { width: 100%; height: 100%; object-fit: cover; }
+.mg-page--text { display: flex; flex-direction: column; justify-content: center; padding: 10% 11% 14%; }
+.mg-page--text .c-kicker { color: var(--p-burgundy); }
+.mg-page h2 { margin: 0 0 .5em; font-family: var(--font-serif); font-weight: 400; font-size: clamp(30px, 3.1vw, 50px); line-height: 1; letter-spacing: -.015em; }
+.mg-page h2 em { font-style: italic; color: var(--p-burgundy); }
+.mg-page p:not(.c-kicker) { margin: 0; font-family: var(--font-serif); font-size: clamp(18px, 1.55vw, 23px); line-height: 1.42; color: color-mix(in srgb, var(--p-ink) 88%, var(--p-cream)); }
+.mg-drop::first-letter { float: left; padding: .06em .1em 0 0; font-size: 3.3em; line-height: .78; color: var(--p-burgundy); }
+.mg-folio { position: absolute; z-index: 3; bottom: 5%; font-size: 10px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: color-mix(in srgb, var(--p-ink) 70%, var(--p-cream)); }
+.mg-page--l .mg-folio { left: 11%; }
+.mg-page--r .mg-folio { right: 11%; }
+.mg-page--photo .mg-folio { color: var(--p-cream); text-shadow: 0 1px 8px rgb(34 27 29 / .7); }
+.mg-cast { display: grid; margin: 4px 0 0; border-top: 1px solid var(--p-gold); }
+.mg-cast div { padding: 14px 0 15px; border-bottom: 1px solid color-mix(in srgb, var(--p-ink) 14%, transparent); }
+.mg-cast dt { font-size: 10px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--p-burgundy); }
+.mg-cast dd { margin: 0; }
+.mg-cast b { display: block; margin: 4px 0 2px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(24px, 2vw, 32px); line-height: 1.05; }
+.mg-cast span { font-size: 13px; line-height: 1.45; color: color-mix(in srgb, var(--p-ink) 80%, var(--p-cream)); }
+.mg-cast + small { display: block; margin-top: 16px; font-family: var(--font-serif); font-style: italic; font-size: 17px; color: var(--p-burgundy); }
+.mg-shade { position: absolute; inset: 0; z-index: 4; opacity: 0; background: rgb(34 27 29 / .32); pointer-events: none; }
+.mg-spread { display: none; }
+
+/* desktop with motion: an open book; three leaves turn on the spine as the page scrolls */
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .mg-stage { height: 100svh; min-height: 640px; align-content: center; padding-top: var(--nav-h); }
+  .mg-book { width: min(92vw, calc((100svh - var(--nav-h) - 150px) * 1.44), 1000px); aspect-ratio: 1.44; perspective: 2400px; }
+  .mg-book > .mg-page, .mg-leaf { position: absolute; top: 0; width: 50%; height: 100%; }
+  .mg-book > .mg-page--l { left: 0; box-shadow: -2px 2px 0 color-mix(in srgb, var(--p-ink) 8%, var(--p-cream)), -4px 4px 0 color-mix(in srgb, var(--p-ink) 12%, var(--p-cream)), 0 50px 80px -40px rgb(34 27 29 / .5); }
+  .mg-book > .mg-page--r { right: 0; box-shadow: 2px 2px 0 color-mix(in srgb, var(--p-ink) 8%, var(--p-cream)), 4px 4px 0 color-mix(in srgb, var(--p-ink) 12%, var(--p-cream)), 0 50px 80px -40px rgb(34 27 29 / .5); }
+  .mg-leaf { left: 50%; transform-origin: 0% 50%; transform-style: preserve-3d; will-change: transform; }
+  .mg-leaf > .mg-page { position: absolute; inset: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .mg-leaf > .mg-page--l { transform: rotateY(180deg); }
+  .mg-leaf > .mg-page--photo img, .mg-book > .mg-page--photo img { position: absolute; inset: 0; }
+  /* the last spread: one photograph across both pages */
+  .mg-half img { width: 200%; max-width: none; }
+  .mg-book > .mg-half img { left: -100%; }
+}
+
+/* without the turning pages (phones, reduced motion): the spreads, one after another */
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .mg-story { padding-bottom: clamp(60px, 9vh, 110px); }
+  .mg-stage__hint { display: none; }
+  .mg-book { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: clamp(28px, 5vh, 56px); width: min(100%, 1000px); }
+  .mg-leaf { display: contents; }
+  .mg-page { aspect-ratio: .72; box-shadow: 0 40px 70px -46px rgb(34 27 29 / .5); }
+  .mg-half img { width: 200%; max-width: none; height: 100%; }
+  .mg-book > .mg-half img { margin-left: -100%; }
+}
+@media (max-width: 899px) {
+  .mg-book { grid-template-columns: 1fr; row-gap: 18px; }
+  .mg-page { aspect-ratio: auto; border-radius: var(--radius); }
+  .mg-page::before { display: none; }
+  .mg-page--photo { aspect-ratio: 4 / 5; }
+  .mg-page--text { padding: 34px 26px 54px; }
+  .mg-half { display: none; }
+  .mg-spread { display: block; aspect-ratio: 4 / 3; }
+  .mg-folio { bottom: 18px; }
+}
+
+/* ── the signing note: a gold seal for the first 100 copies ── */
+.mg-sign__grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); gap: clamp(40px, 7vw, 120px); align-items: center; max-width: 1240px; margin: 0 auto; }
+.mg-seal { position: relative; width: min(100%, 440px); aspect-ratio: 1; margin: 0 auto; color: var(--accent); }
+.mg-seal svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.mg-seal circle { fill: none; stroke: var(--hair); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.mg-seal text { font-family: var(--font-sans); font-size: 7.4px; font-weight: 600; letter-spacing: .3em; fill: currentColor; }
+.mg-seal__n { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.mg-seal__n b { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: clamp(110px, 12vw, 180px); line-height: .8; letter-spacing: -.03em; color: var(--accent); }
+.mg-seal__n span { margin-top: 14px; font-size: 10px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--color-graphite); }
+.mg-sign__copy .lede { margin: 22px 0 0; }
+.mg-spec { display: grid; grid-template-columns: max-content minmax(0, 1fr); margin: clamp(28px, 5vh, 44px) 0; border-top: 1px solid var(--hair); }
+.mg-spec dt, .mg-spec dd { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.mg-spec dt { padding-right: clamp(20px, 3vw, 40px); font-size: 11px; font-weight: 600; letter-spacing: .24em; line-height: 2.2; text-transform: uppercase; color: var(--gold-ink); }
+.mg-spec dd { margin: 0; font-family: var(--font-serif); font-size: clamp(19px, 1.5vw, 23px); line-height: 1.3; }
+.mg-num { font-family: var(--font-sans); font-size: .78em; letter-spacing: .02em; } /* the serif's 1 reads as an l */
+.mg-sign__more { margin: clamp(26px, 4vh, 36px) 0 0; }
+@media (max-width: 899px) {
+  .mg-sign__grid { grid-template-columns: 1fr; gap: 50px; }
+  .mg-seal { width: min(76vw, 340px); }
+  .mg-spec { grid-template-columns: 1fr; }
+  .mg-spec dt { padding-bottom: 0; border-bottom: 0; }
+  .mg-spec dd { padding-top: 4px; }
+}

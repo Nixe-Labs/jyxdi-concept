@@ -1,13 +1,19 @@
 "use client";
-import ScrollVelocity from "@/components/rb/ScrollVelocity";
+import { useState } from "react";
 
+const LINE = ["Hand-signed", "Certificate of authenticity", "Ships worldwide", "Prints from $90", "Worked with Michael B. Jordan · COACH · XO · OVO40"];
+
+/** One slim line drifting by (pure CSS); four copies so the loop never shows a gap. It holds still under the pointer,
+    and the pause stops it (WCAG 2.2.2). */
 export default function Ticker() {
-  const a = <span className="ticker__item">Hand-signed<span className="dot">✶</span>Certificate of authenticity<span className="dot">✶</span>Ships worldwide<span className="dot">✶</span>Prints from $90<span className="dot">✶</span></span>;
-  const b = <span className="ticker__item">Worked with <em>Michael B. Jordan</em><span className="dot">·</span><em>COACH</em><span className="dot">·</span><em>XO</em><span className="dot">·</span><em>OVO40</em><span className="dot">✶</span></span>;
+  const [paused, setPaused] = useState(false);
   return (
-    <section className="ticker" aria-label="Why buy from Jyxdi">
-      <ScrollVelocity texts={[a, b]} velocity={30} numCopies={4} className="pr-[.5em]" parallaxClassName="relative overflow-hidden" scrollerClassName="flex whitespace-nowrap" />
+    <section className={`c-ticker ${paused ? "is-paused" : ""}`} data-mood="cream" aria-label="Why buy from Jyxdi">
+      <div className="c-ticker__track" aria-hidden>
+        {[0, 1, 2, 3].map((k) => <span key={k} className="c-ticker__item">{LINE.map((t) => <span key={t}>{t}<i>✦</i></span>)}</span>)}
+      </div>
       <p className="sr-only">Hand-signed, certificate of authenticity, ships worldwide, prints from $90. Jyxdi has worked with Michael B. Jordan, COACH, XO and OVO40.</p>
+      <button type="button" className="c-ticker__pause" onClick={() => setPaused(!paused)} aria-label={paused ? "Play the moving line" : "Pause the moving line"}>{paused ? "Play" : "Pause"}</button>
     </section>
   );
 }

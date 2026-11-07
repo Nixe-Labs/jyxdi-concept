@@ -1,0 +1,162 @@
+/* ══════════════════════════════════════════════════════════════
+   SHOP · THE COLLECTION (prefix sx-)
+   Daylight into night: the collection on cream (one work hung beside
+   the words, the glass toolbar, every work), three ways to own one on
+   burgundy, the manga glowing in the black room, then the footer.
+   Sections never paint a background: the page's mood does (lux.css).
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 1 · the head: the words, and one work hung on the wall beside them ── */
+.sx-coll { padding-bottom: clamp(100px, 15vh, 180px); }
+.sx-head { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: center; gap: clamp(32px, 5vw, 96px); max-width: 1440px; margin: 0 auto; padding: clamp(10px, 2.4vh, 30px) var(--gutter) clamp(36px, 6vh, 72px); }
+.sx-head .crumbs { margin-bottom: clamp(24px, 4.6vh, 48px); }
+.sx-title { margin: 0 0 clamp(22px, 3.6vh, 34px); font-family: var(--font-serif); font-weight: 400; font-size: clamp(60px, 8.6vw, 144px); line-height: .9; letter-spacing: -.025em; }
+.sx-line { display: block; overflow: hidden; padding: 0 .08em .1em 0; margin-bottom: -.1em; }
+.sx-line > * { display: inline-block; }
+.sx-title em { font-style: italic; padding-right: .06em; color: var(--accent); }
+.sx-lede.lede { margin: 0; max-width: 46ch; }
+.sx-promise { display: grid; gap: 10px; max-width: 520px; margin: clamp(26px, 4.6vh, 44px) 0 0; padding: 22px 0 0; border-top: 1px solid var(--hair); list-style: none; font-size: 11px; line-height: 1.5; letter-spacing: .2em; text-transform: uppercase; color: var(--color-graphite); }
+.sx-promise li { display: flex; gap: 10px; }
+.sx-promise li::before { content: "✦"; color: var(--deco); }
+
+/* the work: hung from a hook on a wire, lit by a warm pool of light on the wall; a click glides it into its viewing room */
+.sx-feature { --drop: clamp(44px, 7vh, 72px); position: relative; isolation: isolate; justify-self: center; display: grid; justify-items: center; margin: 0; padding-top: calc(var(--drop) + 7px); }
+.sx-feature::before { content: ""; position: absolute; z-index: -1; inset: -2% -26% 2%; background: radial-gradient(closest-side, color-mix(in srgb, var(--p-gold) 34%, transparent), color-mix(in srgb, var(--p-gold) 10%, transparent) 62%, transparent); pointer-events: none; }
+.sx-feature .lx-hanger line { stroke: color-mix(in srgb, var(--p-gold) 68%, var(--p-ink)); }
+.sx-piece { position: relative; display: block; border-radius: 2px; transform-origin: 50% calc(-1 * var(--drop)); }
+.sx-piece__art { display: block; } /* carries the glide from the opening's boutique */
+.sx-piece .lux-frame { --fw: clamp(10px, 1vw, 15px); --mat: clamp(14px, 1.7vw, 26px); transition: transform .8s var(--ease), box-shadow .8s var(--ease);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--p-cream) 70%, transparent), inset 0 -2px 0 color-mix(in srgb, var(--p-ink) 45%, transparent), 0 2px 0 rgb(34 27 29 / .18), 0 42px 70px -36px rgb(34 27 29 / .62); }
+.sx-piece:hover .lux-frame, .sx-piece:focus-visible .lux-frame { transform: translateY(-6px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--p-cream) 70%, transparent), inset 0 -2px 0 color-mix(in srgb, var(--p-ink) 45%, transparent), 0 2px 0 rgb(34 27 29 / .18), 0 64px 90px -40px rgb(34 27 29 / .72); }
+.sx-piece .lux-frame__mat img { width: auto; max-width: none; height: clamp(280px, min(47vh, 33vw), 470px); aspect-ratio: var(--ar); }
+.sx-feature .lx-plaque { margin-top: 26px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sx-line > * { animation: sx-up 1.3s var(--ease) both; }
+  .sx-line + .sx-line > * { animation-delay: .11s; }
+  .sx-head .crumbs, .sx-head .c-kicker, .sx-lede, .sx-promise, .sx-feature .lx-plaque { animation: sx-rise 1.2s var(--ease) both; }
+  .sx-head .c-kicker { animation-delay: .05s; }
+  .sx-lede { animation-delay: .32s; }
+  .sx-promise { animation-delay: .44s; }
+  .sx-feature .lx-plaque { animation-delay: .6s; }
+  /* once the page has arrived, the work settles on its hook (starts square, so a glide back lands true) */
+  .sx-piece { animation: sx-settle 3.2s 1s cubic-bezier(.3, 0, .25, 1) both; }
+}
+@keyframes sx-up { from { transform: translateY(108%); } }
+@keyframes sx-rise { from { opacity: 0; transform: translateY(24px); } }
+@keyframes sx-settle { 0%, 100% { rotate: 0deg; } 14% { rotate: 1.7deg; } 37% { rotate: -1.15deg; } 60% { rotate: .6deg; } 81% { rotate: -.22deg; } }
+
+/* ── the toolbar: a glass pill under the nav, which takes the nav's place while the nav is away ── */
+.sx-bar.toolbar { top: var(--nav-h); width: min(1320px, calc(100% - 2 * var(--edge))); margin: 0 auto; border: 1px solid var(--line); border-radius: 999px; background-color: color-mix(in srgb, var(--color-paper) 90%, transparent); /* denser than --glass: small text stays ≥ 4.5:1 over the darkest painting */ box-shadow: 0 14px 36px -26px rgb(34 27 29 / .55); transition: top .5s var(--ease); }
+html:has(.nav.is-hidden) .sx-bar.toolbar { top: 12px; }
+.sx-bar__in { display: flex; align-items: center; gap: 8px 12px; padding: 6px; }
+.sx-tabs { display: flex; flex: none; gap: 2px; }
+.sx-tab { height: 44px; padding: 0 18px; border-radius: 999px; font-size: 11px; font-weight: 600; line-height: 44px; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; color: var(--color-graphite); transition: background-color .35s, color .35s; }
+.sx-tab__n { position: relative; top: -.55em; margin-left: 5px; font-size: 9px; font-weight: 400; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.sx-tab:hover { color: var(--color-ink); background: var(--color-paper-2); }
+.sx-tab[aria-pressed="true"] { background: var(--color-ink); color: var(--color-paper); }
+.sx-search { position: relative; flex: 1 1 200px; min-width: 0; height: 44px; }
+.sx-search svg { position: absolute; left: 17px; top: 50%; width: 16px; height: 16px; margin-top: -8px; fill: none; stroke: var(--color-graphite); stroke-width: 1.5; stroke-linecap: round; pointer-events: none; }
+.sx-search input { width: 100%; height: 100%; padding: 0 44px 0 44px; border: 1px solid var(--line); border-radius: 999px; outline: 0; background: none; font: inherit; font-size: 14px; color: var(--color-ink); -webkit-appearance: none; appearance: none; transition: border-color .3s, box-shadow .3s; }
+.sx-search input::placeholder { color: var(--color-graphite); opacity: 1; }
+.sx-search input:placeholder-shown { padding-right: 14px; } /* the clear button only appears with text: give the placeholder its room */
+.sx-search input::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }
+.sx-search input:hover { border-color: var(--line-2); }
+.sx-search input:focus-visible { border-color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-ink); }
+.sx-search__x { position: absolute; right: 4px; top: 4px; width: 36px; height: 36px; border-radius: 50%; font-size: 18px; line-height: 1; color: var(--color-graphite); }
+.sx-search__x:hover { background: var(--color-paper-2); color: var(--color-ink); }
+.sx-sort { position: relative; flex: none; display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 36px 0 18px; border: 1px solid var(--line); border-radius: 999px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--color-graphite); transition: border-color .3s, box-shadow .3s; }
+.sx-sort:hover { border-color: var(--line-2); }
+.sx-sort:focus-within { border-color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-ink); }
+.sx-sort::after { content: ""; position: absolute; right: 18px; top: 50%; width: 6px; height: 6px; margin-top: -5px; border-right: 1.5px solid var(--color-ink); border-bottom: 1.5px solid var(--color-ink); transform: rotate(45deg); pointer-events: none; }
+.sx-sort select { height: 42px; border: 0; outline: 0; background: none; font: inherit; font-weight: 600; letter-spacing: .14em; color: var(--color-ink); cursor: pointer; -webkit-appearance: none; appearance: none; }
+.sx-sort select option { background: var(--color-paper); color: var(--color-ink); text-transform: none; }
+.sx-count { flex: none; margin: 0 14px 0 4px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; color: var(--color-graphite); font-variant-numeric: tabular-nums; }
+
+/* ── the works: three to a row, a gallery's breathing room around each ── */
+.sx-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(60px, 8vh, 96px) clamp(22px, 3.2vw, 52px); max-width: 1440px; margin: 0 auto; padding: clamp(48px, 8vh, 90px) var(--gutter) 0; }
+/* the picture light again: a warm pool blooms on the wall behind the work you're looking at */
+.sx-grid .pcard { isolation: isolate; }
+.sx-grid .pcard::before { content: ""; position: absolute; z-index: -1; inset: -12% -18% 10%; background: radial-gradient(closest-side, color-mix(in srgb, var(--p-gold) 34%, transparent) 66%, transparent); opacity: 0; transition: opacity .9s var(--ease); pointer-events: none; }
+.sx-grid .pcard:hover::before, .sx-grid .pcard:focus-within::before { opacity: 1; }
+.sx-grid .pcard__meta { padding-top: 18px; }
+.sx-grid .pcard__title { font-size: clamp(22px, 1.9vw, 30px); }
+/* each painting settles into its mount as it rises into view (scroll-driven, nothing hidden) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .sx-grid .pcard__media img { animation: sx-mount linear both; animation-timeline: view(); animation-range: entry 0% cover 42%; }
+  }
+}
+@keyframes sx-mount { from { scale: 1.14; } to { scale: 1; } }
+
+/* leaving the page: only the clicked work glides (ShopClient marks it); !important beats the name React sets inline */
+.sx-coll.is-leaving .pcard:not(.is-chosen) img, .sx-coll.is-leaving .sx-piece:not(.is-chosen) .lux-frame { view-transition-name: none !important; }
+
+.sx-empty { max-width: 680px; margin: 0 auto; padding: clamp(70px, 12vh, 130px) var(--gutter) 0; text-align: center; }
+.sx-empty__t { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: clamp(36px, 3.8vw, 58px); line-height: 1.04; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.sx-empty__t em { color: var(--accent); }
+.sx-empty .lede { margin: 20px auto 0; }
+.sx-empty__acts { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px 30px; margin-top: 36px; }
+
+/* ── 2 · three ways to own one (burgundy): the same painting as a print, a canvas, a canvas that glows ── */
+.sx-ways { padding-block: clamp(110px, 16vh, 190px); }
+.sx-ways .section__head .lede { margin: 0; max-width: 42ch; }
+.sx-ways__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(22px, 3.2vw, 52px); max-width: 1440px; margin: 0 auto; }
+.sx-way { margin: 0; }
+.sx-way__media { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-lg); background: var(--color-paper-2); box-shadow: 0 50px 80px -50px rgb(34 27 29 / .85); }
+.sx-way__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.sx-way:hover .sx-way__media img { transform: scale(1.04); }
+.sx-way--uv .sx-way__media { box-shadow: 0 0 0 1px var(--hair), 0 50px 110px -46px color-mix(in srgb, var(--p-gold) 55%, transparent); }
+.sx-way__cap { position: absolute; left: 14px; bottom: 14px; margin: 0; padding: 6px 12px; border-radius: 999px; background: rgb(34 27 29 / .7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: 10px; line-height: 1.5; letter-spacing: .18em; text-transform: uppercase; color: var(--p-cream); }
+.sx-way__body { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; padding-top: 30px; }
+.sx-way__n { grid-row: span 3; margin: 0; padding-top: 10px; font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1; color: var(--gold-ink); }
+.sx-way h3 { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: clamp(34px, 3vw, 50px); line-height: 1; letter-spacing: -.01em; }
+.sx-way__from { margin: 12px 0 16px; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); }
+.sx-way__line { margin: 0; max-width: 36ch; font-size: 15px; line-height: 1.65; color: var(--color-graphite); }
+.sx-ways__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 40px; max-width: 1440px; margin: clamp(60px, 9vh, 100px) auto 0; padding-top: 28px; border-top: 1px solid var(--hair); }
+.sx-ways__foot p { margin: 0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-graphite); }
+.sx-ways__foot div { display: flex; flex-wrap: wrap; gap: 14px 34px; }
+
+/* ── 3 · the manga, glowing in the black room ── */
+.sx-manga { padding-block: clamp(110px, 16vh, 190px) clamp(20px, 4vh, 50px); } /* the footer brings its own margin */
+.sx-manga__in { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); align-items: center; gap: clamp(40px, 6.5vw, 120px); max-width: 1320px; margin: 0 auto; }
+.sx-manga__media { overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--radius-lg); box-shadow: 0 0 0 1px var(--hair); }
+.sx-manga__media img { width: 100%; height: 100%; object-fit: cover; }
+.sx-manga .lede { margin: 24px 0 0; max-width: 44ch; }
+.sx-manga__buy { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 32px; margin-top: 38px; }
+
+/* ── phones and tablets ── */
+@media (max-width: 1099px) {
+  .sx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 899px) {
+  .sx-head { padding-top: 18px; }
+  .sx-title { font-size: clamp(56px, 17vw, 84px); }
+  .sx-feature { --drop: 42px; }
+  .sx-piece .lux-frame__mat img { height: clamp(220px, 33svh, 300px); }
+  .sx-bar.toolbar { border-radius: 24px; }
+  html:has(.nav.is-hidden) .sx-bar.toolbar { top: 10px; }
+  .sx-bar__in { flex-wrap: wrap; gap: 6px; padding: 5px; }
+  .sx-tabs { flex: 1 1 100%; overflow-x: auto; scrollbar-width: none; }
+  .sx-tabs::-webkit-scrollbar { display: none; }
+  .sx-tab { flex: 1 0 auto; height: 40px; padding: 0 12px; line-height: 40px; letter-spacing: .12em; }
+  .sx-search { flex-basis: 0; height: 40px; }
+  .sx-search svg { left: 14px; }
+  .sx-search input { padding-left: 38px; font-size: 16px; } /* 16px keeps iOS from zooming in on focus */
+  .sx-search__x { top: 2px; }
+  .sx-sort { height: 40px; padding: 0 32px 0 14px; }
+  .sx-sort::after { right: 15px; }
+  .sx-sort > span { display: none; }
+  .sx-sort select { height: 38px; }
+  .sx-count { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .sx-grid { gap: 44px 14px; padding-top: 36px; }
+}
+/* phones: one column; the words, then the work hung below them */
+@media (max-width: 699px) {
+  .sx-head { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .sx-ways__grid { grid-template-columns: minmax(0, 1fr); gap: 60px; }
+  .sx-way__media { aspect-ratio: 1; }
+  .sx-way__media img { object-position: 50% 38%; }
+  .sx-manga__in { grid-template-columns: minmax(0, 1fr); }
+}

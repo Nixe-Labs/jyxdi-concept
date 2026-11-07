@@ -33,6 +33,10 @@ export const UV_PAIRS: Record<string, { day: string; uv: string }> = {
   karrupusaamy: { day: `${BASE}/img/k-classic-1092.webp`, uv: `${BASE}/img/k-uv-1092.webp` },
 };
 
+/** Works whose only photo shows the painting out in the world (on an easel, in a room, with Jyxdi) rather than a flat
+    photo of the painting: their viewing room shows it as a photograph, unframed and not to scale. */
+export const SCENES = new Set(["kalki", "sai-baba", "birth-of-murugan", "copy-murugan", "murugan"]);
+
 export const bySlug = (slug: string) => WORKS.find((w) => w.slug === slug);
 export const img = (w: Work, size: number) => `${BASE}/img/${w.img}-${size}.webp`;
 export const largest = (w: Work) => img(w, w.sizes[w.sizes.length - 1]);

@@ -1,0 +1,302 @@
+/* The invitation: the opening's scene (left/top half: "Book live painting") and the card itself (InviteCard), shared by
+   the opening, the live-painting page and the inquiry form.
+   A cream cotton invitation, gold-foiled and sealed in burgundy wax, resting on its gold-lined envelope on dark velvet.
+   Light comes softly from the upper left. Everything scales from one unit, --u, fitted to the scene box (container units). */
+
+/* ---------- the half: dark velvet ---------- */
+.lx-world--invite {
+  background-color: #221B1D;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .84 .9 0 0 0 -.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23v)' opacity='.07'/%3E%3C/svg%3E"),
+    radial-gradient(74% 54% at 46% 33%, color-mix(in srgb, #4C1726 46%, #221B1D) 0%, color-mix(in srgb, #4C1726 20%, #221B1D) 54%, #221B1D 100%);
+  background-size: 240px 240px, auto;
+}
+
+/* ---------- tokens (the scene and every card) ---------- */
+.lx-scene--invite { container-type: size; container-name: lx-invite-scene; --tx: 0; --ty: 0; }
+.lx-scene--invite, .lx-card {
+  --burgundy: #4C1726;
+  --gold: #C6A36A;
+  --ink: #221B1D;
+  --gold-hi: color-mix(in srgb, #C6A36A 40%, #F2E5D7);
+  --gold-lo: color-mix(in srgb, #C6A36A 68%, #221B1D);
+  --gold-deep: color-mix(in srgb, #C6A36A 46%, #221B1D);
+  --paper-hi: #F2E5D7;
+  --paper: color-mix(in srgb, #F2E5D7 93%, #C6A36A);
+  --paper-lo: color-mix(in srgb, color-mix(in srgb, #F2E5D7 86%, #C6A36A), #221B1D 7%);
+  --env-hi: color-mix(in srgb, #F2E5D7 92%, #C6A36A);
+  --env: color-mix(in srgb, #F2E5D7 84%, #C6A36A);
+  --env-lo: color-mix(in srgb, color-mix(in srgb, #F2E5D7 78%, #C6A36A), #221B1D 9%);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .13 0 0 0 0 .11 0 0 0 0 .11 1.1 0 0 0 -.42'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+/* ---------- stage + one unit ---------- */
+.lx-invite__stage {
+  position: absolute;
+  inset: 0;
+  /* the group (envelope, card, seal) is ~172u square: keep it inside 80% of the width and 78% of the height */
+  --u: min(calc(80cqw / 172), calc(78cqh / 172));
+  pointer-events: none;
+}
+
+/* the warm pool of light the card lies in */
+.lx-invite__glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(500 * var(--u));
+  height: calc(420 * var(--u));
+  transform: translate(-57%, -58%);
+  background: radial-gradient(closest-side, color-mix(in srgb, #4C1726 80%, #C6A36A) 0%, color-mix(in srgb, #4C1726 94%, #C6A36A) 20%, color-mix(in srgb, #4C1726 80%, transparent) 40%, color-mix(in srgb, #4C1726 34%, transparent) 64%, color-mix(in srgb, #4C1726 8%, transparent) 84%, transparent 100%);
+}
+
+.lx-invite__group {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* composition, in u from the group centre */
+  --ex: -3; --ey: 0; --er: -4deg;      /* envelope (160 x 166 incl. open flap) */
+  --cx: 3;  --cy: -2; --cr: 2.5deg;    /* card (100 x 140) */
+  perspective: calc(600 * var(--u)); /* the card's lean toward the pointer is a 3D turn seen from here */
+}
+
+/* ---------- envelope ---------- */
+.lx-invite__env {
+  position: absolute;
+  left: calc((var(--ex) - 80) * var(--u));
+  top: calc((var(--ey) - 83) * var(--u));
+  width: calc(160 * var(--u));
+  height: calc(166 * var(--u));
+  transform: rotate(var(--er));
+  filter:
+    drop-shadow(calc(.25 * var(--u)) calc(.4 * var(--u)) calc(.35 * var(--u)) color-mix(in srgb, #221B1D 75%, transparent))
+    drop-shadow(calc(2.2 * var(--u)) calc(4 * var(--u)) calc(6 * var(--u)) color-mix(in srgb, #221B1D 50%, transparent));
+}
+.lx-invite__env-art { display: block; width: 100%; height: 100%; overflow: visible; }
+.lx-invite__env::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grain) 0 0 / calc(66 * var(--u)) calc(66 * var(--u));
+  mix-blend-mode: multiply;
+  opacity: .8;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 166' preserveAspectRatio='none'%3E%3Cpath d='M0 60 74 4Q80-.5 86 4L160 60V166H0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 166' preserveAspectRatio='none'%3E%3Cpath d='M0 60 74 4Q80-.5 86 4L160 60V166H0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+}
+.lx-invite__env-paper { fill: url(#lx-invite-paper); }
+.lx-invite__env-fold { fill: none; stroke: var(--gold-deep); stroke-width: .3; opacity: .5; }
+.lx-invite__env-fold-lip { fill: none; stroke: var(--gold-hi); stroke-width: .35; opacity: .7; }
+.lx-invite__env-edge { fill: none; stroke: var(--paper-hi); stroke-width: .3; opacity: .9; }
+.lx-invite__lattice-lo { fill: none; stroke: var(--gold-deep); stroke-width: .2; opacity: .42; }
+.lx-invite__lattice-hi { fill: none; stroke: var(--gold-hi); stroke-width: .16; opacity: .55; }
+.lx-invite__fx-ao { flood-color: #221B1D; flood-opacity: .32; }
+
+/* gradient stops (SVG reads colours from here so the palette lives in one place) */
+.lx-invite__st-gold { stop-color: var(--gold); }
+.lx-invite__st-gold-hi { stop-color: var(--gold-hi); }
+.lx-invite__st-gold-lo { stop-color: var(--gold-lo); }
+.lx-invite__st-paper-hi { stop-color: var(--env-hi); }
+.lx-invite__st-paper { stop-color: var(--env); }
+.lx-invite__st-paper-lo { stop-color: var(--env-lo); }
+.lx-invite__st-wax0 { stop-color: color-mix(in srgb, #4C1726 80%, #C6A36A); }
+.lx-invite__st-wax1 { stop-color: #4C1726; }
+.lx-invite__st-wax2 { stop-color: color-mix(in srgb, #4C1726 55%, #221B1D); }
+.lx-invite__st-die0 { stop-color: color-mix(in srgb, #4C1726 86%, #221B1D); }
+.lx-invite__st-die1 { stop-color: color-mix(in srgb, #4C1726 60%, #221B1D); }
+.lx-invite__st-lit { stop-color: color-mix(in srgb, #F2E5D7 62%, #4C1726); stop-opacity: .7; }
+.lx-invite__st-clear { stop-color: #4C1726; stop-opacity: 0; }
+.lx-invite__st-dark { stop-color: #221B1D; stop-opacity: .6; }
+
+/* ---------- card ---------- */
+.lx-invite__shadow,
+.lx-invite__tilt {
+  position: absolute;
+  left: calc((var(--cx) - 50) * var(--u));
+  top: calc((var(--cy) - 70) * var(--u));
+  width: calc(100 * var(--u));
+  height: calc(140 * var(--u));
+}
+/* the card's shadow stays on the envelope while the card tilts above it */
+.lx-invite__shadow {
+  transform: rotate(var(--cr)); /* the pointer moves it with "translate" (scene.js), so it stays on the envelope */
+  background: color-mix(in srgb, #221B1D 60%, transparent);
+  box-shadow:
+    calc(.3 * var(--u)) calc(.5 * var(--u)) calc(.7 * var(--u)) color-mix(in srgb, #221B1D 55%, transparent),
+    calc(1.6 * var(--u)) calc(2.8 * var(--u)) calc(4.5 * var(--u)) color-mix(in srgb, #221B1D 34%, transparent),
+    calc(5 * var(--u)) calc(10 * var(--u)) calc(18 * var(--u)) color-mix(in srgb, #221B1D 30%, transparent);
+}
+.lx-invite__tilt {
+  transform: rotate(var(--cr)); /* the pointer leans it with "rotate" (scene.js), under the group's perspective */
+}
+.lx-invite__card {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(.5 * var(--u));
+  background:
+    var(--grain),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .78 0 0 0 0 .64 0 0 0 0 .42 1.4 0 0 0 -.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.18'/%3E%3C/svg%3E"),
+    linear-gradient(128deg, var(--paper-hi) 0%, var(--paper) 45%, var(--paper-lo) 100%);
+  background-size: calc(66 * var(--u)) calc(66 * var(--u)), calc(140 * var(--u)) calc(140 * var(--u)), auto;
+  box-shadow:
+    inset calc(.22 * var(--u)) calc(.22 * var(--u)) 0 var(--paper-hi),
+    inset calc(-.2 * var(--u)) calc(-.25 * var(--u)) calc(.2 * var(--u)) color-mix(in srgb, #C6A36A 55%, transparent);
+  color: var(--ink);
+  text-align: center;
+}
+
+/* fine foil double rule */
+.lx-invite__rule { position: absolute; pointer-events: none; }
+.lx-invite__rule--outer {
+  inset: calc(5 * var(--u));
+  border: max(.6px, calc(.5 * var(--u))) solid;
+  border-image: linear-gradient(128deg, var(--gold-hi), var(--gold) 28%, var(--gold-lo) 52%, var(--gold) 70%, var(--gold-hi) 84%, var(--gold-lo)) 1;
+}
+.lx-invite__rule--inner {
+  inset: calc(6.5 * var(--u));
+  border: max(.4px, calc(.2 * var(--u))) solid;
+  border-image: linear-gradient(128deg, var(--gold-hi), var(--gold) 28%, var(--gold-lo) 52%, var(--gold) 70%, var(--gold-hi) 84%, var(--gold-lo)) 1;
+}
+
+/* letterpress copy */
+.lx-invite__copy {
+  position: absolute;
+  left: calc(11 * var(--u));
+  right: calc(11 * var(--u));
+  top: calc(12 * var(--u));
+  bottom: calc(24 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.lx-invite__copy > * { margin: 0; }
+.lx-invite__kicker {
+  font-family: var(--font-sans, "Manrope"), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: calc(2.9 * var(--u));
+  line-height: 1;
+  letter-spacing: .36em;
+  text-indent: .36em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  text-shadow: calc(.1 * var(--u)) calc(.16 * var(--u)) 0 var(--paper-hi);
+}
+.lx-invite__ornament {
+  display: block;
+  width: calc(26 * var(--u));
+  height: calc(3 * var(--u));
+  margin-top: calc(3.4 * var(--u));
+  background: linear-gradient(100deg, var(--gold-lo), var(--gold-hi) 40%, var(--gold) 60%, var(--gold-lo));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 6'%3E%3Cpath d='M26 .5 28.6 3 26 5.5 23.4 3Z M21.8 2.7 4.2 2.94v.12L21.8 3.3Z M30.2 2.7 47.8 2.94v.12L30.2 3.3Z'/%3E%3Ccircle cx='2.8' cy='3' r='.62'/%3E%3Ccircle cx='49.2' cy='3' r='.62'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 6'%3E%3Cpath d='M26 .5 28.6 3 26 5.5 23.4 3Z M21.8 2.7 4.2 2.94v.12L21.8 3.3Z M30.2 2.7 47.8 2.94v.12L30.2 3.3Z'/%3E%3Ccircle cx='2.8' cy='3' r='.62'/%3E%3Ccircle cx='49.2' cy='3' r='.62'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.lx-invite__title {
+  margin-top: calc(2.4 * var(--u));
+  padding: 0 .1em .08em;
+  font-family: var(--font-serif, "Instrument Serif"), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(20 * var(--u));
+  line-height: .9;
+  letter-spacing: -.015em;
+  white-space: nowrap;
+  color: transparent;
+  /* layer 1: the sheen that passes now and then; layer 2: the foil itself */
+  background-image:
+    linear-gradient(104deg, transparent 42%, color-mix(in srgb, color-mix(in srgb, #C6A36A 55%, #221B1D) 55%, transparent) 46.6%, color-mix(in srgb, #C6A36A 30%, #F2E5D7) 49.4%, color-mix(in srgb, #C6A36A 55%, #F2E5D7) 50.6%, color-mix(in srgb, color-mix(in srgb, #C6A36A 55%, #221B1D) 55%, transparent) 53.4%, transparent 58%),
+    linear-gradient(118deg, var(--gold-hi) 0%, var(--gold) 26%, color-mix(in srgb, #C6A36A 84%, #221B1D) 52%, var(--gold-lo) 74%, var(--gold) 100%);
+  background-size: 300% 100%, 100% 100%;
+  background-position: 90% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+          background-clip: text;
+  filter: drop-shadow(calc(.12 * var(--u)) calc(.18 * var(--u)) 0 var(--paper-hi)) drop-shadow(calc(-.06 * var(--u)) calc(-.08 * var(--u)) 0 color-mix(in srgb, #221B1D 22%, transparent));
+  animation: lx-invite-sheen 9s cubic-bezier(.45, 0, .25, 1) 2.4s infinite;
+}
+@keyframes lx-invite-sheen {
+  0% { background-position: 90% 0, 0 0; }
+  26% { background-position: 10% 0, 0 0; }
+  100% { background-position: 10% 0, 0 0; }
+}
+.lx-invite__sub {
+  margin-top: calc(1.2 * var(--u));
+  font-family: var(--font-serif, "Instrument Serif"), Georgia, serif;
+  font-weight: 400;
+  font-size: calc(6.6 * var(--u));
+  line-height: 1.05;
+  letter-spacing: .005em;
+  color: color-mix(in srgb, #221B1D 90%, #4C1726);
+  text-shadow: calc(.1 * var(--u)) calc(.16 * var(--u)) 0 var(--paper-hi);
+}
+.lx-invite__line {
+  max-width: calc(58 * var(--u));
+  margin-top: calc(5.4 * var(--u));
+  font-family: var(--font-sans, "Manrope"), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: calc(3.1 * var(--u));
+  line-height: 1.8;
+  letter-spacing: .025em;
+  color: color-mix(in srgb, #221B1D 78%, transparent);
+  text-wrap: balance;
+  text-shadow: calc(.08 * var(--u)) calc(.12 * var(--u)) 0 var(--paper-hi);
+}
+
+/* the room's light on the paper; drifts as the card tilts */
+.lx-invite__light {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 22% 14%, color-mix(in srgb, #F2E5D7 70%, transparent), transparent 62%);
+  mix-blend-mode: soft-light;
+}
+/* in the opening, these three answer the pointer: each on its own layer, moved without restyling or repainting anything */
+.lx-scene--invite .lx-invite__tilt { will-change: transform, rotate; }
+.lx-scene--invite .lx-invite__shadow { will-change: transform, translate; }
+.lx-scene--invite .lx-invite__light { will-change: translate; }
+
+/* ---------- wax seal ---------- */
+.lx-invite__seal {
+  position: absolute;
+  left: calc(33 * var(--u));
+  top: calc(119 * var(--u));
+  width: calc(34 * var(--u));
+  height: calc(34 * var(--u));
+  overflow: visible;
+  filter:
+    drop-shadow(calc(.2 * var(--u)) calc(.35 * var(--u)) calc(.3 * var(--u)) color-mix(in srgb, #221B1D 70%, transparent))
+    drop-shadow(calc(1.2 * var(--u)) calc(2.2 * var(--u)) calc(2.6 * var(--u)) color-mix(in srgb, #221B1D 40%, transparent));
+}
+.lx-invite__wax-side { fill: color-mix(in srgb, #4C1726 50%, #221B1D); }
+.lx-invite__wax-gloss { fill: #F2E5D7; opacity: .5; }
+.lx-invite__wax-glint { fill: #F2E5D7; opacity: .85; }
+.lx-invite__fx-shade { flood-color: color-mix(in srgb, #4C1726 25%, #221B1D); flood-opacity: .95; }
+.lx-invite__fx-lift { flood-color: color-mix(in srgb, #4C1726 58%, #F2E5D7); flood-opacity: .7; }
+.lx-invite__fx-bevel { flood-color: color-mix(in srgb, #F2E5D7 72%, #C6A36A); flood-opacity: .95; }
+.lx-invite__seal .lx-invite__mark { color: var(--gold); }
+.lx-invite__seal .lx-invite__mark :is(path, circle) { stroke-width: 3.6; }
+.lx-invite__seal .lx-invite__mark .lx-invite__pupil { stroke-width: 1; }
+
+/* ---------- small boxes: drop the fine print ---------- */
+@container lx-invite-scene (max-width: 408px) or (max-height: 419px) {
+  .lx-invite__line { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lx-invite__title { animation: none; }
+}
+
+/* ---------- the card on its own (InviteCard): a 100:140 portrait, every unit (u) a hundredth of its width ---------- */
+.lx-card { position: relative; display: block; width: var(--card-w, 320px); aspect-ratio: 100 / 140; container-type: inline-size; }
+.lx-card > * { --u: 1cqw; }
+.lx-invite__tilt > .lx-card { --card-w: 100%; } /* in the opening it fills the tilting box */
+.lx-card .lx-invite__card { box-shadow: inset calc(.22 * var(--u)) calc(.22 * var(--u)) 0 var(--paper-hi), inset calc(-.2 * var(--u)) calc(-.25 * var(--u)) calc(.2 * var(--u)) color-mix(in srgb, #C6A36A 55%, transparent), 0 calc(.4 * var(--u)) calc(.8 * var(--u)) rgb(34 27 29 / .3), 0 calc(6 * var(--u)) calc(12 * var(--u)) calc(-3 * var(--u)) rgb(34 27 29 / .5); }
+.lx-invite__tilt > .lx-card .lx-invite__card { box-shadow: inset calc(.22 * var(--u)) calc(.22 * var(--u)) 0 var(--paper-hi), inset calc(-.2 * var(--u)) calc(-.25 * var(--u)) calc(.2 * var(--u)) color-mix(in srgb, #C6A36A 55%, transparent); } /* the scene casts its own shadow */
+/* details written onto the card (the inquiry fills these in) */
+.lx-invite__lines { display: grid; justify-items: center; gap: calc(1.2 * var(--u)); margin: calc(3.6 * var(--u)) 0 0; padding: 0; list-style: none; font-family: var(--font-serif, "Instrument Serif"), Georgia, serif; font-size: calc(5 * var(--u)); line-height: 1.15; color: color-mix(in srgb, #221B1D 90%, #4C1726); text-shadow: calc(.1 * var(--u)) calc(.16 * var(--u)) 0 var(--paper-hi); }
+.lx-invite__lines li { min-height: 1.15em; }
+@container (max-width: 230px) { .lx-card .lx-invite__line { display: none; } } /* a small card keeps only the words that read */
+/* the seal presses on */
+.lx-invite__seal { transition: opacity .3s ease-out, transform .6s cubic-bezier(.2, 1.35, .4, 1); }
+.lx-card:not(.is-sealed) .lx-invite__seal { opacity: 0; transform: scale(1.5) rotate(-14deg); }
+@media (prefers-reduced-motion: reduce) { .lx-invite__seal { transition: none; } }

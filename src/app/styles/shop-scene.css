@@ -1,0 +1,254 @@
+/* Jyxdi split hero: SHOP half ("Shop the collection").
+   Palette: burgundy #4C1726, gold #C6A36A, cream #F2E5D7, ink #221B1D (tints are color-mix of these).
+   Scale: 1em = bag width, derived from the scene's container (container-type: size on .lx-scene--shop). */
+
+.lx-world--shop,
+.lx-shop__stage {
+  --lx-shop-grain-d: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .133 0 0 0 0 .106 0 0 0 0 .114 0 0 0 -.16 .095'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  --lx-shop-grain-l: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .949 0 0 0 0 .898 0 0 0 0 .843 0 0 0 .2 -.085'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* The half's wall: warm ivory, lit from above-left, gentle falloff. */
+.lx-world--shop {
+  background-color: color-mix(in srgb, #F2E5D7 90%, #C6A36A);
+  background-image:
+    var(--lx-shop-grain-d),
+    radial-gradient(14% 44% at 44% 0%, #F2E5D7, transparent),
+    radial-gradient(34% 74% at 44% 0%, color-mix(in srgb, #F2E5D7 75%, transparent), transparent),
+    radial-gradient(140% 100% at 44% 0%, color-mix(in srgb, #F2E5D7 94%, #C6A36A) 0%, color-mix(in srgb, color-mix(in srgb, #F2E5D7 88%, #C6A36A) 96%, #221B1D) 55%, color-mix(in srgb, color-mix(in srgb, #F2E5D7 83%, #C6A36A) 91%, #221B1D) 100%);
+}
+
+.lx-shop__stage {
+  --lx-shop-px: 0;
+  --lx-shop-py: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: min(50cqw, 46cqh);
+  perspective: 6.5em;
+  perspective-origin: 50% 42%;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- room: floor line + glossy floor (2D, under the objects) ---------- */
+.lx-shop__room { position: absolute; inset: 0; }
+.lx-shop__floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% + 0.36em);
+  height: 1.3em;
+  background:
+    linear-gradient(to bottom, transparent 0, color-mix(in srgb, #221B1D 6%, transparent) 0.028em, transparent 0.11em),
+    linear-gradient(to bottom, transparent 0.02em, color-mix(in srgb, #C6A36A 13%, transparent) 0.06em, color-mix(in srgb, #C6A36A 6%, transparent) 0.55em, transparent 1.25em);
+  -webkit-mask-image: radial-gradient(66% 100% at 50% 0, #000 40%, transparent 100%);
+  mask-image: radial-gradient(66% 100% at 50% 0, #000 40%, transparent 100%);
+}
+
+/* ---------- 3D rig ---------- */
+.lx-shop__cam,
+.lx-shop__turn,
+.lx-shop__sway,
+.lx-shop__bag,
+.lx-shop__ground,
+.lx-shop__frame,
+.lx-shop__tag,
+.lx-shop__swing {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+.lx-shop__cam { left: calc(50% + 0.12em); top: calc(50% + 0.76em); transform: rotateX(-11deg); }
+.lx-shop__turn { transform: rotateY(calc(var(--lx-shop-px) * 6deg)); }
+.lx-shop__sway { animation: lx-shop-sway 22s ease-in-out infinite alternate; }
+.lx-shop__bag { transform: rotateY(-27deg); }
+
+/* ---------- ground: shadows lie on the floor plane ---------- */
+.lx-shop__ground { transform: rotateX(90deg); }
+.lx-shop__shadows { position: absolute; left: -1em; top: -1em; width: 2.4em; height: 2em; overflow: visible; }
+
+/* ---------- faint reflections in the glossy floor (mirrored faces below y=0) ---------- */
+.lx-shop__rf { position: absolute; top: 0; height: 0.32em; filter: blur(0.005em); }
+.lx-shop__rf--front {
+  left: -0.5em; width: 1.003em; transform: translateZ(0.2em); /* overlaps the gusset reflection: no hairline seam */
+  background: linear-gradient(to bottom, color-mix(in srgb, #4C1726 34%, transparent), transparent 65%);
+}
+.lx-shop__rf--gf,
+.lx-shop__rf--gb { width: 0.205em; transform-origin: 0 0; background: linear-gradient(to bottom, color-mix(in srgb, color-mix(in srgb, #4C1726 62%, #221B1D) 34%, transparent), transparent 65%); }
+.lx-shop__rf--gf { left: 0.5em; transform: translateZ(0.2em) rotateY(102.68deg); }
+.lx-shop__rf--gb { left: 0.455em; transform: rotateY(77.32deg); }
+.lx-shop__rf--frame {
+  left: -0.763em; width: 0.526em; height: 0.2em;
+  transform-origin: 50% 0;
+  transform: translateZ(0.3352em) rotateX(-12deg);
+  background: linear-gradient(to bottom, color-mix(in srgb, #C6A36A 45%, transparent) 0, color-mix(in srgb, #C6A36A 30%, transparent) 0.028em, color-mix(in srgb, #F2E5D7 30%, transparent) 0.03em, transparent 0.15em);
+}
+
+/* ---------- bag body (W 1em × H 1.2em × D 0.4em; gussets crease 0.045em inwards) ---------- */
+.lx-shop__front,
+.lx-shop__back,
+.lx-shop__lg,
+.lx-shop__rg { position: absolute; top: -1.2em; height: 1.2em; }
+.lx-shop__lg,
+.lx-shop__rg { width: 0.205em; transform-origin: 0 0; }
+
+.lx-shop__front {
+  left: -0.5em;
+  width: 1em;
+  transform: translateZ(0.2em);
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, #4C1726 58%, #F2E5D7) 0, color-mix(in srgb, #4C1726 66%, #F2E5D7) 0.002em, transparent 0.0055em),
+    linear-gradient(to right, color-mix(in srgb, #4C1726 52%, #F2E5D7) 0, color-mix(in srgb, #4C1726 72%, #F2E5D7) 0.0022em, transparent 0.01em),
+    linear-gradient(to left, color-mix(in srgb, #4C1726 76%, #F2E5D7) 0, transparent 0.0035em),
+    linear-gradient(to left, transparent 0.003em, color-mix(in srgb, #221B1D 36%, transparent) 0.005em, transparent 0.03em),
+    linear-gradient(to bottom, transparent 0.058em, color-mix(in srgb, #221B1D 18%, transparent) 0.062em, transparent 0.07em),
+    linear-gradient(to bottom, transparent 55%, color-mix(in srgb, #221B1D 34%, transparent)),
+    linear-gradient(to right, color-mix(in srgb, #221B1D 8%, transparent), transparent 18%, color-mix(in srgb, #F2E5D7 5%, transparent) 34%, transparent 58%, color-mix(in srgb, #221B1D 16%, transparent)),
+    var(--lx-shop-grain-l),
+    linear-gradient(125deg, color-mix(in srgb, #4C1726 80%, #F2E5D7) 0%, color-mix(in srgb, #4C1726 92%, #F2E5D7) 24%, #4C1726 50%, color-mix(in srgb, #4C1726 68%, #221B1D) 100%);
+}
+.lx-shop__face { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: hidden; }
+.lx-shop__sheen {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(50% 40% at calc(24% + var(--lx-shop-px) * 26%) calc(26% + var(--lx-shop-py) * 14%), color-mix(in srgb, #F2E5D7 7%, transparent), transparent 70%);
+}
+
+.lx-shop__back {
+  left: -0.5em;
+  width: 1em;
+  transform: translateZ(-0.2em);
+  background: linear-gradient(to bottom,
+    color-mix(in srgb, #4C1726 72%, #F2E5D7) 0, color-mix(in srgb, #4C1726 85%, #221B1D) 0.004em,
+    color-mix(in srgb, #4C1726 78%, #221B1D) 0.052em, color-mix(in srgb, #221B1D 72%, #4C1726) 0.058em,
+    color-mix(in srgb, #221B1D 86%, #4C1726) 0.3em);
+}
+.lx-shop__lg {
+  background: linear-gradient(to bottom, color-mix(in srgb, #4C1726 62%, #221B1D) 0, color-mix(in srgb, #221B1D 80%, #4C1726) 0.06em, color-mix(in srgb, #221B1D 88%, #4C1726) 0.3em);
+}
+.lx-shop__lg--f { left: -0.5em; transform: translateZ(0.2em) rotateY(77.32deg); }
+.lx-shop__lg--b { left: -0.455em; transform: rotateY(102.68deg); }
+.lx-shop__rg--f {
+  left: 0.5em;
+  transform: translateZ(0.2em) rotateY(102.68deg);
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, #4C1726 70%, #C6A36A) 0, transparent 0.005em),
+    linear-gradient(to right, color-mix(in srgb, #4C1726 70%, #F2E5D7) 0, transparent 0.006em),
+    var(--lx-shop-grain-l),
+    linear-gradient(to bottom, color-mix(in srgb, #4C1726 58%, #221B1D), color-mix(in srgb, #4C1726 42%, #221B1D));
+}
+.lx-shop__rg--b {
+  left: 0.455em;
+  transform: rotateY(77.32deg);
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, #4C1726 70%, #C6A36A) 0, transparent 0.005em),
+    linear-gradient(to right, color-mix(in srgb, #221B1D 30%, transparent) 0, transparent 0.02em),
+    var(--lx-shop-grain-l),
+    linear-gradient(to bottom, color-mix(in srgb, #4C1726 70%, #221B1D), color-mix(in srgb, #4C1726 52%, #221B1D));
+}
+
+.lx-shop__handle { position: absolute; left: -0.32em; top: -1.62em; width: 0.64em; height: 0.56em; overflow: visible; }
+.lx-shop__handle--front { transform: translateZ(0.204em); }
+.lx-shop__handle--back { transform: translateZ(-0.204em); }
+
+.lx-shop__tissue { position: absolute; left: -0.48em; top: -1.46em; width: 0.96em; height: 0.4em; overflow: visible; }
+.lx-shop__tissue--back { transform: translateZ(-0.09em); }
+.lx-shop__tissue--front { transform: translateZ(0.07em); }
+
+/* ---------- foil: her mark + wordmark, pressed into the paper ---------- */
+.lx-shop__wm { font-family: var(--font-serif, "Instrument Serif"), serif; font-size: 62px; letter-spacing: 0.34em; }
+.lx-shop__wm2 { display: none; font-family: var(--font-sans, "Manrope"), sans-serif; font-weight: 600; font-size: 21px; letter-spacing: 0.46em; }
+@container (min-width: 900px) and (min-height: 760px) { .lx-shop__wm2 { display: inline; } }
+/* phone-sized scenes: monogram-only lockup (the 6px wordmark and deboss only read as grime) */
+@container (max-height: 300px) {
+  .lx-shop__wm,
+  .lx-shop__foil--deep { display: none; }
+}
+.lx-shop__m { mask-type: alpha; }
+.lx-shop__foil--deep { stroke: color-mix(in srgb, #4C1726 35%, #221B1D); fill: color-mix(in srgb, #4C1726 35%, #221B1D); transform: translate(-1.2px, -1.5px); opacity: 0.6; }
+.lx-shop__foil--base { stroke: color-mix(in srgb, #C6A36A 70%, #221B1D); fill: color-mix(in srgb, #C6A36A 70%, #221B1D); }
+.lx-shop__foil--band { stroke: color-mix(in srgb, #C6A36A 52%, #F2E5D7); fill: color-mix(in srgb, #C6A36A 52%, #F2E5D7); }
+.lx-shop__foil--hl { stroke: #F2E5D7; fill: #F2E5D7; opacity: calc(0.75 - var(--lx-shop-px) * 0.25); }
+.lx-shop__foil--glint { stroke: #F2E5D7; fill: #F2E5D7; }
+.lx-shop__hl { transform: translate(calc(var(--lx-shop-px) * 230px), calc(var(--lx-shop-py) * 150px)); }
+.lx-shop__glint { animation: lx-shop-glint 9s cubic-bezier(0.45, 0, 0.25, 1) 1.2s infinite; }
+.lx-shop__glint--frame { animation-delay: 0.6s; }
+
+/* ---------- framed print leaning on the bag ---------- */
+.lx-shop__frame { transform: translate3d(-0.5em, 0, 0.3352em) rotateX(12deg); }
+.lx-shop__frame-face { position: absolute; left: -0.263em; top: -0.631em; width: 0.526em; height: 0.631em; }
+.lx-shop__frame-side {
+  position: absolute;
+  left: 0.263em;
+  top: -0.631em;
+  width: 0.032em;
+  height: 0.631em;
+  transform-origin: 0 0;
+  transform: rotateY(90deg);
+  background: linear-gradient(to right, color-mix(in srgb, #C6A36A 55%, #221B1D), color-mix(in srgb, #C6A36A 35%, #221B1D));
+}
+.lx-shop__moulding { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.lx-shop__mat {
+  position: absolute;
+  left: 0.028em;
+  top: 0.028em;
+  width: 0.47em;
+  height: 0.575em;
+  background: var(--lx-shop-grain-d), linear-gradient(135deg, #F2E5D7, color-mix(in srgb, #F2E5D7 90%, #C6A36A));
+  box-shadow: inset 0.008em 0.01em 0.014em color-mix(in srgb, #221B1D 38%, transparent);
+}
+.lx-shop__window {
+  position: absolute;
+  left: 0.05em;
+  top: 0.05em;
+  width: 0.36em;
+  height: 0.45em;
+  border: 0.005em solid;
+  border-color: color-mix(in srgb, #F2E5D7 80%, #221B1D) #F2E5D7 #F2E5D7 color-mix(in srgb, #F2E5D7 84%, #221B1D);
+  box-sizing: content-box;
+}
+.lx-shop__art { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.lx-shop__window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0.004em 0.005em 0.008em color-mix(in srgb, #221B1D 45%, transparent);
+}
+.lx-shop__glass {
+  position: absolute;
+  left: 0.028em;
+  top: 0.028em;
+  width: 0.47em;
+  height: 0.575em;
+  --lx-shop-g: calc(var(--lx-shop-px) * -14%);
+  background:
+    linear-gradient(118deg, transparent calc(22% + var(--lx-shop-g)), color-mix(in srgb, #F2E5D7 26%, transparent) calc(31% + var(--lx-shop-g)), color-mix(in srgb, #F2E5D7 7%, transparent) calc(37% + var(--lx-shop-g)), transparent calc(41% + var(--lx-shop-g)), color-mix(in srgb, #F2E5D7 12%, transparent) calc(45% + var(--lx-shop-g)), transparent calc(50% + var(--lx-shop-g))),
+    linear-gradient(to bottom, color-mix(in srgb, #F2E5D7 7%, transparent), transparent 60%);
+}
+
+/* ---------- gift tag ---------- */
+.lx-shop__tag { transform: translate3d(0.1859em, -1.3277em, 0.222em); }
+.lx-shop__swing { transform-origin: 0 0; animation: lx-shop-swing 7s ease-in-out infinite alternate; }
+.lx-shop__tagsvg { position: absolute; left: -0.1495em; top: -0.023em; width: 0.299em; height: 0.4485em; overflow: visible; }
+.lx-shop__tag1 { font-family: var(--font-serif, "Instrument Serif"), serif; font-style: italic; font-size: 38px; fill: #4C1726; }
+.lx-shop__tag2 { font-family: var(--font-serif, "Instrument Serif"), serif; font-size: 40px; fill: #221B1D; }
+
+@keyframes lx-shop-sway { from { transform: rotateY(-2.2deg); } to { transform: rotateY(2.2deg); } }
+@keyframes lx-shop-swing { from { transform: rotateZ(-1.8deg) rotateY(-4.5deg); } to { transform: rotateZ(1.6deg) rotateY(4deg); } }
+@keyframes lx-shop-glint { 0% { transform: translateX(0); } 40%, 100% { transform: translateX(1500px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .lx-shop__sway,
+  .lx-shop__swing,
+  .lx-shop__glint { animation: none; }
+  .lx-shop__turn,
+  .lx-shop__hl { transform: none; }
+}
+
+/* in the site the scene sits in a wrapper that must give it the whole box */
+.lx-shop__wrap { position: absolute; inset: 0; }

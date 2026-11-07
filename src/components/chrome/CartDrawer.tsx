@@ -12,12 +12,21 @@ export default function CartDrawer() {
   const closeRef = useRef<HTMLButtonElement>(null);
   useEffect(() => setHydrated(true), []);
   useEffect(() => {
-    const l = getLenis();
-    if (open) { l?.stop(); document.documentElement.style.overflow = "hidden"; setTimeout(() => closeRef.current?.focus(), 60); }
-    else { l?.start(); document.documentElement.style.overflow = ""; }
+    if (!open) return;
+    const l = getLenis(), html = document.documentElement;
+    const back = document.activeElement as HTMLElement | null; // focus goes back here when the bag closes
+    const page = document.querySelectorAll("header.nav, main, footer"); // aria-modal: the page behind is out of reach
+    l?.stop(); html.style.overflow = "hidden";
+    page.forEach((el) => el.setAttribute("inert", ""));
+    const t = setTimeout(() => closeRef.current?.focus(), 60);
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    if (open) addEventListener("keydown", onKey);
-    return () => removeEventListener("keydown", onKey);
+    addEventListener("keydown", onKey);
+    return () => {
+      clearTimeout(t); removeEventListener("keydown", onKey);
+      page.forEach((el) => el.removeAttribute("inert"));
+      l?.start(); html.style.overflow = "";
+      back?.focus?.();
+    };
   }, [open, setOpen]);
 
   const items = hydrated ? lines : [];
@@ -27,14 +36,14 @@ export default function CartDrawer() {
       <div className="drawer__backdrop" onClick={() => setOpen(false)} />
       <aside className="drawer__panel">
         <div className="drawer__head">
-          <h2>Your bag <span className="note align-middle">{cartCount(items)} item{cartCount(items) === 1 ? "" : "s"}</span></h2>
-          <button ref={closeRef} className="grid h-11 w-11 place-items-center border-[1.5px] border-ink" onClick={() => setOpen(false)} aria-label="Close cart">✕</button>
+          <h2>Your bag <span className="drawer__count">{cartCount(items)} item{cartCount(items) === 1 ? "" : "s"}</span></h2>
+          <button ref={closeRef} className="drawer__close" onClick={() => setOpen(false)} aria-label="Close cart">✕</button>
         </div>
         <div className="drawer__lines" data-lenis-prevent>
           {items.length === 0 ? (
             <div className="drawer__empty">
-              <JxLogo />
-              <p className="note m-0 !text-[30px]">nothing in here yet…</p>
+              <JxLogo alive={false} />
+              <p className="drawer__hush">Your bag is waiting.</p>
               <Link href="/shop" className="btn btn--ink" onClick={() => setOpen(false)}>Browse the shop</Link>
             </div>
           ) : items.map((l) => (
