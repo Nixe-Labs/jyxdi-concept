@@ -26,7 +26,7 @@ export default function Hero() {
         </h1>
         <p className="lede">Original paintings of gods in streetwear, cosmic portraits and goddesses in full colour, and live paintings of your wedding, made in front of your guests.</p>
         <div className="lh__ctas">
-          <Link href="/shop/" className="btn btn--ink"><span>Shop the collection</span><i>→</i></Link>
+          <Link href="/shop/" className="btn btn--ink"><span>View our gallery</span><i>→</i></Link>
           <Link href="/live-painting/" className="c-link">Book live painting →</Link>
         </div>
         <div className="lh__meta">

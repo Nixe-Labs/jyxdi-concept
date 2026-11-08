@@ -120,18 +120,23 @@ html[data-mood="black"], .mood-black, .lx-dark {
 }
 /* gold is never a background: it stays an accent (text on dark, buttons, frames, hairlines) */
 .mood-cream, .mood-burgundy, .mood-black, .lx-dark { background-color: var(--color-paper); color: var(--color-ink); } /* .lx-dark: older name for a scoped black room */
-html {
-  transition: --color-paper 1.8s var(--mood-ease), --color-paper-2 1.8s var(--mood-ease), --color-paper-3 1.8s var(--mood-ease),
+/* The colour fade: only what's on screen fades (the sections near it, which MoodScroll marks data-on, the nav and the page
+   behind them); the rest switches at once, unseen. Fading the tokens on html re-styled every element of the page on every
+   frame for 1.8s, more than a 100-120 Hz screen allows per frame, so scrolling stuttered there. */
+:root {
+  --mood-fade: --color-paper 1.8s var(--mood-ease), --color-paper-2 1.8s var(--mood-ease), --color-paper-3 1.8s var(--mood-ease),
     --color-ink 1.8s var(--mood-ease), --color-graphite 1.8s var(--mood-ease), --color-pencil 1.8s var(--mood-ease),
     --color-red 1.8s var(--mood-ease), --gold-ink 1.8s var(--mood-ease), --accent 1.8s var(--mood-ease), --deco 1.8s var(--mood-ease),
     --line 1.8s var(--mood-ease), --line-2 1.8s var(--mood-ease), --hair 1.8s var(--mood-ease), --glass 1.8s var(--mood-ease),
     --btn-bg 1.8s var(--mood-ease), --btn-fg 1.8s var(--mood-ease), --btn-hover-bg 1.8s var(--mood-ease), --btn-hover-fg 1.8s var(--mood-ease);
 }
-html.mood-instant { transition: none !important; } /* a new page arrives in its colour; the page transition already blends the change */
+:where(body [data-mood][data-on]) { color: var(--color-ink); transition: var(--mood-fade); } /* its text follows its own fading tokens, not body's */
+.nav { transition: transform .5s var(--ease), background .4s, box-shadow .4s, var(--mood-fade); }
+html.mood-instant :is(body, .nav, [data-mood]) { transition: none !important; } /* a new page arrives in its colour; the page transition already blends the change */
 /* clip, not hidden: hidden turns body into a scroll container while the menu locks html, which pushes the sticky nav (and its close button) off screen.
    html clips too, so body's clip stays on body (not handed to the viewport) and nothing can widen a phone's layout viewport */
 html { overflow-x: clip; scroll-padding-top: calc(var(--nav-h) + 16px); } /* focused controls and #anchors land below the floating nav */
-body { overflow-x: clip; background-color: var(--color-paper); color: var(--color-ink); }
+body { overflow-x: clip; background-color: var(--color-paper); color: var(--color-ink); transition: background-color 1.8s var(--mood-ease); }
 ::selection { background: var(--p-gold); color: var(--p-ink); }
 :focus-visible { outline-color: var(--color-red); }
 
@@ -610,6 +615,11 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
 .c-teaser h3 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(30px, 2.8vw, 44px); line-height: 1; margin: 0 0 12px; }
 .c-teaser p:not(.c-kicker) { color: var(--color-graphite); max-width: 46ch; margin: 0 0 18px; }
 @media (max-width: 899px) { .c-teasers { grid-template-columns: 1fr; } }
+/* one card on its own: picture and words side by side, so it fills the row (stacked on phones) */
+.c-teasers--one { grid-template-columns: 1fr; max-width: 1240px; }
+.c-teasers--one .c-teaser { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 4.5vw, 80px); align-items: center; }
+.c-teasers--one .c-teaser__media { margin: 0; }
+@media (max-width: 899px) { .c-teasers--one .c-teaser { grid-template-columns: 1fr; gap: 24px; } }
 
 /* ── rows of four on the homepage ── */
 .c-cards4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }

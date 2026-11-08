@@ -1,7 +1,7 @@
 "use client";
 /* The event date, picked on an inline month calendar (the WAI-ARIA grid pattern): arrows move a day or a week,
    PageUp/PageDown a month (with Shift, a year), Home/End go to the start or end of the week, Enter or Space picks.
-   Days before today can't be picked. Dates are the visitor's local "yyyy-mm-dd". */
+   Days before today can't be picked, nor anything after 2029. Dates are the visitor's local "yyyy-mm-dd". */
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -16,6 +16,7 @@ const addMonths = (d: Date, n: number) => new Date(d.getFullYear(), d.getMonth()
 export const longDate = (s: string) => { const d = parse(s); return `${DAYS[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`; };
 
 const todayIso = () => iso(new Date());
+const LAST = "2029-12-31"; // Akka takes bookings up to the end of 2029
 const still = () => () => {};
 
 export default function Calendar({ id, value, onPick, describedBy }: { id: string; value: string; onPick: (day: string) => void; describedBy?: string }) {
@@ -34,7 +35,7 @@ export default function Calendar({ id, value, onPick, describedBy }: { id: strin
   const first = today.slice(0, 8) + "01"; // nothing before this month
   const c = parse(at), y = c.getFullYear(), m = c.getMonth();
   const lead = new Date(y, m, 1).getDay(), len = new Date(y, m + 1, 0).getDate();
-  const move = (d: Date, byKeys = false) => { const k = iso(d); if (k < first || k === at) return; keyed.current = byKeys; setCursor(k); };
+  const move = (d: Date, byKeys = false) => { const k = iso(d); if (k < first || k > LAST || k === at) return; keyed.current = byKeys; setCursor(k); };
   const pick = (k: string) => { setCursor(k); onPick(k); };
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (at >= today) pick(at); return; }
@@ -54,7 +55,7 @@ export default function Calendar({ id, value, onPick, describedBy }: { id: strin
       <div className="fm-cal__head">
         <button type="button" className="fm-cal__nav" aria-label="Previous month" disabled={iso(new Date(y, m, 1)) <= first} onClick={() => move(addMonths(c, -1))}><span aria-hidden>←</span></button>
         <p className="fm-cal__month" id={title} aria-live="polite"><em>{MONTHS[m]}</em> {y}</p>
-        <button type="button" className="fm-cal__nav" aria-label="Next month" onClick={() => move(addMonths(c, 1))}><span aria-hidden>→</span></button>
+        <button type="button" className="fm-cal__nav" aria-label="Next month" disabled={iso(new Date(y, m + 1, 1)) > LAST} onClick={() => move(addMonths(c, 1))}><span aria-hidden>→</span></button>
       </div>
       <table ref={grid} className="fm-cal__grid" role="grid" aria-labelledby={title} aria-describedby={describedBy} onKeyDown={onKeyDown}>
         <thead>

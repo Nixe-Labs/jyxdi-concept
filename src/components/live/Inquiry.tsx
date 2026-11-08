@@ -167,7 +167,9 @@ export default function Inquiry() {
     if (step < 2) { e.preventDefault(); return go(step + 1); }
     const f = new FormData(form.current!);
     const v = (k: string) => String(f.get(k) ?? "").trim() || "—";
-    const body = ["LIVE PAINTING INQUIRY (sent from the Jyxdi studio site)", "", ...LINES.map(([l, k]) => `${l}: ${v(k)}`), "", "Anything else:", v("notes")];
+    const other = String(f.get("event_other") ?? "").trim(); // only there while "Other" is chosen
+    const val = (k: string) => (k === "event" && other ? `Other: ${other}` : v(k));
+    const body = ["LIVE PAINTING INQUIRY (sent from the Jyxdi studio site)", "", ...LINES.map(([l, k]) => `${l}: ${val(k)}`), "", "Anything else:", v("notes")];
     (form.current!.querySelector('[name="contact[Comment]"]') as HTMLInputElement).value = body.join("\n");
     setSent(true);
     go(3);
@@ -176,10 +178,12 @@ export default function Inquiry() {
 
   // the card, written from the answers so far
   const who = host(a["contact[Name]"]);
-  const occasion = OCCASION[a.event ?? "Wedding"];
+  const typed = a.event === "Other" ? clip(a.event_other, 26) : ""; // "Other": the card writes what they type
+  const occasion = typed || OCCASION[a.event ?? "Wedding"];
+  const occ = typed ? <Ink text={typed} /> : <Ink key={occasion} text={occasion} write />;
   const sub = !occasion ? <>at your <Ink key="event" text="event" write /></>
-    : who ? <>for <Ink text={who} />’s <Ink key={occasion} text={occasion} write /></>
-    : <>at your <Ink key={occasion} text={occasion} write /></>;
+    : who ? <>for <Ink text={who} />’s {occ}</>
+    : <>at your {occ}</>;
   const venue = clip(a.venue), city = clip(a.city);
   const subject = a.subject && a.subject !== "Not sure yet" ? a.subject : "";
   const size = a.size === "Bigger" ? "a larger canvas" : a.size && a.size !== "Not sure" ? `a ${a.size} canvas` : "";
@@ -235,6 +239,7 @@ export default function Inquiry() {
             <div className="fm-step" hidden={step !== 1}>
               {head(1)}
               <Pills name="event" legend="What are you celebrating?" options={EVENTS} first />
+              {a.event === "Other" && <Field id="lp-event-other" name="event_other" label="Tell Jyxdi what it is" placeholder="e.g. an anniversary or a baby shower" defaultValue={a.event_other} wide />}
               <div className="fm-when fm-wide">
                 <fieldset className="fm-date">
                   <legend>The date<span className="fm-req" aria-hidden> *</span><span className="sr-only"> (required)</span></legend>
