@@ -382,11 +382,6 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
 .lh__line { display: block; overflow: hidden; padding: 0 .08em .08em 0; margin-bottom: -.08em; }
 .lh__line > span { display: inline-block; }
 .lh__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; margin-top: 38px; }
-.lh__meta { display: grid; gap: 12px; margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--hair); max-width: 560px; }
-.lh__trust { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; padding: 0; margin: 0; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--color-graphite); }
-.lh__trust li::before { content: "✦"; margin-right: 10px; color: var(--deco); }
-.lh__collab { margin: 0; font-size: 13px; color: var(--color-graphite); }
-.lh__collab b { font-weight: 600; color: var(--color-ink); }
 .lh__media { position: relative; overflow: hidden; min-height: 100%; background: var(--color-paper-3); }
 .lh__drift { position: absolute; inset: -7% 0; }
 .lh__drift img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
@@ -395,7 +390,7 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
 .lh__scroll::after { content: ""; width: 1px; height: 34px; background: linear-gradient(var(--deco), transparent); transform-origin: 50% 0; }
 @media (prefers-reduced-motion: no-preference) {
   .lh__kicker::before { animation: lh-rule 1.1s .2s var(--ease) both; }
-  .lh__kicker, .lh__copy > .lede, .lh__ctas, .lh__meta { animation: c-rise 1.2s var(--ease) both; }
+  .lh__kicker, .lh__copy > .lede, .lh__ctas { animation: c-rise 1.2s var(--ease) both; }
   .lh__kicker { animation-delay: .1s; }
   .lh__line > span { animation: lh-up 1.3s var(--ease) both; }
   .lh__line:nth-child(1) > span { animation-delay: .16s; }
@@ -403,7 +398,6 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
   .lh__line:nth-child(3) > span { animation-delay: .38s; }
   .lh__copy > .lede { animation-delay: .52s; }
   .lh__ctas { animation-delay: .62s; }
-  .lh__meta { animation-delay: .74s; }
   .lh__media { animation: lh-open 1.6s .05s cubic-bezier(.7, 0, .2, 1) both; }
   .lh__drift img { animation: lh-settle 2.6s .05s var(--ease) both; }
   .lh__tag { animation: c-rise 1s 1.3s var(--ease) both; }
@@ -421,7 +415,6 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
 @media (min-width: 900px) and (max-height: 860px) {
   .lh__title { font-size: clamp(56px, min(7vw, 12vh), 128px); margin-bottom: 22px; }
   .lh__ctas { margin-top: 26px; }
-  .lh__meta { margin-top: 26px; padding-top: 16px; }
 }
 @media (max-width: 899px) {
   .lh { grid-template-columns: 1fr; min-height: 0; margin-top: calc(-1 * (56px + 10px)); }
@@ -516,6 +509,11 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
 .lc__lede { margin: 0; max-width: 50ch; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.6; color: color-mix(in srgb, var(--p-cream) 86%, var(--p-ink)); }
 .lc__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 .lc__ctas .btn--line { border-color: color-mix(in srgb, var(--p-cream) 50%, transparent); }
+/* "now booking" line under a booking button: says once that her dates are limited */
+.c-avail { flex-basis: 100%; margin: 6px 0 0; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: color-mix(in srgb, currentColor 72%, transparent); }
+.c-avail::before { content: "✦"; margin-right: 10px; color: var(--deco); }
+.c-avail span::before { content: "·"; margin: 0 .6em; }
+@media (max-width: 899px) { .c-avail { line-height: 1.9; } .c-avail span { display: block; } .c-avail span::before { content: none; } }
 /* the films' pause sits apart from the panel, in view from the first frame they play */
 .lc__pause { position: absolute; z-index: 4; right: var(--gutter); top: calc(var(--nav-h) + 10px); min-width: 74px; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--p-cream) 45%, transparent); background: rgb(34 27 29 / .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--p-cream); }
 .lc__pause:hover { background: var(--p-cream); color: var(--p-ink); }
@@ -545,17 +543,6 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
 .lx-reel figcaption a:hover { color: var(--color-ink); }
 
 /* ── ticker ── */
-.c-ticker { position: relative; overflow: hidden; border-block: 1px solid var(--hair); padding: 18px 0; }
-.c-ticker__track { display: flex; width: max-content; animation: c-marquee 48s linear infinite; }
-/* it holds still under the pointer, and the pause stops it for good (WCAG 2.2.2) */
-.c-ticker:hover .c-ticker__track, .c-ticker.is-paused .c-ticker__track { animation-play-state: paused; }
-.c-ticker::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 150px; background: linear-gradient(90deg, transparent, var(--color-paper) 55%); pointer-events: none; }
-.c-ticker__pause { position: absolute; z-index: 1; right: var(--gutter); top: 50%; translate: 0 -50%; min-width: 66px; min-height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-2); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-graphite); transition: background-color .3s, color .3s; }
-.c-ticker__pause:hover { background: var(--color-ink); color: var(--color-paper); }
-.c-ticker__item { flex: none; padding-right: .9em; font-family: var(--font-serif); font-style: italic; font-size: clamp(20px, 1.7vw, 26px); line-height: 1.3; color: var(--color-graphite); white-space: nowrap; }
-.c-ticker__item i { font-style: normal; font-size: .55em; color: var(--deco); margin: 0 1em; vertical-align: .25em; }
-@keyframes c-marquee { to { transform: translateX(-25%); } } /* 4 copies: one copy per loop */
-@media (prefers-reduced-motion: reduce) { .c-ticker__track { animation: none; } .c-ticker__pause { display: none; } }
 
 /* ── glow: a window onto a still painting (clip-path keeps the fixed photo inside the section) ── */
 .c-glow-wrap { padding: clamp(60px, 10vh, 120px) 0; }

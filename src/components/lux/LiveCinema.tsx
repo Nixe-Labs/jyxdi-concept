@@ -105,6 +105,7 @@ export default function LiveCinema({ as: Heading = "h2", kicker = "Live painting
         <div className="lc__ctas">
           <Link href={primary.href} className="btn btn--ink"><span>{primary.label}</span><i>→</i></Link>
           {secondary && <Link href={secondary.href} className="btn btn--line"><span>{secondary.label}</span><i>→</i></Link>}
+          <p className="c-avail">Now booking 2027<span>Limited dates each season</span></p>
         </div>
       </div>
     </section>

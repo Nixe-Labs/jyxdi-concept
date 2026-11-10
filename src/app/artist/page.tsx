@@ -20,7 +20,7 @@ const YEARS = Object.entries([...WORKS].sort((a, b) => b.created.localeCompare(a
 }, {})).sort(([a], [b]) => b.localeCompare(a));
 
 const ROLES: [string, string, [string, string]?][] = [
-  ["Painter", "Gods, goddesses and myths in loud, saturated colour; cosmic portraits; charcoal studies; and canvases finished in UV pigment that glow in the dark.", ["/shop/", "See the paintings →"]],
+  ["Painter", "Gods, goddesses and myths in rich, saturated colour; cosmic portraits; charcoal studies; and canvases finished in UV pigment that glow in the dark.", ["/shop/", "See the paintings →"]],
   ["Educator", "A dedicated art teacher, sharing her knowledge and expertise with aspiring artists of all ages."],
   ["Storyteller", "Creator of Spirit Gates, her manga about Akiko, a young orphan drawn into a spirit world ruled by the tyrannical Queen Alora.", ["/spirit-gates/", "Read about it →"]],
 ];

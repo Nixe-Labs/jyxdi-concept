@@ -3,7 +3,6 @@ import Hero from "@/components/home/Hero";
 import Statement from "@/components/home/Statement";
 import GalleryWall from "@/components/home/GalleryWall";
 import LiveCinema from "@/components/lux/LiveCinema";
-import Ticker from "@/components/home/Ticker";
 import FilmBand from "@/components/home/FilmBand";
 import Glow from "@/components/home/Glow";
 import Formats from "@/components/home/Formats";
@@ -22,7 +21,6 @@ export default function Home() {
         <GalleryWall />
         <LiveCinema />
         <FilmBand />
-        <Ticker />
         <Glow />
         <Formats />
         <ArtistBlock />

@@ -1,11 +1,11 @@
 /* The boutique: a burgundy bag with twisted gold rope handles, tissue, her mark in gold foil, a framed print (the shop's
    featured work, which it glides into when chosen) leaning
-   against it and a gift tag (art prints from $90), on an ivory wall over a faintly glossy floor. */
+   against it and a gift tag (art prints & canvases), on an ivory wall over a faintly glossy floor. */
 import { ViewTransition } from "react";
 import { BASE } from "@/lib/base";
 export default function ShopSceneArt() {
   return (
-    <div className="lx-shop__stage" role="img" aria-label="A burgundy Jyxdi shopping bag with gold rope handles, a framed print of her Arthanareeswarar painting leaning against it, and a gift tag reading: Art prints from $90">
+    <div className="lx-shop__stage" role="img" aria-label="A burgundy Jyxdi shopping bag with gold rope handles, a framed print of her Arthanareeswarar painting leaning against it, and a gift tag reading: Art prints and canvases">
       <div className="lx-shop__room"><div className="lx-shop__floor"></div></div>
       <div className="lx-shop__cam">
         <div className="lx-shop__turn">
@@ -282,7 +282,7 @@ export default function ShopSceneArt() {
                     <circle cx="0" cy="134" r="6.5" fill="color-mix(in srgb, #4C1726 70%, #221B1D)" />
                     <text className="lx-shop__tag1" x="0" y="234" textAnchor="middle">Art prints</text>
                     <path d="M-14,254 L14,254" stroke="#C6A36A" strokeWidth="1.6" />
-                    <text className="lx-shop__tag2" x="0" y="298" textAnchor="middle">from $90</text>
+                    <text className="lx-shop__tag2" x="0" y="298" textAnchor="middle">&amp; canvases</text>
                     <path d="M0,8 C-4,50 -3,100 0,131" fill="none" stroke="url(#lx-shop-str)" strokeWidth="2.8" strokeLinecap="round" />
                     <path d="M-13,-4 C-5,0 5,2 13,0" fill="none" stroke="color-mix(in srgb, #C6A36A 70%, #F2E5D7)" strokeWidth="3" strokeLinecap="round" />
                     <ellipse cx=".5" cy="7" rx="4.6" ry="3.8" fill="url(#lx-shop-ring)" />

@@ -14,7 +14,7 @@ export default function Footer() {
         </div>
         <div>
           <h2 className="footer__h">Explore</h2>
-          <ul><li><Link href="/">Home</Link></li>{LINKS.map((l) => <li key={l.href}><Link href={l.href}>{l.label}</Link></li>)}</ul>
+          <ul><li><Link href="/">Home</Link></li>{LINKS.map((l) => <li key={l.href}><Link href={l.href}>{l.label}</Link></li>)}<li><Link href="/faq/">FAQ</Link></li></ul>
         </div>
         <div>
           <h2 className="footer__h">Shop</h2>

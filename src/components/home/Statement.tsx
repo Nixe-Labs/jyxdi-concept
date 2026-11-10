@@ -28,8 +28,8 @@ export default function Statement() {
       ))}
       <FadeIn className="c-statement__copy" stagger={0.1} y={30}>
         <p className="c-kicker">Myths, gods &amp; goddesses</p>
-        <h2 className="c-h2">Let the colour <em>do the talking.</em></h2>
-        <p className="lede">Bold, saturated paintings of gods, goddesses and cosmic portraits, as hand-signed prints, canvases, and UV canvases that glow in the dark.</p>
+        <h2 className="c-h2">Old stories, <em>painted anew.</em></h2>
+        <p className="lede">Bold, saturated paintings of gods, goddesses and cosmic portraits, as art prints, canvases, and UV canvases that glow in the dark.</p>
       </FadeIn>
     </section>
   );

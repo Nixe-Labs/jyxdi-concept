@@ -56,7 +56,7 @@ export default function How() {
                 </FadeIn>
               ))}
             </ol>
-            <div className="lp-steps__cta"><Link href="#inquire" className="btn btn--ink"><span>Check your date</span><i>→</i></Link></div>
+            <div className="lp-steps__cta"><Link href="#inquire" className="btn btn--ink"><span>Check your date</span><i>→</i></Link><p className="c-avail">Now booking 2027<span>Limited dates each season</span></p></div>
           </div>
         </div>
       </div>

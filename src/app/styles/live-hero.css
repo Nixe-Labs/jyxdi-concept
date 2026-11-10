@@ -128,6 +128,7 @@
   .lvh__title { font-size: clamp(46px, 12.4vw, 80px); }
   .lvh__lede { margin: 18px auto 0; max-width: 40ch; font-size: 15.5px; }
   .lvh__ctas { flex-direction: column; align-items: stretch; width: min(100%, 360px); margin: 28px auto 0; gap: 10px; }
+  .lvh .c-avail { text-align: center; }
   .lvh__window { height: 92vh; height: 92svh; min-height: 520px; }
   .lvh__films { position: absolute; inset: 0; grid-template-columns: 1fr; }
   .lvh__film:not(.is-lead) { display: none; }

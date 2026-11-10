@@ -21,17 +21,13 @@ export default function Hero() {
         <p className="c-kicker lh__kicker">International wedding live painter · Fine art</p>
         <h1 className="lh__title">
           <span className="lh__line"><span>Myths,</span></span>
-          <span className="lh__line"><span>painted</span></span>
-          <span className="lh__line"><span className="lh__loud"><em>loud.</em><svg className="lh__swash" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden><path d="M4 20 C 52 8, 104 27, 160 15 S 252 5, 296 13" pathLength={1} /></svg></span></span>
+          <span className="lh__line"><span>in full</span></span>
+          <span className="lh__line"><span className="lh__loud"><em>colour.</em><svg className="lh__swash" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden><path d="M4 20 C 52 8, 104 27, 160 15 S 252 5, 296 13" pathLength={1} /></svg></span></span>
         </h1>
-        <p className="lede">Original paintings of gods in streetwear, cosmic portraits and goddesses in full colour, and live paintings of your wedding, made in front of your guests.</p>
+        <p className="lede">Original paintings of gods in streetwear, cosmic portraits and goddesses, and live paintings of your wedding, made in front of your guests.</p>
         <div className="lh__ctas">
           <Link href="/shop/" className="btn btn--ink"><span>View our gallery</span><i>→</i></Link>
           <Link href="/live-painting/" className="c-link">Book live painting →</Link>
-        </div>
-        <div className="lh__meta">
-          <ul className="lh__trust"><li>Hand-signed certificate</li><li>Ships worldwide</li><li>Art prints from $90</li></ul>
-          <p className="lh__collab">Collaborations with <b>Michael B. Jordan · COACH · XO · OVO40</b></p>
         </div>
       </div>
       <div className="lh__media">

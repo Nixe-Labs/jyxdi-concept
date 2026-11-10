@@ -64,7 +64,6 @@ export default function Nav() {
           <Link href="/" tabIndex={menu ? 0 : -1} onClick={close}><em>01</em>Home<small>Start here</small></Link>
           {LINKS.map((l, i) => <Link key={l.href} href={l.href} tabIndex={menu ? 0 : -1} onClick={close} aria-current={active(l.href) ? "page" : undefined}><em>{String(i + 2).padStart(2, "0")}</em>{l.label}<small>{l.desc}</small></Link>)}
         </nav>
-        <p className="c-kicker">Art prints from $90 · Canvases from $450</p>
       </div>
     </>
   );

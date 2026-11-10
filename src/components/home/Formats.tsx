@@ -13,14 +13,14 @@ export default function Formats() {
           <p className="c-kicker">Three ways to own a Jyxdi</p>
           <h2 className="c-h2">Every painting, <em>three ways.</em></h2>
         </div>
-        <Link href="/faq/#formats" className="c-link">Compare sizes &amp; prices →</Link>
+        <Link href="/faq/#formats" className="c-link">Compare sizes →</Link>
       </div>
       <FadeIn className="c-formats" stagger={0.1} y={30}>
-        <div className="c-format">{Rolled}<h3>Art print</h3><span className="c-format__from">from $90</span>
-          <ul><li>The poster edition, and the easiest way to begin a collection</li><li>Four sizes, 16×20″ up to 48×60″</li><li>Hand-signed certificate of authenticity</li></ul></div>
-        <div className="c-format">{Easel}<h3>Canvas</h3><span className="c-format__from">from $450</span>
-          <ul><li>The painting on canvas</li><li>Four sizes, 16×20″ up to 48×60″</li><li>Hand-signed certificate of authenticity</li></ul></div>
-        <div className="c-format c-format--uv mood-black">{Glow}<h3>UV canvas</h3><span className="c-format__from">from $550</span>
+        <div className="c-format">{Rolled}<h3>Art print</h3>
+          <ul><li>The poster edition, and the easiest way to begin a collection</li><li>Four sizes, 16×20″ up to 48×60″</li></ul></div>
+        <div className="c-format">{Easel}<h3>Canvas</h3>
+          <ul><li>The painting on canvas</li><li>Four sizes, 16×20″ up to 48×60″</li></ul></div>
+        <div className="c-format c-format--uv mood-black">{Glow}<h3>UV canvas</h3>
           <ul><li>Fluorescent pigment that lights up under blacklight</li><li>Looks like the classic canvas by day</li><li>Four sizes, 16×20″ up to 48×60″</li></ul></div>
       </FadeIn>
     </section>

@@ -133,6 +133,7 @@ export default function LiveHero() {
             <div className="lvh__ctas">
               <Link href="#inquire" className="btn btn--ink"><span>Check your date</span><i>→</i></Link>
               <Link href="#reels" className="btn btn--line"><span>Watch her paint</span><i>→</i></Link>
+              <p className="c-avail">Now booking 2027<span>Limited dates each season</span></p>
             </div>
           </div>
           <div className="lvh__stage" aria-hidden>

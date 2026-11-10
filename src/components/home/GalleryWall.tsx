@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getLenis } from "@/components/chrome/SmoothScroll";
 import Frame from "@/components/lux/Frame";
 import { HANG } from "@/lib/wall";
-import { bySlug, fromPrice, money, srcSet, smallest, CAT_LABEL, WORKS, type Work } from "@/lib/catalog";
+import { bySlug, srcSet, smallest, CAT_LABEL, WORKS, type Work } from "@/lib/catalog";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,7 +117,7 @@ export default function GalleryWall() {
         </ul>
       </div>
       <div className="lx-wall__foot">
-        <p className="lx-wall__caption" aria-live="polite"><b>{cur.t}</b>{CAT_LABEL[cur.c]} · Art print from ${money(fromPrice(cur))} · <span className="only-fine">Click</span><span className="only-touch">Tap</span> to view</p>
+        <p className="lx-wall__caption" aria-live="polite"><b>{cur.t}</b>{CAT_LABEL[cur.c]} · <span className="only-fine">Click</span><span className="only-touch">Tap</span> to view</p>
         <div className="lx-wall__ctas">
           <div className="lx-wall__nav"><button aria-label="Previous works" onClick={() => nudge(-1)}>←</button><button aria-label="More works" onClick={() => nudge(1)}>→</button></div>
           <Link href="/shop/" className="btn btn--line"><span>Explore all {WORKS.length} works</span><i>→</i></Link>

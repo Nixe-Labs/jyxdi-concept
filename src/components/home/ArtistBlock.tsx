@@ -16,7 +16,7 @@ export default function ArtistBlock() {
         </Float>
         <FadeIn className="c-story__copy" stagger={0.12} y={24} blur={8}>
           <p className="c-kicker">meet the artist</p>
-          <h2 className="c-story__text">This is Jyxdi: a painter, educator and the creator of the Spirit Gates fandom. Her paintings take gods, goddesses and myths and turn the colour all the way up.</h2>
+          <h2 className="c-story__text">This is Jyxdi: a painter, educator and the creator of the Spirit Gates fandom. Her paintings take gods, goddesses and myths and paint them in rich, saturated colour.</h2>
           <p className="c-story__collabs">Collaborations with Michael B. Jordan · COACH · XO · OVO40</p>
           {/* wrapped: a .btn animates its own transform, which fights the fade-in and leaves it offset */}
           <div><Link href="/artist/" className="btn btn--line"><span>Read her story</span><i>→</i></Link></div>

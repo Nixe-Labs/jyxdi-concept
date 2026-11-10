@@ -89,7 +89,6 @@ export default function ShopPage() {
             ))}
           </FadeIn>
           <div className="sx-ways__foot">
-            <p>Every piece: hand-signed certificate · surprise add-ons · ships worldwide</p>
             <div>
               <Link href="/faq/#formats" className="c-link">Compare sizes &amp; prices →</Link>
               <Link href="/commissions/" className="c-link">Or commission a painting of your own →</Link>

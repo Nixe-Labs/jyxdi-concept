@@ -12,7 +12,7 @@ export default function Glow() {
         <p className="c-kicker">UV canvases · a little secret</p>
         <h2 className="c-h2">Some of them <em>glow</em> in the dark.</h2>
         <p>Choose the UV finish on any canvas and it&apos;s painted with fluorescent pigment. By day it looks like the original. Under a blacklight, it lights up.</p>
-        <Link href="/shop/karrupusaamy/" className="btn btn--light"><span>Shop UV canvases · from $550</span><i>→</i></Link>
+        <Link href="/shop/karrupusaamy/" className="btn btn--light"><span>Shop UV canvases</span><i>→</i></Link>
       </FadeIn>
       <p className="c-glow__cap">Durgai, under blacklight</p>
     </div>
