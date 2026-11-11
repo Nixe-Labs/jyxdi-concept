@@ -274,14 +274,8 @@ button { cursor: pointer; }
 .pcard:hover .pcard__media img { transform: scale(1.05); }
 .pcard__stamp { position: absolute; z-index: 4; top: -12px; right: -10px; }
 .pcard__badge { position: absolute; z-index: 2; left: 8px; bottom: 8px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; padding: 6px 9px; background: var(--color-cover); color: var(--color-uv-green); }
-.pcard__quick { position: absolute; z-index: 3; left: 16px; right: 16px; bottom: 16px; min-height: 44px; background: var(--color-ink); color: var(--color-paper); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; opacity: 0; transform: translateY(10px); transition: opacity .35s, transform .45s var(--ease), background .3s; }
-.pcard__quick:hover { background: var(--color-red); }
-.pcard:hover .pcard__quick, .pcard:focus-within .pcard__quick { opacity: 1; transform: none; }
-@media (hover: none) { .pcard__quick { position: static; opacity: 1; transform: none; margin-top: 12px; width: 100%; min-height: 42px; background: transparent; color: var(--color-ink); border: 1.5px solid var(--color-ink); } }
 .pcard__meta { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; padding-top: 14px; }
 .pcard__title { font-family: var(--font-serif); font-size: 25px; line-height: 1.05; margin: 0; }
-.pcard__price { font-size: 14px; font-weight: 600; white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
-.pcard__price small { font-weight: 400; color: var(--color-pencil); }
 .pcard__cat { font-family: var(--font-hand); font-size: 19px; color: var(--color-red); display: block; margin-top: 2px; }
 @media (max-width: 899px) { .pcard__title { font-size: 20px; } .pcard__meta { flex-direction: column; gap: 2px; } }
 

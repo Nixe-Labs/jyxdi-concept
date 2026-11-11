@@ -1,0 +1,178 @@
+/* ── One painting, three lives, and the artist behind it (homepage) ──
+   One pinned stage, one painting, four beats: i. a paper print unrolls; ii. the view circles it and it is a canvas with
+   depth; iii. the lights go down and it glows; iv. the lights come up, the canvas turns round, and its other side is her.
+   The moving parts are CSS animations, all one second long and paused: Lives.tsx seeks them to the scroll position
+   (one clock for the whole scene). Only transforms and opacities move. The words change beat by beat (data-beat).
+   Without .is-film (reduced motion, or no script) it is a plain, still section with everything shown. */
+.lv { position: relative; }
+.lv__stage { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: 0 clamp(20px, 4vw, 70px); padding: clamp(90px, 13vh, 160px) var(--gutter); }
+.lv__night { position: absolute; inset: 0; background: var(--p-ink); opacity: 0; pointer-events: none; }
+.lv__copy { position: relative; z-index: 2; }
+.lv__grp .c-h2 { margin-bottom: clamp(26px, 5vh, 52px); font-size: clamp(38px, 3.9vw, 66px); }
+.lv__grp--b { margin-top: clamp(70px, 12vh, 130px); }
+.lv__grp--b .c-ed__text { max-width: 26ch; }
+.lv__steps { display: grid; gap: 34px; margin: 0 0 34px; padding: 0; list-style: none; }
+.lv__steps li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 18px; max-width: 450px; }
+.lv__steps li > span { grid-row: span 3; padding-top: 14px; font-family: var(--font-serif); font-style: italic; font-size: 22px; line-height: 1; color: var(--p-gold); }
+.lv__steps h3 { margin: 0 0 14px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(46px, 4.8vw, 78px); line-height: 1; letter-spacing: -.01em; }
+.lv__steps p { margin: 0 0 22px; font-size: 16px; line-height: 1.65; color: var(--color-graphite); }
+/* the three, always in view: the current one is lit, and its line fills as its beat plays */
+.lv__tabs { display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 14px; max-width: 450px; margin: 0; padding: 0; list-style: none; font-size: 10.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.lv__tabs li { position: relative; padding-top: 16px; border-top: 1px solid var(--line-2); opacity: .4; transition: opacity .5s var(--ease); }
+.lv__tabs li::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--p-gold); transform-origin: 0 50%; scale: 0 1; }
+.lv__tabs em { margin-right: 10px; font-family: var(--font-serif); font-size: 14px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--p-gold); }
+.lv__note { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin: 22px 0 0; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-pencil); }
+.lv__note .c-link { font-size: 12px; letter-spacing: .04em; text-transform: none; }
+.lv__still { display: block; width: min(100%, 420px); height: auto; margin-top: 34px; border-radius: var(--radius-lg); }
+
+.lv__set { --w: min(29vw, 54vh); --d: calc(var(--w) * .07); --sh: calc(var(--w) * 1367 / 1092 / 22); position: relative; z-index: 1; align-self: start; display: grid; place-items: center; min-height: calc(var(--w) * 1.6); perspective: 1700px; } /* z-index: above the night, also on phones, where it is ordered first */
+.lv__spot { position: absolute; width: calc(var(--w) * 2.7); aspect-ratio: 1; background: radial-gradient(closest-side, color-mix(in srgb, var(--p-cream) 13%, transparent), transparent); pointer-events: none; }
+.lv__glow { position: absolute; width: calc(var(--w) * 2.3); max-width: none; opacity: 0; pointer-events: none; -webkit-mask-image: radial-gradient(closest-side, #000 22%, transparent 100%); mask-image: radial-gradient(closest-side, #000 22%, transparent 100%); }
+.lv__shadow { position: absolute; top: calc(50% + var(--w) * .68); width: calc(var(--w) * 1.2); height: calc(var(--w) * .16); background: radial-gradient(closest-side, rgb(34 27 29 / .8), transparent); opacity: .85; }
+.lv__obj { position: relative; width: var(--w); aspect-ratio: 1092 / 1367; transform-style: preserve-3d; transform: rotateX(-4deg) rotateY(24deg); }
+/* the print: strips of the painting, each hinged to the one above; rolled, they show the paper's back */
+.lv__roll { display: none; position: absolute; inset: 0; transform: translateZ(calc(var(--d) * .03)); transform-style: preserve-3d; }
+.lv__strip { position: absolute; left: 0; top: 100%; width: 100%; height: var(--sh); transform-origin: 50% 0; transform-style: preserve-3d; rotate: x 17deg; }
+.lv__roll > .lv__strip { top: 0; }
+.lv__strip.is-flat { rotate: x 0deg; }
+.lv__strip > i { position: absolute; left: 0; top: 0; width: 100%; height: calc(100% + .7px); backface-visibility: hidden; }
+.lv__strip > .f { background: var(--art) 0 var(--y) / 100% 2200% no-repeat; }
+.lv__strip > .b { transform: rotateX(180deg); background: linear-gradient(color-mix(in srgb, var(--p-cream) 96%, var(--p-ink)), color-mix(in srgb, var(--p-cream) 88%, var(--p-ink))); }
+/* the canvas: a box as deep as her real canvases, with dark sides like hers */
+.lv__box { position: absolute; inset: 0; transform-style: preserve-3d; }
+.lv__face, .lv__face > * { position: absolute; inset: 0; }
+.lv__face { backface-visibility: hidden; }
+.lv__face > img { width: 100%; height: 100%; object-fit: cover; }
+.lv__front { transform: translateZ(calc(var(--d) / 2)); overflow: hidden; background: var(--p-ink); }
+.lv__side { position: absolute; background: var(--p-ink); }
+.lv__side--r { top: 0; bottom: 0; right: 0; width: var(--d); transform: translateX(50%) rotateY(90deg); }
+.lv__side--l { top: 0; bottom: 0; left: 0; width: var(--d); transform: translateX(-50%) rotateY(-90deg); }
+.lv__side--t { left: 0; right: 0; top: 0; height: var(--d); transform: translateY(-50%) rotateX(90deg); background: color-mix(in srgb, var(--p-ink) 90%, var(--p-cream)); }
+.lv__side--b { left: 0; right: 0; bottom: 0; height: var(--d); transform: translateY(50%) rotateX(-90deg); }
+.lv__dim { background: var(--p-ink); opacity: 0; }
+.lv__uvw { overflow: hidden; opacity: 0; }
+.lv__uvw img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lv__front > .lv__beam { inset: 0 auto 0 0; width: 16%; background: linear-gradient(to right, transparent, color-mix(in srgb, var(--p-cream) 34%, transparent), transparent); opacity: 0; }
+/* canvas tooth: grain, not a grid (a grid shimmers as it turns) */
+.lv__grain { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .84 0 0 0 .55 -.12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: .5; }
+.lv__sheen { overflow: hidden; }
+.lv__sheen::before { content: ""; position: absolute; inset: 0 -60%; background: linear-gradient(104deg, transparent 38%, color-mix(in srgb, var(--p-cream) 17%, transparent) 50%, transparent 62%); translate: -70% 0; }
+/* the other side of the canvas: her, edge to edge, with a fine gold edge and a pass of light as it turns (no frame) */
+.lv__back { transform: rotateY(180deg) translateZ(calc(var(--d) / 2)); overflow: hidden; background: var(--p-ink); }
+.lv__back > img { object-position: 50% 42%; }
+.lv__back::after { content: ""; position: absolute; inset: 0; border: 1.5px solid color-mix(in srgb, var(--p-gold) 82%, transparent); }
+.lv__cap { position: absolute; bottom: 0; margin: 0; font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--color-pencil); transition: opacity .5s var(--ease); }
+.lv__cap + .lv__cap { display: none; }
+.lv :focus-visible { outline-color: var(--p-cream); }
+
+/* ── the film ── */
+.lv.is-film { height: 520vh; }
+.lv.is-film .lv__stage { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 600px; padding-block: 0; overflow: hidden; }
+.lv.is-film .lv__copy { height: min(600px, 76vh); }
+.lv.is-film .lv__grp { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; margin: 0; }
+.lv.is-film .lv__grp--a { transition: opacity .5s var(--ease); }
+.lv.is-film .lv__steps { display: block; position: relative; height: 14.2em; margin: 0; }
+.lv.is-film .lv__steps li { position: absolute; inset: 0 auto auto 0; pointer-events: none; }
+.lv.is-film .lv__steps li > :is(span, p, div) { opacity: 0; translate: 0 14px; transition: opacity .35s var(--ease), translate .5s var(--ease); }
+.lv.is-film .lv__steps h3 { overflow: hidden; padding: .06em 0 .16em; margin: -.06em 0 calc(14px - .16em); }
+.lv.is-film .lv__steps h3 > span { display: block; translate: 0 118%; transition: translate .95s var(--ease); }
+.lv.is-film .lv__tabs { display: grid; }
+.lv.is-film .lv__still { display: none; }
+.lv.is-film .lv__set { align-self: stretch; height: 100%; min-height: 0; }
+.lv.is-film .lv__cap { bottom: clamp(20px, 4.5vh, 44px); }
+.lv.is-film .lv__cap + .lv__cap { display: block; opacity: 0; }
+.lv.is-film .lv__roll { display: block; }
+.lv.is-film .lv__box { scale: 1 1 .03; visibility: hidden; }
+.lv.is-film .lv__obj { will-change: transform; }
+.lv.is-film .lv__grain { opacity: 0; }
+.lv.is-film .lv__shadow { opacity: .3; }
+/* the words, beat by beat (they always finish their move, wherever the scroll stops) */
+:is(.lv[data-beat="1"] .lv__steps li:nth-child(1), .lv[data-beat="2"] .lv__steps li:nth-child(2), .lv:is([data-beat="3"], [data-beat="4"]) .lv__steps li:nth-child(3)) { pointer-events: auto; }
+:is(.lv[data-beat="1"] .lv__steps li:nth-child(1), .lv[data-beat="2"] .lv__steps li:nth-child(2), .lv:is([data-beat="3"], [data-beat="4"]) .lv__steps li:nth-child(3)) > :is(span, p, div) { opacity: 1; translate: 0 0; transition-duration: .8s, 1s; transition-delay: .12s; }
+:is(.lv[data-beat="1"] .lv__steps li:nth-child(1), .lv[data-beat="2"] .lv__steps li:nth-child(2), .lv:is([data-beat="3"], [data-beat="4"]) .lv__steps li:nth-child(3)) > p { transition-delay: .22s; }
+:is(.lv[data-beat="1"] .lv__steps li:nth-child(1), .lv[data-beat="2"] .lv__steps li:nth-child(2), .lv:is([data-beat="3"], [data-beat="4"]) .lv__steps li:nth-child(3)) > div { transition-delay: .32s; }
+:is(.lv[data-beat="1"] .lv__steps li:nth-child(1), .lv[data-beat="2"] .lv__steps li:nth-child(2), .lv:is([data-beat="3"], [data-beat="4"]) .lv__steps li:nth-child(3)) h3 > span { translate: 0 0; transition-delay: .08s; }
+:is(.lv:is([data-beat="2"], [data-beat="3"], [data-beat="4"]) .lv__steps li:nth-child(1), .lv:is([data-beat="3"], [data-beat="4"]) .lv__steps li:nth-child(2)) h3 > span { translate: 0 -118%; }
+.lv[data-beat="1"] .lv__tabs li:nth-child(1), .lv[data-beat="2"] .lv__tabs li:nth-child(2), .lv[data-beat="3"] .lv__tabs li:nth-child(3) { opacity: 1; }
+.lv.is-film .lv__grp--b { pointer-events: none; }
+.lv.is-film .lv__grp--b > * { opacity: 0; translate: 0 22px; transition: opacity .4s var(--ease), translate .5s var(--ease); }
+.lv.is-film .lv__grp--b > :nth-child(2) { --n: 1; } .lv.is-film .lv__grp--b > :nth-child(3) { --n: 2; } .lv.is-film .lv__grp--b > :nth-child(4) { --n: 3; } .lv.is-film .lv__grp--b > :nth-child(5) { --n: 4; }
+.lv.is-film[data-beat="4"] .lv__grp--a { opacity: 0; pointer-events: none; }
+.lv.is-film[data-beat="4"] .lv__grp--b { pointer-events: auto; }
+.lv.is-film[data-beat="4"] .lv__grp--b > * { opacity: 1; translate: 0 0; transition-duration: .9s, 1.1s; transition-delay: calc(.3s + var(--n, 0) * .09s); }
+.lv.is-film[data-beat="4"] .lv__grp--a .lv__steps li { pointer-events: none; }
+.lv.is-film[data-beat="4"] .lv__cap { opacity: 0; }
+.lv.is-film[data-beat="4"] .lv__cap + .lv__cap { opacity: 1; transition-delay: .25s; }
+/* the scrubbed parts: every animation runs on the scene's one-second clock, paused; the script sets the time */
+.lv.is-film :is(.lv__night, .lv__spot, .lv__glow, .lv__shadow, .lv__obj, .lv__box, .lv__roll, .lv__strip, .lv__uvw, .lv__beam, .lv__dim, .lv__grain, .lv__sheen::before, .lv__tabs li::before) { animation-duration: 1s; animation-timing-function: linear; animation-fill-mode: both; animation-play-state: paused; }
+.lv.is-film .lv__strip { animation-name: lv-uncurl; animation-duration: calc(var(--len) * 1s); animation-delay: calc(var(--from) * 1s); }
+.lv.is-film .lv__strip.is-flat { animation-name: none; }
+.lv.is-film .lv__roll { animation-name: lv-roll; }
+.lv.is-film .lv__box { animation-name: lv-box; }
+.lv.is-film .lv__obj { animation-name: lv-obj; }
+.lv.is-film .lv__grain { animation-name: lv-grain; }
+.lv.is-film .lv__sheen::before { animation-name: lv-sheen; }
+.lv.is-film .lv__back .lv__sheen::before { animation-name: lv-sheen-b; }
+.lv.is-film .lv__dim { animation-name: lv-dim; }
+.lv.is-film .lv__uvw { animation-name: lv-uv; }
+.lv.is-film .lv__beam { animation-name: lv-beam; }
+.lv.is-film .lv__glow { animation-name: lv-glow; }
+.lv.is-film .lv__night { animation-name: lv-night; }
+.lv.is-film .lv__spot { animation-name: lv-spot; }
+.lv.is-film .lv__shadow { animation-name: lv-shadow; }
+.lv.is-film .lv__tabs li:nth-child(1)::before { animation-name: lv-l1; }
+.lv.is-film .lv__tabs li:nth-child(2)::before { animation-name: lv-l2; }
+.lv.is-film .lv__tabs li:nth-child(3)::before { animation-name: lv-l3; }
+@keyframes lv-uncurl { from { rotate: x 17deg; } to { rotate: x 0deg; } }
+/* the flat sheet and the paper-thin box are the same picture in the same place: the swap is not seen */
+@keyframes lv-roll { 0%, 23.9% { visibility: visible; } 24%, 100% { visibility: hidden; } }
+@keyframes lv-box { 0%, 23.9% { visibility: hidden; scale: 1 1 .03; } 24% { visibility: visible; scale: 1 1 .03; } 27% { scale: 1 1 .03; animation-timing-function: cubic-bezier(.45, 0, .2, 1); } 41%, 100% { visibility: visible; scale: 1 1 1; } }
+/* the camera: it drops in with the roll, draws back, sweeps round and in for the canvas (seen a little from above, so its
+   depth shows), comes square for the dark, then lifts the canvas, turns it and sets it down. Same functions in every frame. */
+@keyframes lv-obj {
+  0% { transform: translate3d(0, -7%, 0) rotateX(-9deg) rotateY(-27deg) rotateZ(-2.5deg) scale(.95); animation-timing-function: cubic-bezier(.3, 0, .3, 1); }
+  10% { transform: translate3d(0, -2%, 0) rotateX(-4deg) rotateY(-21deg) rotateZ(1deg) scale(1); animation-timing-function: cubic-bezier(.3, 0, .3, 1); }
+  20% { transform: translate3d(0, 0, 0) rotateX(-2deg) rotateY(-13deg) rotateZ(0deg) scale(1); }
+  24% { transform: translate3d(0, 0, 0) rotateX(-2deg) rotateY(-11deg) rotateZ(0deg) scale(1); animation-timing-function: cubic-bezier(.4, 0, .6, 1); }
+  31% { transform: translate3d(-3%, 1%, calc(var(--w) * -.16)) rotateX(-3deg) rotateY(-21deg) rotateZ(-1.5deg) scale(1); animation-timing-function: cubic-bezier(.45, 0, .2, 1); }
+  43% { transform: translate3d(2%, -2%, calc(var(--w) * .34)) rotateX(-10deg) rotateY(41deg) rotateZ(2deg) scale(1); animation-timing-function: cubic-bezier(.4, 0, .6, 1); }
+  50% { transform: translate3d(1%, -1%, calc(var(--w) * .22)) rotateX(-7deg) rotateY(33deg) rotateZ(1deg) scale(1); animation-timing-function: cubic-bezier(.45, 0, .2, 1); }
+  62% { transform: translate3d(0, 0, calc(var(--w) * .1)) rotateX(-1deg) rotateY(-5deg) rotateZ(0deg) scale(1.02); animation-timing-function: cubic-bezier(.4, 0, .4, 1); }
+  69% { transform: translate3d(0, -1%, calc(var(--w) * .3)) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1.03); }
+  74% { transform: translate3d(0, -1%, calc(var(--w) * .38)) rotateX(1deg) rotateY(2deg) rotateZ(0deg) scale(1.03); animation-timing-function: cubic-bezier(.5, 0, .3, 1); }
+  84% { transform: translate3d(0, -5%, calc(var(--w) * .5)) rotateX(7deg) rotateY(96deg) rotateZ(3deg) scale(1.06); animation-timing-function: cubic-bezier(.2, .4, .2, 1); }
+  95% { transform: translate3d(0, 0, calc(var(--w) * .3)) rotateX(-2deg) rotateY(178deg) rotateZ(-.5deg) scale(1.1); animation-timing-function: cubic-bezier(.4, 0, .4, 1); }
+  100% { transform: translate3d(0, 0, calc(var(--w) * .3)) rotateX(-3deg) rotateY(171deg) rotateZ(0deg) scale(1.1); }
+}
+@keyframes lv-grain { 0%, 28% { opacity: 0; } 41%, 100% { opacity: .5; } }
+@keyframes lv-sheen { 0%, 26% { translate: -70% 0; } 44%, 100% { translate: 70% 0; } }
+@keyframes lv-sheen-b { 0%, 82% { translate: -70% 0; } 98%, 100% { translate: 70% 0; } }
+@keyframes lv-dim { 0%, 50% { opacity: 0; } 58%, 72% { opacity: .84; } 79%, 100% { opacity: 0; } }
+@keyframes lv-uv { 0%, 57% { opacity: 1; clip-path: inset(0 100% 0 0); } 69%, 72% { opacity: 1; clip-path: inset(0 0% 0 0); } 79%, 100% { opacity: 0; clip-path: inset(0 0% 0 0); } }
+@keyframes lv-beam { 0%, 57% { translate: -50% 0; opacity: 0; } 58.2% { opacity: 1; } 67.8% { opacity: 1; } 69%, 100% { translate: 575% 0; opacity: 0; } }
+@keyframes lv-glow { 0%, 59% { opacity: 0; scale: .7; } 69% { opacity: .9; scale: 1.06; } 73% { opacity: .85; scale: 1; } 80%, 100% { opacity: 0; scale: 1; } }
+@keyframes lv-night { 0%, 49% { opacity: 0; } 58%, 72% { opacity: 1; } 80%, 100% { opacity: 0; } }
+@keyframes lv-spot { 0% { opacity: 1; scale: .92; } 43% { opacity: 1; scale: 1.1; } 50% { opacity: 1; scale: 1.05; } 58%, 73% { opacity: 0; scale: 1; } 84%, 100% { opacity: 1; scale: 1.1; } }
+@keyframes lv-shadow { 0% { opacity: .12; scale: .7 1; translate: 0 0; } 20%, 24% { opacity: .35; scale: .92 1; translate: 0 0; } 43% { opacity: .9; scale: 1.14 1; translate: -5% 0; } 50% { opacity: .85; scale: 1.06 1; translate: -3% 0; } 60%, 76% { opacity: 0; scale: 1 1; translate: 0 0; } 95%, 100% { opacity: .85; scale: 1.2 1; translate: 0 0; } }
+@keyframes lv-l1 { 0% { scale: 0 1; } 24%, 100% { scale: 1 1; } }
+@keyframes lv-l2 { 0%, 24% { scale: 0 1; } 54%, 100% { scale: 1 1; } }
+@keyframes lv-l3 { 0%, 54% { scale: 0 1; } 76%, 100% { scale: 1 1; } }
+
+@media (max-width: 899px) {
+  .lv__stage { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 70px; }
+  .lv__set { order: -1; --w: min(56vw, 300px); }
+  .lv.is-film { height: 470vh; }
+  .lv.is-film .lv__stage { grid-template-rows: 52svh minmax(0, 1fr); align-items: start; gap: 0; min-height: 0; }
+  .lv.is-film .lv__set { --w: min(50vw, 31svh); }
+  .lv.is-film .lv__copy { height: 100%; }
+  .lv.is-film .lv__grp { justify-content: flex-start; padding-top: 6px; }
+  .lv.is-film .lv__grp .c-kicker { margin-bottom: 8px; }
+  .lv.is-film .lv__grp .c-h2 { margin-bottom: 16px; font-size: 32px; }
+  .lv.is-film .lv__steps { height: 10.6em; }
+  .lv.is-film .lv__steps h3 { font-size: 40px; margin-bottom: 8px; }
+  .lv.is-film .lv__steps p { font-size: 14.5px; margin-bottom: 12px; }
+  .lv.is-film .lv__note { margin-top: 14px; }
+  .lv.is-film .lv__grp--b .c-ed__text { margin-bottom: 18px; font-size: 19px; }
+  .lv.is-film .lv__grp--b .c-ed__collab { margin-bottom: 18px; padding-top: 14px; }
+  .lv.is-film .lv__cap { bottom: 6px; }
+}

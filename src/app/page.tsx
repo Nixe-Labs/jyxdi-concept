@@ -1,16 +1,14 @@
+import "./styles/lives.css";
 import Curtain from "@/components/home/Curtain";
 import Hero from "@/components/home/Hero";
 import Statement from "@/components/home/Statement";
 import GalleryWall from "@/components/home/GalleryWall";
 import LiveCinema from "@/components/lux/LiveCinema";
-import FilmBand from "@/components/home/FilmBand";
-import Glow from "@/components/home/Glow";
-import Formats from "@/components/home/Formats";
-import ArtistBlock from "@/components/home/ArtistBlock";
+import Lives from "@/components/home/Lives";
 import Teasers from "@/components/home/Teasers";
 import Footer from "@/components/chrome/Footer";
 
-/* calm colour: cream → black (the gallery and the films) → cream → burgundy (three ways, her story) → black footer */
+/* calm colour: cream → black (the gallery and the films) → burgundy (one painting's three lives, her story, a commission) → black footer */
 export default function Home() {
   return (
     <>
@@ -20,10 +18,7 @@ export default function Home() {
         <Statement />
         <GalleryWall />
         <LiveCinema />
-        <FilmBand />
-        <Glow />
-        <Formats />
-        <ArtistBlock />
+        <Lives />
         <Teasers />
       </main>
       <Footer />

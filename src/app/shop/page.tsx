@@ -5,26 +5,13 @@ import "../styles/shop.css";
 import ShopClient, { MangaAdd } from "@/components/shop/ShopClient";
 import Frame from "@/components/lux/Frame";
 import FadeIn from "@/components/home/FadeIn";
+import Ways, { PRINT, CANVAS, UV } from "@/components/home/Ways";
 import Footer from "@/components/chrome/Footer";
 import { WORKS, CAT_LABEL, bySlug, fromPrice, money, smallest, srcSet, type Work } from "@/lib/catalog";
 import { BASE } from "@/lib/base";
 
-/** The lowest price of a format across the collection, e.g. "Canvas|UV". */
-const from = (format: string) => money(Math.min(...WORKS.flatMap((w) => Object.entries(w.v).filter(([k, x]) => x[2] && k.endsWith(`|${format}`)).map(([, x]) => x[1]))));
-const PRINT = from("Poster|Classic"), CANVAS = from("Canvas|Classic"), UV = from("Canvas|UV");
-
-/** Hung beside the words: a flat scan with a large photo, so it stays sharp in its frame and in its viewing room. */
-const FEATURE = bySlug("arthanareeswarar") as Work;
-const THADAM = bySlug("thadam") as Work;
 const img = (name: string) => ({ src: `${BASE}/img/${name}-800.webp`, srcSet: `${BASE}/img/${name}-800.webp 800w, ${BASE}/img/${name}-1400.webp 1400w` });
-
-/** One painting, three ways: the painting itself, the canvas on its easel, the canvas under blacklight. */
-const WAYS = [
-  { n: "i", name: "Art print", from: PRINT, src: smallest(THADAM), srcSet: undefined, cap: THADAM.t, alt: `${THADAM.t}, painting by Jyxdi`, line: "The poster edition, and the easiest way to begin a collection." },
-  { n: "ii", name: "Canvas", from: CANVAS, ...img("loc-thadam-easel"), cap: "On canvas", alt: `${THADAM.t} on canvas, on an easel`, line: "The painting on canvas." },
-  { n: "iii", name: "UV canvas", from: UV, ...img("loc-thadam-uv"), cap: "Under blacklight", alt: `${THADAM.t} on canvas, glowing under blacklight`, line: "Finished in fluorescent pigment. By day it looks like the original; under a blacklight, it lights up." },
-];
-
+const FEATURE = bySlug("arthanareeswarar") as Work;
 export const metadata: Metadata = {
   title: "Shop",
   description: `Shop Jyxdi's paintings as art prints from $${PRINT}, canvases from $${CANVAS} and UV canvases from $${UV} that glow under blacklight, each with a hand-signed certificate of authenticity. Ships worldwide.`,
@@ -64,37 +51,10 @@ export default function ShopPage() {
           </header>
         </ShopClient>
 
-        <section className="section sx-ways" data-mood="burgundy" aria-labelledby="sx-ways-title">
-          <FadeIn className="section__head" stagger={0.1} y={30}>
-            <div>
-              <p className="c-kicker">Three ways to own a Jyxdi</p>
-              <h2 id="sx-ways-title" className="c-h2">One painting, <em>three ways.</em></h2>
-            </div>
-            <p className="lede">Every work in the collection comes as an art print, a canvas or a UV canvas, in four sizes from 16×20″ up to 48×60″. Here is {THADAM.t} in each.</p>
-          </FadeIn>
-          <FadeIn className="sx-ways__grid" stagger={0.12} y={50}>
-            {WAYS.map((w) => (
-              <article key={w.n} className={`sx-way ${w.n === "iii" ? "sx-way--uv" : ""}`}>
-                <figure className="sx-way__media">
-                  <img src={w.src} srcSet={w.srcSet} sizes="(max-width: 699px) 92vw, 30vw" alt={w.alt} loading="lazy" decoding="async" />
-                  <figcaption className="sx-way__cap">{w.cap}</figcaption>
-                </figure>
-                <div className="sx-way__body">
-                  <p className="sx-way__n" aria-hidden>{w.n}.</p>
-                  <h3>{w.name}</h3>
-                  <p className="sx-way__from">from ${w.from}</p>
-                  <p className="sx-way__line">{w.line}</p>
-                </div>
-              </article>
-            ))}
-          </FadeIn>
-          <div className="sx-ways__foot">
-            <div>
-              <Link href="/faq/#formats" className="c-link">Compare sizes &amp; prices →</Link>
-              <Link href="/commissions/" className="c-link">Or commission a painting of your own →</Link>
-            </div>
-          </div>
-        </section>
+        <Ways prices title={<>One painting, <em>three ways.</em></>}>
+          <Link href="/faq/#formats" className="c-link">Compare sizes &amp; prices →</Link>
+          <Link href="/commissions/" className="c-link">Or commission a painting of your own →</Link>
+        </Ways>
 
         <section className="section sx-manga" data-mood="black" aria-labelledby="sx-manga-title">
           <div className="sx-manga__in">
