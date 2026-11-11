@@ -10,7 +10,7 @@ import { InviteScene, ShopScene } from "./CurtainScenes";
 
 const WAIT = 8; // seconds before the homepage opens by itself (held while the visitor moves around or tabs through)
 const WORLDS = [
-  { key: "invite", href: "/live-painting/", kicker: "Weddings · Now booking 2027", title: "Book live painting", go: "Check your date" },
+  { key: "invite", href: "/live-painting/", kicker: "Weddings · Booking 2027 & 2028", title: "Book live painting", go: "Check your date" },
   { key: "shop", href: "/shop/", kicker: "Prints & canvases", title: "Shop the collection", go: "Browse the works" },
 ] as const;
 type Go = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;

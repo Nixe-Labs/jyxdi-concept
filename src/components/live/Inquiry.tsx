@@ -209,7 +209,7 @@ export default function Inquiry() {
         <div className="lp-ask__head">
           <p className="c-kicker">Live painting inquiry</p>
           <h2 id="lp-inq-title" className="c-h2">Check your <em>date.</em></h2>
-          <p className="lede">Jyxdi takes a limited number of weddings each season, and is now booking 2027. Tell her about your celebration: when and where it is, and what you would love her to paint.</p>
+          <p className="lede">Jyxdi takes a limited number of weddings each season, and is now booking 2027 and 2028. Tell her about your celebration: when and where it is, and what you would love her to paint.</p>
         </div>
 
         <form ref={form} className="fm" aria-label="Live painting inquiry" method="post" action="https://jyxdi.com/contact#ContactForm" target="_blank" acceptCharset="UTF-8" noValidate onSubmit={onSubmit} onChange={onChange}>

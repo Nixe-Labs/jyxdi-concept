@@ -3,6 +3,7 @@ import "../styles/live.css";
 import "../styles/live-hero.css";
 import LiveHero from "@/components/live/LiveHero";
 import Why from "@/components/live/Why";
+import Hybrid from "@/components/live/Hybrid";
 import How from "@/components/live/How";
 import Reels from "@/components/live/Reels";
 import Inquiry from "@/components/live/Inquiry";
@@ -22,6 +23,7 @@ export default function LivePaintingPage() {
       <main className="lp">
         <LiveHero />
         <Why />
+        <Hybrid />
         <How />
         <Reels />
         <Inquiry />
