@@ -589,6 +589,21 @@ html.from-curtain::view-transition-new(.lx-page-in) { animation: 900ms cubic-bez
   }
 }
 @keyframes c-settle { from { scale: 1.16; } to { scale: 1; } }
+
+/* ── the Print Club (not open yet): words first, then an empty sheet in a frame, its pencil lines drawn as it rises into view ── */
+.c-pc .c-ed__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+.c-pc__media { width: 100%; max-width: 440px; justify-self: center; }
+.c-pc__sheet { display: block; width: 100%; height: auto; }
+.c-pc__sheet > * { fill: none; stroke: color-mix(in srgb, var(--p-ink) 34%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-dasharray: 1; }
+.c-pc__media figcaption { text-align: center; }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .c-pc__sheet > * { animation: c-pencil linear both; animation-timeline: view(); animation-range: entry 35% cover 42%; }
+    .c-pc__sheet > :nth-child(n+5) { animation-range: entry 70% cover 55%; }
+  }
+}
+@keyframes c-pencil { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@media (max-width: 899px) { .c-pc .c-ed__grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 899px) {
   .c-ed__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
