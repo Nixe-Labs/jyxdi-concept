@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard";
 import WallView from "./WallView";
 import Frame from "@/components/lux/Frame";
 import FadeIn from "@/components/home/FadeIn";
-import { UvStage, UvToggle } from "@/components/home/AfterDark";
+import { UvRoom, UvStage, UvToggle } from "@/components/home/AfterDark";
 import { scrollToId } from "@/components/chrome/SmoothScroll";
 import {
   type Work, type Size, type Format, type Finish, SIZES, CAT_LABEL, UV_PAIRS, SCENES,
@@ -14,8 +14,8 @@ import {
 } from "@/lib/catalog";
 import { useCart } from "@/lib/cart";
 
-const FINISH_LABEL: Record<Finish, string> = { Classic: "Classic", UV: "UV glow ✦" }; // cart option text
-const FORMAT_LABEL: Record<Format, string> = { Poster: "Art print", Canvas: "Canvas" };
+const FINISH_LABEL: Record<Finish, string> = { Classic: "Classic", UV: "UV Glow ✦" };
+const FORMAT_LABEL: Record<Format, string> = { Poster: "Fine Art Print", Canvas: "Premium Canvas" };
 /** How big each size hangs in the viewing room, relative to 48×60″. The size lines carry the real numbers. */
 const SCALE: Record<Size, number> = { "16x20": 0.72, "24x30": 0.82, "30x40": 0.91, "48x60": 1 };
 const dims = (s: Size) => s.split("x").map(Number) as [number, number];
@@ -33,7 +33,7 @@ const ICON = {
 const PERKS: [keyof typeof ICON, string, string][] = [
   ["cert", "Hand-signed certificate of authenticity", "Each piece comes with a certificate of authenticity, signed by hand."],
   ["gift", "A surprise in every order", "Every order includes surprise add-ons. What they are stays a surprise."],
-  ["globe", "Ships worldwide", "Art prints, canvases and UV canvases ship worldwide."],
+  ["globe", "Ships worldwide", "Fine Art Prints, Premium Canvases and Signature UV Glow Canvases ship worldwide."],
 ];
 
 type Opt<T> = { v: T; a: string; b?: string };
@@ -75,8 +75,9 @@ export default function ProductView({ w }: { w: Work }) {
   const v = variant(w, size, format, fin);
   const ok = !!v?.[2];
   const uvOk = isAvailable(w, size, "Canvas", "UV");
-  const option = `${size.replace("x", "×")} · ${format} · ${FINISH_LABEL[fin]}`;
-  const chosen = `${FORMAT_LABEL[format]}${fin === "UV" ? " · UV glow" : ""} · ${inches(size)}`;
+  const name = fin === "UV" ? "Signature UV Glow Canvas" : FORMAT_LABEL[format]; // UV is canvas-only, so it names its own print
+  const option = `${size.replace("x", "×")}″ · ${name}`; // the bag's line, display only: checkout goes by variantId
+  const chosen = `${name} · ${inches(size)}`;
   const price = (f: Format, x: Finish) => `$${money(variant(w, size, f, x)[1])}`;
 
   // arriving through a view transition (the glide from the wall or a card, or any page change) is the entrance;
@@ -115,7 +116,7 @@ export default function ProductView({ w }: { w: Work }) {
 
   const addToCart = () => add({ variantId: v[0], slug: w.slug, title: w.t, image: smallest(w), option, price: v[1] }, qty);
   const pickSize = (s: Size) => { setSize(s); setMoved(true); };
-  // UV is canvas-only: choosing it from the art print moves to canvas
+  // UV is canvas-only: choosing it from the Fine Art Print moves to canvas
   const pickUv = () => { setFormat("Canvas"); setFinish("UV"); };
   const pickFinish = (x: Finish) => (x === "UV" ? pickUv() : setFinish("Classic"));
   const chooseUv = () => { pickUv(); scrollToId("px-room"); };
@@ -123,7 +124,7 @@ export default function ProductView({ w }: { w: Work }) {
   const sold = (f: Format, x: Finish) => SIZES.some((s) => isAvailable(w, s, f, x));
   const sizes = SIZES.filter((s) => isAvailable(w, s, "Poster", "Classic") || isAvailable(w, s, "Canvas", "Classic"));
   const sizeOpts = SIZES.map((s) => ({ v: s, a: inches(s).replace(" × ", "×"), b: metric(s).replace(" × ", "×") }));
-  const finishOpts: Opt<Finish>[] = [{ v: "Classic", a: "Classic", b: price(format, "Classic") }, ...(uvOk ? [{ v: "UV" as Finish, a: "UV glow ✦", b: `${format === "Poster" ? "canvas · " : ""}${price("Canvas", "UV")}` }] : [])];
+  const finishOpts: Opt<Finish>[] = [{ v: "Classic", a: FINISH_LABEL.Classic, b: price(format, "Classic") }, ...(uvOk ? [{ v: "UV" as Finish, a: FINISH_LABEL.UV, b: `${format === "Poster" ? "canvas · " : ""}${price("Canvas", "UV")}` }] : [])];
   const cell = (s: Size, f: Format, x: Finish) => {
     const p = variant(w, s, f, x), on = s === size && f === format && x === fin;
     return <td className={on ? "is-sel" : ""}>{p?.[2] ? `$${money(p[1])}` : "—"}</td>;
@@ -154,8 +155,8 @@ export default function ProductView({ w }: { w: Work }) {
           <div className="px-config">
             <Seg name="px-size" legend="Size" hint="inches · cm" value={size} opts={sizeOpts} onPick={pickSize} className="px-seg--size" />
             <Seg name="px-format" legend="Format" value={format} onPick={setFormat}
-              opts={[{ v: "Poster", a: "Art print", b: `poster · ${price("Poster", "Classic")}` }, { v: "Canvas", a: "Canvas", b: price("Canvas", "Classic") }]} />
-            <Seg name="px-finish" legend="Finish" hint={uvOk ? "UV: canvas only" : undefined} value={fin} opts={finishOpts} onPick={pickFinish} />
+              opts={[{ v: "Poster", a: FORMAT_LABEL.Poster, b: price("Poster", "Classic") }, { v: "Canvas", a: FORMAT_LABEL.Canvas, b: price("Canvas", "Classic") }]} />
+            <Seg name="px-finish" legend="Finish" hint={uvOk ? "UV Glow: canvas only" : undefined} value={fin} opts={finishOpts} onPick={pickFinish} />
           </div>
 
           <div ref={buyRef} className="px-buy">
@@ -179,9 +180,9 @@ export default function ProductView({ w }: { w: Work }) {
             <div><dt>Artist</dt><dd>Jyxdi (Jyothee Murali)</dd></div>
             <div><dt>Title</dt><dd><i>{w.t}</i></dd></div>
             <div><dt>Category</dt><dd>{CAT_LABEL[w.c]}</dd></div>
-            <div><dt>Formats</dt><dd>{[sold("Poster", "Classic") && "Art print (poster)", sold("Canvas", "Classic") && "Canvas", sold("Canvas", "UV") && "UV canvas"].filter(Boolean).join(" · ")}</dd></div>
+            <div><dt>Formats</dt><dd>{[sold("Poster", "Classic") && FORMAT_LABEL.Poster, sold("Canvas", "Classic") && FORMAT_LABEL.Canvas, sold("Canvas", "UV") && "Signature UV Glow Canvas"].filter(Boolean).join(" · ")}</dd></div>
             <div><dt>Sizes</dt><dd className="px-dl__sizes">{sizes.map((s) => <span key={s} className="px-dl__size">{inches(s)} <small>{metric(s)}</small></span>)}</dd></div>
-            <div><dt>Finishes</dt><dd>Classic{sold("Canvas", "UV") && " · UV glow, on canvas"}</dd></div>
+            <div><dt>Finishes</dt><dd>Classic{sold("Canvas", "UV") && " · UV Glow, on canvas"}</dd></div>
             <div><dt>Certificate</dt><dd>Hand-signed certificate of authenticity</dd></div>
             <div><dt>Shipping</dt><dd>Worldwide</dd></div>
           </FadeIn>
@@ -193,7 +194,7 @@ export default function ProductView({ w }: { w: Work }) {
             <div className="px-scroll">
               <table>
                 <caption className="sr-only">Prices in Canadian dollars for each size and format</caption>
-                <thead><tr><th scope="col">Size</th><th scope="col">Art print</th><th scope="col">Canvas</th><th scope="col">UV canvas</th></tr></thead>
+                <thead><tr><th scope="col">Size</th><th scope="col">Fine Art Print</th><th scope="col">Premium Canvas</th><th scope="col">Signature UV Glow Canvas</th></tr></thead>
                 <tbody>{SIZES.map((s) => (
                   <tr key={s} className={s === size ? "is-on" : ""}>
                     <th scope="row"><b>{inches(s)}</b><small>{metric(s)}</small></th>
@@ -223,26 +224,21 @@ export default function ProductView({ w }: { w: Work }) {
         <FadeIn as="ul" className="px-arrive__list" stagger={0.14} y={36}>
           {PERKS.map(([k, t, d]) => <li key={k}>{ICON[k]}<h3>{t}</h3><p>{d}</p></li>)}
         </FadeIn>
-        <FadeIn as="p" className="px-arrive__line" y={30} blur={6}>The same signed certificate and the same surprise, from a $90 print to the largest canvas.</FadeIn>
+        <FadeIn as="p" className="px-arrive__line" y={30} blur={6}>The same signed certificate and the same surprise, from a $90 Fine Art Print to the largest canvas.</FadeIn>
       </section>
 
-      {/* ── 4 · under blacklight (works with a daylight/blacklight photo pair) ── */}
+      {/* ── 4 · under blacklight, full screen: the visitor turns the lights down (works with a daylight/blacklight photo pair) ── */}
       {pair && (
-        <section className="px-uvwrap" data-mood="cream" aria-labelledby="px-uv-title">
-        <div className="px-uvroom mood-black">
-          <FadeIn className="px-uvroom__stage" y={40}>
-            <UvStage full={blacklight} day={pair.day} uv={pair.uv} alt={w.t} />
-          </FadeIn>
-          <FadeIn className="px-uvroom__copy" stagger={0.1} y={30}>
-            <p className="c-kicker">UV canvas · after dark</p>
+        <UvRoom day={pair.day} uv={pair.uv} alt={w.t} aria-labelledby="px-uv-title" head={
+          <FadeIn stagger={0.1} y={30}>
+            <p className="c-kicker">Signature UV Glow Canvas · after dark</p>
             <h2 id="px-uv-title" className="c-h2">Switch off <em>the lights.</em></h2>
-            <p className="lede">Choose the UV finish on canvas and it&apos;s painted with fluorescent pigment. By day it looks like the original. Under a blacklight, it lights up.</p>
-            <div><UvToggle on={blacklight} onChange={setBlacklight} /></div>
-            <p className="px-uvroom__hint"><span className="only-fine">Move over the painting to light it.</span><span className="only-touch">Drag a finger across the painting to light it.</span></p>
-            {uvOk && <div><button type="button" className="btn btn--ink" onClick={chooseUv}><span>Choose the UV canvas · {price("Canvas", "UV")}</span><i aria-hidden>↑</i></button></div>}
+            <p className="lede">The canvas, with fluorescent pigment painted on by hand. By day it looks like the original; under a blacklight, it lights up.</p>
+            <p className="uvr__hint">Slide the lights down to blacklight, or tap Lights off.</p>
           </FadeIn>
-        </div>
-        </section>
+        }>
+          {uvOk && <button type="button" className="btn btn--ink" onClick={chooseUv}><span>Choose the Signature UV Glow Canvas · {price("Canvas", "UV")}</span><i aria-hidden>↑</i></button>}
+        </UvRoom>
       )}
 
       {/* ── 5 · more from the collection ── */}
@@ -260,7 +256,7 @@ export default function ProductView({ w }: { w: Work }) {
       </section>
 
       <div className={`px-buybar ${buybar ? "is-on" : ""}`} inert={!buybar}>
-        <p className="px-buybar__price">${money(v[1] * qty)}<small>{FORMAT_LABEL[format]}{fin === "UV" ? " · UV glow" : ""} · {inches(size)}</small></p>
+        <p className="px-buybar__price">${money(v[1] * qty)}<small>{chosen}</small></p>
         <button type="button" className="btn btn--ink" onClick={addToCart} disabled={!ok}><span>Add to bag</span></button>
       </div>
     </>
@@ -343,7 +339,7 @@ function Room({ w, size, mat, uv, uvOk, moved, blacklight, setBlacklight }:
         <span key={`h${size}`} className="lx-dim lx-dim--h" aria-hidden><span>{iw}″ · {cm(iw)} cm</span></span>
         <ul className="lx-callouts px-callouts" aria-hidden>
           <li style={{ top: "12%" }}><span>Hand-signed certificate<small>of authenticity</small></span></li>
-          {uvOk && <li style={{ top: "46%" }}><span>Glows under blacklight<small>{uv ? "UV glow finish" : "as a UV canvas"}</small></span></li>}
+          {uvOk && <li style={{ top: "46%" }}><span>Glows under blacklight<small>{uv ? "UV Glow finish" : "Signature UV Glow Canvas"}</small></span></li>}
           <li style={{ top: "80%" }}><span>Shown at {iw} × {ih}″<small>{cm(iw)} × {cm(ih)} cm</small></span></li>
         </ul>
       </div>

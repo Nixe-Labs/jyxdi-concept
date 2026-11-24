@@ -48,6 +48,9 @@ export const fromPrice = (w: Work) =>
 export const variant = (w: Work, s: Size, f: Format, fin: Finish) => w.v[`${s}|${f}|${fin}`];
 export const isAvailable = (w: Work, s: Size, f: Format, fin: Finish) => !!variant(w, s, f, fin)?.[2];
 export const money = (n: number) => n.toLocaleString("en-CA", { maximumFractionDigits: 0 });
+// the lowest price in the catalogue for each format (null variants are unavailable)
+const lowest = (format: string) => money(Math.min(...WORKS.flatMap((w) => Object.entries(w.v).filter(([k, x]) => x[2] && k.endsWith(`|${format}`)).map(([, x]) => x[1]))));
+export const PRINT = lowest("Poster|Classic"), CANVAS = lowest("Canvas|Classic"), UV = lowest("Canvas|UV");
 export const isTamil = (s: string) => /[஀-௿]/.test(s);
 
 /** Shopify cart permalink: lands the shopper in jyxdi.com's real checkout. */

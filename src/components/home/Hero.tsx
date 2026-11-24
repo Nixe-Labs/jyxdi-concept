@@ -20,14 +20,14 @@ export default function Hero() {
       <div className="lh__copy">
         <p className="c-kicker lh__kicker">International wedding live painter · Fine art</p>
         <h1 className="lh__title">
-          <span className="lh__line"><span>Myths,</span></span>
-          <span className="lh__line"><span>in full</span></span>
-          <span className="lh__line"><span className="lh__loud"><em>colour.</em><svg className="lh__swash" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden><path d="M4 20 C 52 8, 104 27, 160 15 S 252 5, 296 13" pathLength={1} /></svg></span></span>
+          <span className="lh__line"><span>Art</span></span>
+          <span className="lh__line"><span>beyond the</span></span>
+          <span className="lh__line"><span className="lh__loud"><em>canvas.</em><svg className="lh__swash" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden><path d="M4 20 C 52 8, 104 27, 160 15 S 252 5, 296 13" pathLength={1} /></svg></span></span>
         </h1>
-        <p className="lede">Original paintings of gods in streetwear, cosmic portraits and goddesses, and live paintings of your wedding, made in front of your guests.</p>
+        <p className="lede">Original fine art, immersive creations, and unforgettable live painting experiences by JYXDI.</p>
         <div className="lh__ctas">
-          <Link href="/shop/" className="btn btn--ink"><span>View our gallery</span><i>→</i></Link>
-          <Link href="/live-painting/" className="c-link">Book live painting →</Link>
+          <Link href="/shop/" className="btn btn--ink"><span>Shop Art</span><i>→</i></Link>
+          <Link href="/live-painting/" className="c-link">Book Live Painting →</Link>
         </div>
       </div>
       <div className="lh__media">

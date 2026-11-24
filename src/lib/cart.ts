@@ -7,7 +7,7 @@ export type CartLine = {
   slug: string;
   title: string;
   image: string;
-  option: string; // e.g. "24×30 · Canvas · UV glow"
+  option: string; // e.g. "24×30″ · Signature UV Glow Canvas": display only, checkout goes by variantId
   price: number;
   qty: number;
 };

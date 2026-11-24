@@ -6,7 +6,7 @@ import gsap from "gsap";
 import ProductCard from "./ProductCard";
 import { WORKS, MANGA, CAT_LABEL, type Category } from "@/lib/catalog";
 import { useCart } from "@/lib/cart";
-import { getLenis } from "@/components/chrome/SmoothScroll";
+import { getLenis, scrollToId } from "@/components/chrome/SmoothScroll";
 import { BASE } from "@/lib/base";
 
 type Sort = "new" | "old" | "az";
@@ -32,9 +32,9 @@ const setUrl = (k: string, v: string, def: string) => {
   history.replaceState(null, "", `${location.pathname}${s ? `?${s}` : ""}`); // no new history entry
 };
 
-/** The collection in daylight: the page head (children), the glass toolbar and every work.
+/** The collection: the page head (children), the formats scene (formats), then the glass toolbar and every work.
     featured: the work hung in the head, which carries its view-transition name there, so its card here must not. */
-export default function ShopClient({ featured, children }: { featured: string; children: React.ReactNode }) {
+export default function ShopClient({ featured, formats, children }: { featured: string; formats?: React.ReactNode; children: React.ReactNode }) {
   const [cat, setCat] = useState<Tab>("all");
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<Sort>("new");
@@ -97,50 +97,67 @@ export default function ShopClient({ featured, children }: { featured: string; c
     return () => { document.removeEventListener("click", leave, true); removeEventListener("popstate", leave); };
   }, []);
 
+  // the head's and the scene's #links jump here, not the browser: its jump adds a history entry Next can't go Back through
+  // (Back from a painting would leave the painting on screen), and Lenis, still gliding from the wheel, ignores it anyway
+  useEffect(() => {
+    const jump = (e: MouseEvent) => {
+      const a = (e.target as Element).closest?.<HTMLAnchorElement>('a[href^="#"]'), to = a && document.getElementById(a.hash.slice(1));
+      if (!to || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault(); scrollToId(to.id, true); to.focus({ preventScroll: true }); // the next Tab starts there, as after a real jump
+    };
+    document.addEventListener("click", jump);
+    return () => document.removeEventListener("click", jump);
+  }, []);
+
   return (
-    <section ref={section} className="sx-coll" data-mood="cream" aria-labelledby="sx-title">
+    <section ref={section} className="sx-coll" aria-labelledby="sx-title">
       <Suspense fallback={null}><FromUrl onUrl={onUrl} /></Suspense>
-      {children}
+      {/* each part names its own mood: MoodScroll acts only as a part enters its line, so one cream section around the burgundy scene would leave the works burgundy */}
+      <div data-mood="cream">{children}</div>
+      {formats}
 
-      <div className="toolbar sx-bar" ref={bar}>
-        <div className="sx-bar__in">
-          <div className="sx-tabs" role="group" aria-label="Category">
-            {TABS.map((t) => (
-              <button key={t} type="button" className="sx-tab" aria-pressed={cat === t} aria-label={`${label(t)}, ${COUNT[t]} works`} onClick={() => pickCat(t)}>
-                {label(t)}<span className="sx-tab__n" aria-hidden>{COUNT[t]}</span>
-              </button>
-            ))}
+      <div id="paintings" className="sx-works" data-mood="cream" tabIndex={-1}>
+        <h2 className="sr-only">The paintings</h2>
+        <div className="toolbar sx-bar" ref={bar}>
+          <div className="sx-bar__in">
+            <div className="sx-tabs" role="group" aria-label="Category">
+              {TABS.map((t) => (
+                <button key={t} type="button" className="sx-tab" aria-pressed={cat === t} aria-label={`${label(t)}, ${COUNT[t]} works`} onClick={() => pickCat(t)}>
+                  {label(t)}<span className="sx-tab__n" aria-hidden>{COUNT[t]}</span>
+                </button>
+              ))}
+            </div>
+            <div className="sx-search">
+              <svg viewBox="0 0 20 20" aria-hidden><circle cx="8.5" cy="8.5" r="5.75" /><path d="m13 13 4.5 4.5" /></svg>
+              <input type="search" value={q} onChange={(e) => pickQ(e.target.value)} placeholder={`Search ${WORKS.length} works`} aria-label="Search works by name, story or category" />
+              {q && <button type="button" className="sx-search__x" onClick={() => pickQ("")} aria-label="Clear search">×</button>}
+            </div>
+            <label className="sx-sort">
+              <span aria-hidden>Sort</span>
+              <select value={sort} onChange={(e) => pickSort(e.target.value as Sort)} aria-label="Sort works">
+                <option value="new">Newest</option><option value="old">Oldest</option><option value="az">A – Z</option>
+              </select>
+            </label>
+            <p className="sx-count" aria-live="polite">{list.length} {list.length === 1 ? "work" : "works"}</p>
           </div>
-          <div className="sx-search">
-            <svg viewBox="0 0 20 20" aria-hidden><circle cx="8.5" cy="8.5" r="5.75" /><path d="m13 13 4.5 4.5" /></svg>
-            <input type="search" value={q} onChange={(e) => pickQ(e.target.value)} placeholder={`Search ${WORKS.length} works`} aria-label="Search works by name, story or category" />
-            {q && <button type="button" className="sx-search__x" onClick={() => pickQ("")} aria-label="Clear search">×</button>}
-          </div>
-          <label className="sx-sort">
-            <span aria-hidden>Sort</span>
-            <select value={sort} onChange={(e) => pickSort(e.target.value as Sort)} aria-label="Sort works">
-              <option value="new">Newest</option><option value="old">Oldest</option><option value="az">A – Z</option>
-            </select>
-          </label>
-          <p className="sx-count" aria-live="polite">{list.length} {list.length === 1 ? "work" : "works"}</p>
         </div>
+
+        {list.length ? (
+          <div className="sx-grid" ref={results}>
+            {list.map((w, i) => <ProductCard key={w.slug} w={w} priority={i < 3} vt={w.slug !== featured} />)}
+          </div>
+        ) : (
+          <div className="sx-empty" ref={results}>
+            <p className="c-kicker">Nothing on the wall</p>
+            <p className="sx-empty__t">No work matches <em>“{q.trim()}”</em>{cat !== "all" && <> in {CAT_LABEL[cat]}</>}.</p>
+            <p className="lede">Try a name, a god or a colour, or see the whole collection.</p>
+            <div className="sx-empty__acts">
+              <button type="button" className="btn btn--ink" onClick={() => { pickQ(""); pickCat("all"); }}><span>Show all {WORKS.length} works</span></button>
+              <Link href="/commissions/" className="c-link">Or commission your own →</Link>
+            </div>
+          </div>
+        )}
       </div>
-
-      {list.length ? (
-        <div className="sx-grid" ref={results}>
-          {list.map((w, i) => <ProductCard key={w.slug} w={w} priority={i < 3} vt={w.slug !== featured} />)}
-        </div>
-      ) : (
-        <div className="sx-empty" ref={results}>
-          <p className="c-kicker">Nothing on the wall</p>
-          <p className="sx-empty__t">No work matches <em>“{q.trim()}”</em>{cat !== "all" && <> in {CAT_LABEL[cat]}</>}.</p>
-          <p className="lede">Try a name, a god or a colour, or see the whole collection.</p>
-          <div className="sx-empty__acts">
-            <button type="button" className="btn btn--ink" onClick={() => { pickQ(""); pickCat("all"); }}><span>Show all {WORKS.length} works</span></button>
-            <Link href="/commissions/" className="c-link">Or commission your own →</Link>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

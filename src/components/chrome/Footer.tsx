@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="footer__grid">
         <div>
           <p className="c-kicker">Thank you for looking</p>
-          <p className="m-0 max-w-[36ch] text-[14px] text-graphite">Original paintings, prints and UV-reactive canvases by Jyxdi. Painter, educator and creator of Spirit Gates.</p>
+          <p className="m-0 max-w-[36ch] text-[14px] text-graphite">Original paintings, Fine Art Prints, Premium Canvases and Signature UV Glow Canvases by Jyxdi. Painter, educator and creator of Spirit Gates.</p>
           <p className="footer__contact">Live painting, PR and inquiries:<br /><a href="mailto:artbyjyxdi@gmail.com">artbyjyxdi@gmail.com</a><br /><a href="https://www.instagram.com/jyxdi/" target="_blank" rel="noopener">@jyxdi on Instagram ↗</a></p>
         </div>
         <div>
@@ -28,7 +28,7 @@ export default function Footer() {
         <div>
           <h2 className="footer__h">Help</h2>
           <ul>
-            <li><Link href="/faq/#formats">Poster, canvas or UV?</Link></li>
+            <li><Link href="/faq/#formats">Formats &amp; sizes</Link></li>
             <li><Link href="/faq/#shipping">Shipping</Link></li>
             <li><a href="https://jyxdi.com/pages/contact" target="_blank" rel="noopener">Contact</a></li>
             <li><a href="https://jyxdi.com/account/login" target="_blank" rel="noopener">Your account</a></li>

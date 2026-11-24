@@ -4,7 +4,7 @@ import { BASE } from "@/lib/base";
 
 const photo = (w: number) => `${BASE}/img/loc-sofa-${w}.webp`;
 
-/** Commission a painting: a large photo of her beside the words (the scene above it has its words on the left, so the photo leads here). */
+/** Commission a painting: a large photo of her beside the words (her introduction above it has its words on the left, so the photo leads here). */
 export default function Teasers() {
   return (
     <section className="section c-ed" data-mood="burgundy" aria-labelledby="c-comm-title">

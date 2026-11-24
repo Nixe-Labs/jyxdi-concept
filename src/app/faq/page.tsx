@@ -9,7 +9,7 @@ import FaqIndex from "@/components/pages/FaqIndex";
 
 export const metadata: Metadata = {
   title: "FAQ, shipping & care",
-  description: "Poster, canvas or UV canvas? Sizes, prices, shipping, payment and care for your Jyxdi artwork.",
+  description: "Fine Art Print, Premium Canvas or Signature UV Glow Canvas? Sizes, prices, shipping, payment and care for your Jyxdi artwork.",
 };
 
 const from = (s: string, f: "Poster" | "Canvas", fin: "Classic" | "UV") => Math.min(...WORKS.map((w) => (w.v[`${s}|${f}|${fin}`]?.[2] ? w.v[`${s}|${f}|${fin}`][1] : Infinity)));
@@ -37,7 +37,7 @@ export default function FaqPage() {
               <p className="c-kicker">FAQ · Shipping &amp; care</p>
               <h1 className="fq-title">Before you <em>buy.</em></h1>
             </div>
-            <p className="lede">Poster, canvas or UV canvas? Sizes, prices, shipping, payment and care for your Jyxdi artwork.</p>
+            <p className="lede">Fine Art Print, Premium Canvas or Signature UV Glow Canvas? Sizes, prices, shipping, payment and care for your Jyxdi artwork.</p>
           </FadeIn>
           <div className="fq-body">
             <FaqIndex groups={GROUPS.map((g) => ({ id: g.id, title: g.title }))} />
@@ -45,10 +45,11 @@ export default function FaqPage() {
               <div className="fq-group" id="formats">
                 <h2>Formats &amp; sizes</h2>
                 <div className="fq-acc">
-                  <Q q="Poster, canvas or UV canvas: what's the difference?" open>
-                    <p><b>Poster</b>: a print of the painting, and the most affordable way to own one.</p>
-                    <p><b>Canvas</b>: the painting printed on canvas.</p>
-                    <p><b>UV canvas</b>: a canvas finished with fluorescent pigment. In normal light it looks like the classic canvas; under a UV blacklight, parts of the painting glow. The UV finish is available on canvas only.</p>
+                  <Q q="Fine Art Print, Premium Canvas or Signature UV Glow Canvas: what's the difference?" open>
+                    <p><b>Fine Art Print.</b> Printed on paper with archival, fade-resistant inks, true to every colour she paints. The easiest way to begin a collection.</p>
+                    <p><b>Premium Canvas.</b> Printed on canvas with archival inks, then stretched and ready to hang the day it arrives.</p>
+                    <p><b>Signature UV Glow Canvas.</b> The canvas, with fluorescent pigment painted on by hand. By day it looks like the original; under a blacklight, it lights up.</p>
+                    <p>Four sizes, 16×20″ up to 48×60″, each with a hand-signed certificate of authenticity.</p>
                     <div className="fq-uv">
                       <figure><img src={`${BASE}/img/k-classic-700.webp`} width={700} height={876} alt="Karrupusaamy in daylight" loading="lazy" decoding="async" /><figcaption>In daylight</figcaption></figure>
                       <figure><img src={`${BASE}/img/k-uv-700.webp`} width={700} height={876} alt="Karrupusaamy under a blacklight, its fluorescent pigment glowing" loading="lazy" decoding="async" /><figcaption>Under a blacklight</figcaption></figure>
@@ -57,7 +58,7 @@ export default function FaqPage() {
                   <Q q="What sizes are there, and what do they cost?" open>
                     <div className="fq-table">
                       <table>
-                        <thead><tr><th scope="col">Size</th><th scope="col">Poster</th><th scope="col">Canvas</th><th scope="col">UV canvas</th></tr></thead>
+                        <thead><tr><th scope="col">Size</th><th scope="col">Fine Art Print</th><th scope="col">Premium Canvas</th><th scope="col">Signature UV Glow Canvas</th></tr></thead>
                         <tbody>{SIZES.map((s) => {
                           const [w, h] = s.split("x").map(Number);
                           return <tr key={s}><th scope="row">{w}×{h}″<small>{Math.round(w * 2.54)}×{Math.round(h * 2.54)} cm</small></th><td>${money(from(s, "Poster", "Classic"))}</td><td>${money(from(s, "Canvas", "Classic"))}</td><td>${money(from(s, "Canvas", "UV"))}</td></tr>;
@@ -89,7 +90,7 @@ export default function FaqPage() {
               <div className="fq-group" id="care">
                 <h2>Caring for your art</h2>
                 <div className="fq-acc">
-                  <Q q="How should I look after a poster or canvas?">A few general tips: hang it out of direct sunlight to keep the colours bright, keep it away from damp walls and bathrooms, and dust it gently with a soft, dry cloth. Avoid cleaning sprays.</Q>
+                  <Q q="How should I look after my print?">A few general tips: hang it out of direct sunlight to keep the colours bright, keep it away from damp walls and bathrooms, and dust it gently with a soft, dry cloth. Avoid cleaning sprays.</Q>
                 </div>
               </div>
               <div className="fq-group" id="commissions">

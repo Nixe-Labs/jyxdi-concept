@@ -9,18 +9,19 @@ import InviteCard from "@/components/lux/InviteCard";
 import { getLenis } from "@/components/chrome/SmoothScroll";
 import Calendar, { longDate } from "./inquiry/Calendar";
 
-const EVENTS = ["Wedding", "Reception", "Sangeet / Mehndi / Haldi", "Engagement", "Corporate event", "Gala or fundraiser", "Other"];
+const EVENTS = ["Wedding", "Reception", "Haldi", "Mehndi", "Sangeet", "Engagement", "Corporate event", "Gala or fundraiser", "Other"]; // as many as the visitor wants painted
+const SERVICES = ["Hybrid Live Painting", "Fully Live Painting", "Turmeric Magic Art"];
 const GUESTS = ["Under 100", "100–250", "250–500", "500+"];
 const SETTING = ["Indoor", "Outdoor", "Not sure yet"];
 const SUBJECTS = ["The couple", "A ceremony moment", "The first dance", "The venue", "Not sure yet"];
-const SIZES = ["16×20″", "24×30″", "30×40″", "48×60″", "Bigger", "Not sure"];
+const SIZES = ["20×30″", "24×36″", "Bigger", "Not sure"]; // her wedding packages (Akka)
 const HEARD = ["Instagram", "TikTok", "A wedding planner", "A friend or guest", "Google", "Other"];
 
 // the message Jyxdi receives: one line per answer, in this order
 const LINES: [string, string][] = [
-  ["Event", "event"], ["Date", "date"], ["Venue", "venue"], ["City and country", "city"], ["Ceremony or culture", "culture"],
+  ["Events", "event"], ["Services", "service"], ["Date", "date"], ["Venue", "venue"], ["City and country", "city"], ["Ceremony or culture", "culture"],
   ["Guests", "guests"], ["Start time", "start"], ["Hours of painting", "hours"], ["Indoor or outdoor", "setting"],
-  ["Paint", "subject"], ["Canvas size", "size"], ["Budget", "budget"], ["Heard about Jyxdi through", "heard"],
+  ["Paint", "subject"], ["Canvas size", "size"], ["Package deal", "package"], ["Budget", "budget"], ["Heard about Jyxdi through", "heard"],
 ];
 
 const STEPS = [
@@ -41,8 +42,8 @@ const SAY: Record<string, [string, string?]> = {
 const HELP = "Sends through Jyxdi's own contact form on jyxdi.com (it opens in a new tab). Fields marked * are required.";
 const AFTER = "Your inquiry opened on jyxdi.com in a new tab. If a quick check appears there, complete it to send.";
 
-// how the card names the occasion (corporate events and galas are "your event": the person writing isn't the host)
-const OCCASION: Record<string, string> = { Wedding: "wedding", Reception: "reception", "Sangeet / Mehndi / Haldi": "celebration", Engagement: "engagement", Other: "celebration" };
+// how the card names the occasion (corporate events and galas are "your event": the person writing isn't the host; several are "celebrations")
+const OCCASION: Record<string, string> = { Wedding: "wedding", Reception: "reception", Haldi: "haldi", Mehndi: "mehndi", Sangeet: "sangeet", Engagement: "engagement", Other: "celebration" };
 const OUTSIDE: Record<string, string> = { Indoor: "indoors", Outdoor: "outdoors" };
 const clip = (s = "", n = 34) => { const t = s.trim().replace(/\s+/g, " "); return t.length > n ? t.slice(0, n - 1).trimEnd() + "…" : t; };
 const host = (name = "") => { const t = clip(name); return /&|\band\b/i.test(t) ? t : t.split(" ")[0]; }; // "Priya", or "Priya & Arjun"
@@ -55,13 +56,14 @@ function Ink({ text, write = false }: { text: string; write?: boolean }) {
 }
 const Blank = ({ w }: { w: number }) => <span className="fm-blank" style={{ "--w": w } as React.CSSProperties} />;
 
-function Pills({ name, legend, options, first = false, wide = true }: { name: string; legend: string; options: string[]; first?: boolean; wide?: boolean }) {
+function Pills({ name, legend, options, first = false, wide = true, multi = false, children }: { name: string; legend: string; options: string[]; first?: boolean; wide?: boolean; multi?: boolean; children?: React.ReactNode }) {
   return (
     <fieldset className={`fm-pills${wide ? " fm-wide" : ""}`}>
       <legend>{legend}</legend>
       <div className="fm-pills__set">
-        {options.map((o, i) => <label className="fm-pill" key={o}><input type="radio" name={name} value={o} defaultChecked={first && i === 0} /><span>{o}</span></label>)}
+        {options.map((o, i) => <label className="fm-pill" key={o}><input type={multi ? "checkbox" : "radio"} name={name} value={o} defaultChecked={first && i === 0} /><span>{o}</span></label>)}
       </div>
+      {children}
     </fieldset>
   );
 }
@@ -156,7 +158,8 @@ export default function Inquiry() {
   const onChange = (e: React.FormEvent<HTMLFormElement>) => {
     const t = e.target as HTMLInputElement;
     if (!t.name) return;
-    setA((s) => ({ ...s, [t.name]: t.value }));
+    const value = t.type === "checkbox" ? [...form.current!.querySelectorAll<HTMLInputElement>(`input[name="${t.name}"]:checked`)].map((c) => c.value).join(", ") : t.value;
+    setA((s) => ({ ...s, [t.name]: value }));
     if (err[t.name]) setErr((s) => ({ ...s, [t.name]: problem(t) }));
   };
   const pickDate = (d: string) => { setDate(d); setErr((e) => ({ ...e, date: "" })); };
@@ -166,9 +169,9 @@ export default function Inquiry() {
     if (moving.current || step > 2 || !check(step)) return e.preventDefault();
     if (step < 2) { e.preventDefault(); return go(step + 1); }
     const f = new FormData(form.current!);
-    const v = (k: string) => String(f.get(k) ?? "").trim() || "—";
+    const v = (k: string) => f.getAll(k).map(String).join(", ").trim() || "—"; // a set of pills sends every one ticked
     const other = String(f.get("event_other") ?? "").trim(); // only there while "Other" is chosen
-    const val = (k: string) => (k === "event" && other ? `Other: ${other}` : v(k));
+    const val = (k: string) => (k === "event" && other ? v(k).replace("Other", `Other: ${other}`) : v(k));
     const body = ["LIVE PAINTING INQUIRY (sent from the Jyxdi studio site)", "", ...LINES.map(([l, k]) => `${l}: ${val(k)}`), "", "Anything else:", v("notes")];
     (form.current!.querySelector('[name="contact[Comment]"]') as HTMLInputElement).value = body.join("\n");
     setSent(true);
@@ -178,8 +181,9 @@ export default function Inquiry() {
 
   // the card, written from the answers so far
   const who = host(a["contact[Name]"]);
-  const typed = a.event === "Other" ? clip(a.event_other, 26) : ""; // "Other": the card writes what they type
-  const occasion = typed || OCCASION[a.event ?? "Wedding"];
+  const events = (a.event ?? "Wedding").split(", ").filter(Boolean);
+  const typed = events.length === 1 && events[0] === "Other" ? clip(a.event_other, 26) : ""; // "Other": the card writes what they type
+  const occasion = typed || (events.length > 1 ? "celebrations" : OCCASION[events[0]]);
   const occ = typed ? <Ink text={typed} /> : <Ink key={occasion} text={occasion} write />;
   const sub = !occasion ? <>at your <Ink key="event" text="event" write /></>
     : who ? <>for <Ink text={who} />’s {occ}</>
@@ -238,8 +242,8 @@ export default function Inquiry() {
 
             <div className="fm-step" hidden={step !== 1}>
               {head(1)}
-              <Pills name="event" legend="What are you celebrating?" options={EVENTS} first />
-              {a.event === "Other" && <Field id="lp-event-other" name="event_other" label="Tell Jyxdi what it is" placeholder="e.g. an anniversary or a baby shower" defaultValue={a.event_other} wide />}
+              <Pills name="event" legend="What are you celebrating? Choose every event" options={EVENTS} first multi />
+              {events.includes("Other") && <Field id="lp-event-other" name="event_other" label="Tell Jyxdi what it is" placeholder="e.g. an anniversary or a baby shower" defaultValue={a.event_other} wide />}
               <div className="fm-when fm-wide">
                 <fieldset className="fm-date">
                   <legend>The date<span className="fm-req" aria-hidden> *</span><span className="sr-only"> (required)</span></legend>
@@ -266,8 +270,12 @@ export default function Inquiry() {
 
             <div className="fm-step" hidden={step !== 2}>
               {head(2)}
+              <Pills name="service" legend="Which service?" options={SERVICES} multi>
+                <p className="fm-note">Hybrid Live Painting starts digitally and is finished with hand-painted details at the event. Fully Live Painting is painted from start to finish at the event.</p>
+              </Pills>
               <Pills name="subject" legend="What to paint" options={SUBJECTS} />
               <Pills name="size" legend="Canvas size" options={SIZES} />
+              <label className="fm-check fm-wide"><input type="checkbox" name="package" value="Yes, please" /><span>More than one event or service? Ask Jyxdi for a package deal.</span></label>
               <Field id="lp-budget" name="budget" label="Budget (optional)" />
               <Pills name="heard" legend="How did you hear about Jyxdi?" options={HEARD} />
               <div className="fm-field fm-wide"><label htmlFor="lp-notes">Anything else</label><textarea id="lp-notes" name="notes" placeholder="The schedule, the moment you'd love captured, colours, anything" /></div>

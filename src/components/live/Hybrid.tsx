@@ -41,7 +41,7 @@ export default function Hybrid() {
           <h2 id="lp-hy-title" className="c-h2">Designed first,<br /> <em>painted live.</em></h2>
         </FadeIn>
         <FadeIn y={30} delay={0.15}>
-          <p className="lede">Every live painting begins weeks before the day. This one was made for a couple&apos;s Mehndi night: Procreate, then canvas, then her brush, live.</p>
+          <p className="lede">A Hybrid Live Painting starts digitally, weeks before the day, and is finished with hand-painted details at the event. This one was made for a couple&apos;s Mehndi night: Procreate, then canvas, then her brush, live.</p>
           <div className="lp-reels__actions">
             <a className="c-link" href={REEL} target="_blank" rel="noopener">Watch the whole story on Instagram ↗</a>
             {!still && <button type="button" className="lp-pause" onClick={toggle}>{paused ? "Play the films" : "Pause the films"}</button>}

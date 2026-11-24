@@ -4,7 +4,7 @@ import "../styles/commissions.css";
 import BriefForm from "@/components/pages/BriefForm";
 import FadeIn from "@/components/home/FadeIn";
 import Footer from "@/components/chrome/Footer";
-import { WORKS, SIZES, money } from "@/lib/catalog";
+import { PRINT, CANVAS, UV } from "@/lib/catalog";
 import { BASE } from "@/lib/base";
 
 export const metadata: Metadata = {
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 const photo = (name: string, w: number) => `${BASE}/img/${name}-${w}.webp`;
 const srcSet = (name: string) => `${photo(name, 800)} 800w, ${photo(name, 1400)} 1400w`;
-const canvasFrom = (s: string, fin: "Classic" | "UV") => Math.min(...WORKS.map((w) => w.v[`${s}|Canvas|${fin}`]?.[1] ?? Infinity));
-const inches = (s: string) => s.split("x").map(Number);
+// commissions, in Akka's order: each gets its own starting price once she sends them; until then, quoted per project
+const MADE = ["Custom digital artwork", "Original acrylic paintings", "Original oil paintings", "Murals & installations"];
 
 const STEPS = [
   { title: "Send a brief", text: "Tell Jyxdi the idea, the size you have in mind and when you need it. A rough sketch or a reference link helps.", img: "loc-noir-2", alt: "Jyxdi holding up a large graphite drawing", pos: "50% 78%", tpos: "50% 48%" },
@@ -82,37 +82,19 @@ export default function CommissionsPage() {
         </section>
 
         <section className="section cm-scale" data-mood="cream" aria-labelledby="cm-scale-title">
-          <div className="cm-scale__grid">
-            <FadeIn y={24}>
-              <p className="c-kicker">For a sense of scale</p>
-              <h2 id="cm-scale-title" className="c-h2">What canvases <em>cost.</em></h2>
-              <p className="lede">The prices of existing works in the shop, as a guide. Commissions are quoted per project.</p>
-              <table className="cm-table">
-                <caption className="sr-only">Canvas prices in the shop, by size, in Canadian dollars</caption>
-                <thead><tr><th scope="col">Size</th><th scope="col">Canvas</th><th scope="col">UV canvas</th></tr></thead>
-                <tbody>{SIZES.map((s) => {
-                  const [w, h] = inches(s);
-                  return (
-                    <tr key={s}>
-                      <th scope="row">{w} × {h}″<small>{Math.round(w * 2.54)} × {Math.round(h * 2.54)} cm</small></th>
-                      <td><small>from</small>${money(canvasFrom(s, "Classic"))}</td>
-                      <td>${money(canvasFrom(s, "UV"))}</td>
-                    </tr>
-                  );
-                })}</tbody>
-              </table>
-              <p className="cm-scale__note">Prices in CAD. <Link className="c-link" href="/faq/#formats">Poster, canvas or UV canvas? →</Link></p>
-            </FadeIn>
-            <FadeIn as="figure" className="cm-scale__fig" y={40} delay={0.15}>
-              <svg viewBox="0 0 48 60" role="img" aria-label="The four canvas sizes drawn to scale, nested from 16 × 20 up to 48 × 60 inches">
-                {SIZES.map((s) => {
-                  const [w, h] = inches(s);
-                  return <g key={s} className="cm-canvas"><rect x={0} y={60 - h} width={w} height={h} /><text x={w - 1.1} y={60 - h + 2.7} textAnchor="end">{w}×{h}″</text></g>;
-                })}
-              </svg>
-              <figcaption>The four sizes, drawn to scale</figcaption>
-            </FadeIn>
-          </div>
+          <FadeIn className="cm-price" y={24}>
+            <p className="c-kicker">A guide to pricing</p>
+            <h2 id="cm-scale-title" className="c-h2">What a commission <em>costs.</em></h2>
+            <p className="lede">A commission is an original, made once, for you, so it is priced on its own, apart from the prints and canvases of existing works in the shop.</p>
+            <h3>In the shop</h3>
+            <ul>
+              <li><span>Fine Art Prints &amp; canvases</span><b><small>from</small>${PRINT}</b>
+                <p>Reproductions of existing works: a Fine Art Print from ${PRINT}, a Premium Canvas from ${CANVAS}, a Signature UV Glow Canvas from ${UV}. <Link className="c-link" href="/shop/">Shop the collection →</Link></p></li>
+            </ul>
+            <h3>Made for you</h3>
+            <ul>{MADE.map((m) => <li key={m}><span>{m}</span><b className="is-quote">Quoted per project</b></li>)}</ul>
+            <p className="cm-scale__note">Prices in CAD.</p>
+          </FadeIn>
         </section>
 
         <section id="brief" className="section cm-brief" data-mood="burgundy" aria-labelledby="cm-brief-title">
@@ -122,7 +104,7 @@ export default function CommissionsPage() {
                 <p className="c-kicker">Your brief</p>
                 <h2 id="cm-brief-title" className="c-h2">Tell Jyxdi <em>what you see.</em></h2>
                 <p className="lede">A deity, a person, a memory, a feeling, the room it will live in. Send a brief and Jyxdi will be in touch.</p>
-                <ul className="cm-notes"><li>Commissions are quoted per project</li><li>Hand-signed, with a certificate of authenticity</li><li>Sent through Jyxdi’s own contact form on jyxdi.com</li></ul>
+                <ul className="cm-notes"><li>Commissions are quoted per project</li><li>Hand-signed, with a certificate of authenticity</li><li>Brands, PR agencies and sponsors: choose “Brand collaboration”</li><li>Sent through Jyxdi’s own contact form on jyxdi.com</li></ul>
               </FadeIn>
               <Link href="/live-painting/" className="cm-live">
                 <img src={photo("loc-live-paint", 800)} alt="" loading="lazy" decoding="async" />

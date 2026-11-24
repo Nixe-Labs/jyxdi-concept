@@ -103,6 +103,9 @@
 .fm-chosen__day { margin: 2px 0 0; font-family: var(--font-serif); font-size: clamp(26px, 2.2vw, 32px); line-height: 1.1; color: var(--color-ink); white-space: pre-line; } /* the weekday on its own line */
 .fm-chosen__day i { color: var(--color-pencil); }
 .fm-note { margin: -12px 0 0; font-size: 13px; line-height: 1.55; color: var(--color-graphite); }
+.fm-pills .fm-note { margin: 12px 0 0; max-width: 62ch; } /* under a set of pills: what the choices mean */
+.fm-check { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 34px; font-size: 14px; line-height: 1.5; cursor: pointer; }
+.fm-check input { flex: none; width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--p-burgundy); cursor: pointer; }
 
 .fm-cal { min-height: 380px; padding: 16px 14px 12px; border: 1px solid color-mix(in srgb, var(--p-gold) 55%, transparent); border-radius: 18px; background: color-mix(in srgb, var(--p-ink) 2.5%, var(--p-cream)); }
 .fm-cal__head { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; margin-bottom: 6px; }

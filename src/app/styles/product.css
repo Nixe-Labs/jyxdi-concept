@@ -210,15 +210,6 @@ html:not([data-mood="black"]) :is(.px-light, .px-pool), html:not([data-mood="bla
 .px-arrive__list p { margin: 0 auto; max-width: 30ch; font-size: 15px; line-height: 1.65; color: var(--color-graphite); }
 .px-arrive__line { margin: clamp(70px, 11vh, 120px) auto 0; max-width: 26ch; font-family: var(--font-serif); font-style: italic; font-size: clamp(32px, 3.3vw, 54px); line-height: 1.12; letter-spacing: -.01em; color: var(--accent); }
 
-/* ── 4 · under blacklight (black) ── */
-.px-uvroom { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 56px clamp(48px, 7vw, 120px); min-height: 100svh; max-width: 1320px; margin: 0 auto; padding: clamp(110px, 15vh, 170px) var(--gutter); }
-.px-uvroom__stage { justify-self: end; width: min(100%, 520px); }
-.px-uvroom__stage .px-uvs { border-radius: var(--radius); box-shadow: 0 0 0 1px var(--hair), 0 60px 100px -50px rgb(34 27 29 / .95); }
-.px-uvroom__copy { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; max-width: 520px; } /* a wide button can't widen the column */
-@media (max-width: 420px) { .px-uvroom__copy .btn { white-space: normal; line-height: 1.3; padding-block: 12px; } }
-.px-uvroom__copy .lede { margin: 22px 0 30px; }
-.px-uvroom__hint { margin: 14px 0 34px; font-size: 12px; letter-spacing: .06em; color: var(--color-pencil); }
-
 /* the blacklight torch (UvStage) */
 .px-uvs { --mx: 50%; --my: 40%; --r: 0px; position: relative; aspect-ratio: 1092 / 1367; overflow: hidden; touch-action: pan-y; -webkit-user-select: none; user-select: none; background: var(--p-ink); }
 .px-uvs__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
@@ -268,25 +259,19 @@ html:not([data-mood="black"]) :is(.px-light, .px-pool), html:not([data-mood="bla
   .px-seg__opt { min-height: 56px; padding: 8px 2px; }
   .px-seg__opt b { font-size: 13px; }
   .px-seg__opt small { font-size: 10.5px; }
-  .px-notes__top, .px-notes__bottom, .px-uvroom { grid-template-columns: minmax(0, 1fr); }
+  .px-notes__top, .px-notes__bottom { grid-template-columns: minmax(0, 1fr); }
   .px-notes__about { position: static; }
   .px-dl__sizes { grid-template-columns: max-content; }
   .px-arrive { min-height: 0; }
   .px-arrive__list { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .px-arrive__list li { padding: 0; }
   .px-arrive__list li + li { padding-top: 40px; border-left: 0; border-top: 1px solid var(--hair); }
-  .px-uvroom { min-height: 0; }
-  .px-uvroom__stage { justify-self: center; }
   .px-more { min-height: 0; }
   .px-buybar { display: flex; }
 }
 @media (prefers-reduced-motion: reduce) {
   .px-seg__row::before, .px-piece, .px-piece .lux-frame__mat img, .px-piece .px-uvs, .px-toggle::before, .px-buybar { transition: none; }
 }
-
-/* the UV room is a black panel inside the cream page (one night per page: the viewing room) */
-.px-uvwrap { padding: clamp(40px, 8vh, 90px) var(--edge); }
-.px-uvwrap .px-uvroom { min-height: 0; max-width: 1180px; border-radius: var(--radius-lg); padding: clamp(56px, 9vh, 104px) clamp(24px, 5vw, 80px); } /* a contained dark card, not a second night */
 
 /* a photo of the painting out in the world (SCENES): shown as a photograph, unframed and not to scale,
    so a frame never goes round a room or around her */

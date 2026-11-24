@@ -92,40 +92,20 @@
   .cm-card h3 { font-size: 32px; margin-bottom: 10px; }
 }
 
-/* ── for a sense of scale (gold): the shop's canvas prices, and the four sizes drawn to scale ── */
+/* ── a guide to pricing (Akka): commissions apart from the reproductions in the shop, each with its own starting price ── */
 .cm-scale { display: grid; align-content: center; min-height: 86vh; }
-.cm-scale__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(40px, 7vw, 120px); width: 100%; max-width: 1320px; margin: 0 auto; }
-.cm-scale .lede { margin: 22px 0 0; }
-.cm-table { width: 100%; margin-top: clamp(28px, 5vh, 48px); border-collapse: collapse; font-variant-numeric: lining-nums tabular-nums; }
-.cm-table th, .cm-table td { padding: 16px 14px 16px 0; border-bottom: 1px solid var(--line-2); text-align: left; font-weight: 400; vertical-align: baseline; }
-.cm-table thead th { padding-block: 0 12px; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--color-pencil); }
-.cm-table tbody th { font-family: var(--font-serif); font-size: clamp(26px, 2.3vw, 36px); line-height: 1; white-space: nowrap; }
-.cm-table small { display: block; margin-top: 6px; font-family: var(--font-sans); font-size: 12px; letter-spacing: .06em; color: var(--color-graphite); }
-.cm-table td { font-family: var(--font-serif); font-size: clamp(22px, 1.8vw, 28px); white-space: nowrap; text-align: right; }
-.cm-table thead th + th { text-align: right; }
-.cm-table td small { display: inline; margin: 0 4px 0 0; }
-.cm-table :is(th, td):last-child { padding-right: 0; }
-.cm-table tbody tr { transition: background-color .4s; }
+.cm-price { width: 100%; max-width: 980px; margin: 0 auto; }
+.cm-scale .lede { margin: 22px 0 0; max-width: 54ch; }
+.cm-price h3 { margin: clamp(40px, 6vh, 60px) 0 0; padding-bottom: 12px; border-bottom: 1px solid var(--line-2); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--color-pencil); }
+.cm-price ul { margin: 0; padding: 0; list-style: none; font-variant-numeric: lining-nums tabular-nums; }
+.cm-price li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding: 18px 0; border-bottom: 1px solid var(--line-2); }
+.cm-price li > span { font-family: var(--font-serif); font-size: clamp(26px, 2.3vw, 36px); line-height: 1.1; }
+.cm-price li > b { font-family: var(--font-serif); font-weight: 400; font-size: clamp(22px, 1.8vw, 28px); white-space: nowrap; }
+.cm-price li > b.is-quote { font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--color-graphite); }
+.cm-price li small { margin-right: 4px; font-family: var(--font-sans); font-size: 12px; letter-spacing: .06em; color: var(--color-graphite); }
+.cm-price li p { flex: 1 1 100%; margin: 0; font-size: 14px; line-height: 1.6; color: var(--color-graphite); }
 .cm-scale__note { margin: 18px 0 0; font-size: 13px; line-height: 1.6; color: var(--color-graphite); }
-.cm-scale__fig { justify-self: center; width: min(100%, calc(min(64vh, 560px) * .8)); margin: 0; } /* the drawing is 48 × 60: sized by the screen height so it always fits */
-.cm-scale__fig svg { display: block; width: 100%; height: auto; overflow: visible; }
-.cm-scale__fig figcaption { margin-top: 18px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-graphite); }
-.cm-canvas rect { fill: transparent; stroke: var(--deco); stroke-width: 1px; vector-effect: non-scaling-stroke; transition: fill .45s var(--ease), stroke-width .45s; }
-.cm-canvas text { font-family: var(--font-sans); font-size: 1.7px; font-weight: 600; letter-spacing: .08px; fill: var(--color-ink); }
-/* hover a row, and its canvas lights up in the drawing */
-@media (hover: hover) {
-  .cm-table tbody tr:hover { background: var(--color-paper-2); }
-  .cm-scale:has(tbody tr:nth-child(1):hover) .cm-canvas:nth-child(1) rect,
-  .cm-scale:has(tbody tr:nth-child(2):hover) .cm-canvas:nth-child(2) rect,
-  .cm-scale:has(tbody tr:nth-child(3):hover) .cm-canvas:nth-child(3) rect,
-  .cm-scale:has(tbody tr:nth-child(4):hover) .cm-canvas:nth-child(4) rect { fill: color-mix(in srgb, var(--p-ink) 9%, transparent); stroke-width: 2px; }
-}
-@media (max-width: 899px) {
-  .cm-scale { min-height: 0; }
-  .cm-scale__grid { grid-template-columns: minmax(0, 1fr); }
-  .cm-scale__fig { order: -1; justify-self: start; width: min(100%, 300px); }
-  .cm-table th, .cm-table td { padding-right: 8px; }
-}
+@media (max-width: 899px) { .cm-scale { min-height: 0; } }
 
 /* ── the brief (burgundy), written on a cream card ── */
 .cm-brief__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; gap: clamp(36px, 6vw, 110px); max-width: 1320px; margin: 0 auto; }

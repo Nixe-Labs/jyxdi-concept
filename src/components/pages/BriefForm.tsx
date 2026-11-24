@@ -4,7 +4,7 @@
    brief composed into the message. No backend needed. */
 import { useRef, useState } from "react";
 
-const KINDS = ["Painting", "Mural", "Digital art", "Installation", "Not sure yet"];
+const KINDS = ["Original acrylic painting", "Original oil painting", "Custom digital artwork", "Mural or installation", "Brand collaboration", "Not sure yet"];
 const SIZES = ["16×20″", "24×30″", "30×40″", "48×60″", "Bigger", "Not sure"];
 const BUDGETS = ["Under $500", "$500 – $1,500", "$1,500 – $3,000", "$3,000+", "Not sure yet"];
 

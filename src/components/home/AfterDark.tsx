@@ -1,11 +1,18 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FadeIn from "./FadeIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+export const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+// the room lights cut, then the tube strikes, catches twice and settles (~1.2s): UvRoom's switch and the formats scene's (Lives.tsx)
+export const strike = (l: { dark: number; uv: number }, paint: () => void) => gsap.timeline({ onUpdate: paint })
+  .to(l, { dark: 1, duration: 0.16, ease: "power1.in" })
+  .to(l, { uv: 0.8, duration: 0.04 }, "+=0.14").to(l, { uv: 0.08, duration: 0.06 })
+  .to(l, { uv: 0.65, duration: 0.04 }, "+=0.09").to(l, { uv: 0.2, duration: 0.07 })
+  .to(l, { uv: 1, duration: 0.55, ease: "power2.out" }, "+=0.05");
 
 /** Blacklight torch over an aligned daylight/blacklight photo pair (styled in product.css, px-uvs).
     The pointer (or a finger) carries a circle of UV light; `full` spreads that circle over the whole painting. */
@@ -68,6 +75,72 @@ export function UvStage({ full, className = "", day, uv, alt }: { full: boolean;
       <span className="px-uvs__tag px-uvs__tag--l" aria-hidden>Daylight</span>
       <span className="px-uvs__tag px-uvs__tag--r" aria-hidden>Blacklight</span>
     </div>
+  );
+}
+
+/** The blacklight room, full screen (styled in product.css, uvr): the painting on a lit gallery wall and a dimmer from
+    daylight to blacklight. Dragging takes the room lights down as the UV tube comes up; "Lights off" flips it at once,
+    the room going dark first and the tube flickering on the way real ones do. `head` is the words beside the painting,
+    `children` what follows them (on phones, after the painting). */
+export function UvRoom({ day, uv, alt, head, children, ...rest }:
+  { day: string; uv: string; alt: string; head: React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>) {
+  const root = useRef<HTMLElement>(null);
+  const lit = useRef({ dark: 0, uv: 0 }); // the room lights going down, the UV tube coming up: 0 to 1
+  const touched = useRef(false);
+  const [level, setLevel] = useState(0); // the dimmer: 0 daylight to 100 blacklight
+  const paint = () => {
+    const s = root.current?.style, l = lit.current;
+    s?.setProperty("--dark", l.dark.toFixed(3)); s?.setProperty("--uv", l.uv.toFixed(3));
+  };
+  const take = () => { touched.current = true; gsap.killTweensOf(lit.current); };
+  const dim = (v: number) => { take(); lit.current.dark = lit.current.uv = v / 100; paint(); setLevel(v); };
+  const flip = () => {
+    take();
+    const l = lit.current, off = level < 100;
+    setLevel(off ? 100 : 0);
+    if (still()) { l.dark = l.uv = off ? 1 : 0; paint(); return; }
+    if (!off) { gsap.to(l, { dark: 0, uv: 0, duration: 0.8, ease: "power2.inOut", onUpdate: paint }); return; }
+    strike(l, paint);
+  };
+
+  // the first time the room comes into view the dimmer breathes once, down a little and back, to show what it does
+  // (under 5s: WCAG 2.2.2); never once the visitor has it, never with reduced motion
+  useEffect(() => {
+    if (still()) return;
+    const l = lit.current;
+    const st = ScrollTrigger.create({ trigger: root.current, start: "top 55%", once: true, onEnter: () => {
+      if (!touched.current) gsap.to(l, { dark: 0.4, uv: 0.4, duration: 1.2, delay: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1, onUpdate: () => { paint(); setLevel(Math.round(l.uv * 100)); } });
+    } });
+    return () => { st.kill(); gsap.killTweensOf(l); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <section ref={root} className="uvr mood-black" data-mood="black" {...rest}>
+      <span className="uvr__lamp" aria-hidden />
+      <span className="uvr__cast" aria-hidden />
+      <div className="uvr__copy">{head}</div>
+      <FadeIn className="uvr__stage" y={40}>
+        <span className="uvr__tube" aria-hidden />
+        <img className="uvr__bloom" src={uv} alt="" aria-hidden loading="lazy" decoding="async" />
+        <span className="lux-frame uvr__frame">
+          <span className="lux-frame__mat">
+            <img className="uvr__art" src={day} alt={`${alt}, in daylight`} loading="lazy" decoding="async" draggable={false} />
+            <img className="uvr__glow" src={uv} alt={`${alt}, under blacklight`} loading="lazy" decoding="async" draggable={false} />
+          </span>
+        </span>
+        <div className="uvr__controls">
+          <div className="uvr__dimmer">
+            <span aria-hidden>Daylight</span>
+            <input type="range" className="uvr__range" min={0} max={100} value={level} onChange={(e) => dim(Number(e.target.value))}
+              aria-label="Lighting, from daylight to blacklight" aria-valuetext={level === 0 ? "Daylight" : level === 100 ? "Blacklight" : `${level}% blacklight`} />
+            <span aria-hidden>Blacklight</span>
+          </div>
+          <button type="button" className="uvr__switch" onClick={flip}>{level === 100 ? "Lights on" : "Lights off"}</button>
+        </div>
+      </FadeIn>
+      {children && <div className="uvr__cta">{children}</div>}
+    </section>
   );
 }
 

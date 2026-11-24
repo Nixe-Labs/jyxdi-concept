@@ -1,0 +1,45 @@
+/* ── the blacklight room, full screen (UvRoom in AfterDark.tsx; the homepage and a product page): a dimmer takes it from gallery light to blacklight.
+   --dark (the room lights going down) and --uv (the tube coming up) run 0 to 1: the dimmer moves them together, the
+   switch lets the room go dark first and the tube flicker on after ── */
+.uvr { --dark: 0; --uv: 0; --uv-tint: 50 70 220; position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: "copy stage" "cta stage"; align-content: center; column-gap: clamp(40px, 6vw, 110px); min-height: 100svh; padding: clamp(100px, 14vh, 150px) max(var(--gutter), calc((100% - 1320px) / 2)) clamp(60px, 9vh, 100px); background: #0b0810; color: var(--p-cream); }
+.uvr__lamp, .uvr__cast { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.uvr__lamp { background: radial-gradient(ellipse 50% 70% at 72% 50%, #9c8371 0%, #5c4b41 38%, #2e2521 72%, #1a1412 100%); opacity: calc(1 - var(--dark)); } /* the gallery lights: a warm pool on the painting */
+.uvr__cast { background: radial-gradient(ellipse 55% 50% at 72% 12%, rgb(var(--uv-tint) / .5), rgb(26 35 162 / .28) 45%, transparent 75%); opacity: var(--uv); } /* the tube's blue on the wall: the one blacklight colour, from the painting's blacklight photo (as lives.css) */
+.uvr__copy { grid-area: copy; align-self: end; max-width: 500px; }
+.uvr__copy .lede { margin: 22px 0 0; color: color-mix(in srgb, var(--p-cream) 84%, transparent); }
+.uvr__hint { margin: 16px 0 0; font-size: 12px; letter-spacing: .06em; color: color-mix(in srgb, var(--p-cream) 60%, transparent); }
+.uvr__cta { grid-area: cta; align-self: start; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 32px; }
+.uvr__cta .btn { white-space: normal; line-height: 1.3; padding-block: 12px; } /* the long format name wraps rather than spill out of its column */
+.uvr__stage { grid-area: stage; position: relative; display: grid; justify-items: center; gap: 30px; padding-top: 52px; }
+.uvr__tube { position: absolute; top: 16px; left: 50%; width: min(60%, 290px); height: 5px; border-radius: 5px; transform: translateX(-50%); background: rgb(243 236 223 / .16); }
+.uvr__tube::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: #dfe4ff; box-shadow: 0 0 14px 4px rgb(110 130 255 / .9), 0 0 70px 24px rgb(var(--uv-tint) / .45); opacity: var(--uv); }
+.uvr__bloom { position: absolute; z-index: -1; top: 52px; left: 50%; width: min(125%, 580px); max-width: none; transform: translateX(-50%); filter: blur(70px) saturate(1.5); opacity: calc(var(--uv) * .7); pointer-events: none; }
+.uvr__frame { width: min(100%, 460px, 50svh); }
+.uvr__frame::after { content: ""; position: absolute; inset: 0; border: var(--fw) solid #0b0810; border-radius: inherit; opacity: calc(var(--dark) * .72); pointer-events: none; } /* the gold goes dark with the room */
+.uvr .lux-frame__mat::before, .uvr .lux-frame__mat::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.uvr .lux-frame__mat::before { background: #0b0810; opacity: calc(var(--dark) * .7); }
+.uvr .lux-frame__mat::after { background: radial-gradient(circle at 50% 40%, #dfe4ff, #a3b1ff); opacity: calc(var(--uv) * .8); } /* paper glows under UV */
+.uvr .lux-frame__mat img { position: relative; z-index: 1; -webkit-user-drag: none; }
+.uvr__art { filter: brightness(calc(1 - var(--dark) * .85)); }
+.uvr .lux-frame__mat .uvr__glow { position: absolute; z-index: 2; top: var(--mat); left: var(--mat); width: calc(100% - 2 * var(--mat)); height: calc(100% - 2 * var(--mat)); opacity: var(--uv); }
+.uvr__controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 22px; width: min(100%, 540px); }
+.uvr__dimmer { display: flex; flex: 1 1 280px; align-items: center; gap: 14px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: color-mix(in srgb, var(--p-cream) 66%, transparent); }
+.uvr__range { flex: 1; min-width: 0; height: 44px; margin: 0; background: none; cursor: pointer; -webkit-appearance: none; appearance: none; }
+.uvr__range::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, #f0d7a2, rgb(var(--uv-tint))); }
+.uvr__range::-moz-range-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, #f0d7a2, rgb(var(--uv-tint))); }
+.uvr__range::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -12px; border-radius: 50%; border: 2px solid var(--p-gold); background: var(--p-cream); box-shadow: 0 0 calc(4px + var(--uv) * 24px) rgb(var(--uv-tint) / calc(.2 + var(--uv) * .7)); }
+.uvr__range::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--p-gold); background: var(--p-cream); box-shadow: 0 0 calc(4px + var(--uv) * 24px) rgb(var(--uv-tint) / calc(.2 + var(--uv) * .7)); }
+.uvr__range:focus-visible { outline: 2px solid var(--p-cream); outline-offset: 4px; border-radius: 4px; }
+.uvr__switch { min-height: 48px; padding: 0 24px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--p-cream) 42%, transparent); background: rgb(11 8 16 / .3); font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--p-cream); box-shadow: 0 0 calc(var(--uv) * 26px) rgb(var(--uv-tint) / .6); }
+@media (hover: hover) { .uvr__switch:hover { background: var(--p-cream); color: var(--p-ink); } }
+
+@media (max-width: 899px) {
+  /* the blacklight room stacks: the words, the painting with its dimmer, then the button */
+  .uvr { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "stage" "cta"; min-height: 0; padding-block: clamp(90px, 12vh, 120px) 72px; }
+  .uvr__copy { align-self: start; }
+  .uvr__stage { margin-top: 24px; }
+  .uvr__frame { width: min(100%, 400px, 54svh); }
+  .uvr__lamp { background: radial-gradient(ellipse 90% 50% at 50% 58%, #9c8371 0%, #5c4b41 38%, #2e2521 72%, #1a1412 100%); }
+  .uvr__cast { background: radial-gradient(ellipse 90% 40% at 50% 36%, rgb(var(--uv-tint) / .5), rgb(26 35 162 / .28) 45%, transparent 75%); }
+  .uvr__cta { margin-top: 36px; }
+}

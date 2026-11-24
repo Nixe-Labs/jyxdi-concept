@@ -11,7 +11,7 @@ import { InviteScene, ShopScene } from "./CurtainScenes";
 const WAIT = 8; // seconds before the homepage opens by itself (held while the visitor moves around or tabs through)
 const WORLDS = [
   { key: "invite", href: "/live-painting/", kicker: "Weddings · Booking 2027 & 2028", title: "Book live painting", go: "Check your date" },
-  { key: "shop", href: "/shop/", kicker: "Prints & canvases", title: "Shop the collection", go: "Browse the works" },
+  { key: "shop", href: "/shop/", kicker: "Fine Art Prints & Canvases", title: "Shop the collection", go: "Browse the works" },
 ] as const;
 type Go = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 let runs = 0; // which run of the opening is the current one (see the cleanup)

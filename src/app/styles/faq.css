@@ -49,7 +49,7 @@ html:has(.fq-top) { scroll-padding-top: calc(var(--nav-h) + 28px); }
 .fq-acc th, .fq-acc td { padding: 13px 12px 13px 0; border-bottom: 1px solid var(--line); text-align: right; font-weight: 400; white-space: nowrap; vertical-align: baseline; }
 .fq-acc :is(th, td):first-child { text-align: left; }
 .fq-acc :is(th, td):last-child { padding-right: 0; }
-.fq-acc thead th { padding-top: 4px; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--color-pencil); }
+.fq-acc thead th { white-space: normal; padding-top: 4px; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--color-pencil); }
 .fq-acc tbody th { font-family: var(--font-serif); font-size: 22px; line-height: 1; color: var(--color-ink); }
 .fq-acc tbody th small { display: block; margin-top: 5px; font-family: var(--font-sans); font-size: 11px; letter-spacing: .06em; color: var(--color-pencil); }
 .fq-acc td { font-size: 15px; color: var(--color-ink); }

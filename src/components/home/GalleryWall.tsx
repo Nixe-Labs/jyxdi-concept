@@ -14,8 +14,10 @@ const ITEMS = HANG.map(([slug, h, drop, tone, mat]) => ({ w: bySlug(slug) as Wor
 const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const frameOf = (el: Element) => el.querySelector<HTMLElement>(".lux-frame")!;
 
-/** The gallery wall, in the black room: framed works hanging from a picture rail. On desktop the wall pins and you
-    walk along it as you scroll; elsewhere you swipe. Hover lifts and swings a work; a click lifts it off its hook
+/** The gallery wall, in the black room: framed works hanging from a picture rail. The walk is the visitor's choice
+    (Akka): until "Explore the Gallery", desktop shows the first works on a still wall the page scrolls straight past, and
+    phones only the words and the two choices. Explored, the wall pins on desktop and you walk along it as you scroll;
+    elsewhere you swipe. Hover lifts and swings a work; a click lifts it off its hook
     while the room falls away, and the frame glides into the work's own viewing room (a shared view transition). */
 export default function GalleryWall() {
   const root = useRef<HTMLElement>(null), stage = useRef<HTMLDivElement>(null), track = useRef<HTMLUListElement>(null);
@@ -23,20 +25,41 @@ export default function GalleryWall() {
   const [hovering, setHovering] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [swipe, setSwipe] = useState(false);
+  const [open, setOpen] = useState(false); // the visitor chose "Explore the Gallery" (remembered for the visit, so Back lands where the walk was)
+  const go = useRef(false); // ...just now: bring the gallery into view
   const walk = useRef<ScrollTrigger | null>(null);
+  const items = open ? ITEMS : ITEMS.slice(0, 4); // the still wall shows only what fits on screen, so focus never lands on a hidden work
 
   useEffect(() => {
+    try { if (sessionStorage.getItem("jx-gallery") === "open") setOpen(true); } catch {}
+    const mm = gsap.matchMedia();
+    mm.add("(max-width: 899px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)", () => { setSwipe(true); return () => setSwipe(false); });
+    return () => mm.revert();
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
     const mm = gsap.matchMedia();
     mm.add("(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
       const t = track.current!, s = stage.current!;
       const dist = () => Math.max(0, t.scrollWidth - s.clientWidth);
       const tw = gsap.to(t, { x: () => -dist(), ease: "none", scrollTrigger: { trigger: root.current, start: "top top", end: () => `+=${dist()}`, pin: true, scrub: 0.8, invalidateOnRefresh: true } });
       walk.current = tw.scrollTrigger ?? null;
+      // made after the rest, it must still be measured in page order: after the films' pin above it, before what its pin pushes down
+      ScrollTrigger.sort(); ScrollTrigger.refresh();
+      if (go.current) { const l = getLenis(), y = walk.current!.start; if (l) l.scrollTo(y, { duration: 1.1 }); else scrollTo({ top: y }); }
       return () => { walk.current = null; tw.scrollTrigger?.kill(); tw.kill(); };
     });
-    mm.add("(max-width: 899px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)", () => { setSwipe(true); return () => setSwipe(false); });
+    if (go.current && swipe) root.current!.scrollIntoView({ behavior: still() ? "auto" : "smooth" });
+    go.current = false;
     return () => mm.revert();
-  }, []);
+  }, [open, swipe]);
+
+  const explore = () => {
+    try { sessionStorage.setItem("jx-gallery", "open"); } catch {}
+    go.current = true; setOpen(true);
+    requestAnimationFrame(() => track.current!.querySelector("a")?.focus({ preventScroll: true })); // the button goes: focus moves on to the first work
+  };
 
   // swiping: the caption follows the work in the middle of the wall
   useEffect(() => {
@@ -44,12 +67,13 @@ export default function GalleryWall() {
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setHover(Number((e.target as HTMLElement).dataset.i)); }), { root: stage.current, rootMargin: "0px -49%" });
     track.current!.querySelectorAll("li").forEach((li) => io.observe(li));
     return () => io.disconnect();
-  }, [swipe]);
+  }, [swipe, open]);
 
   // keyboard: a work that takes focus comes to the middle of the wall (the walk scrolls to it, or the strip swipes to it)
   const reveal = (i: number, a: HTMLAnchorElement) => {
     setHover(i);
     if (!a.matches(":focus-visible")) return; // a click also focuses: the work is already in view
+    if (!open) return; // the still wall: what can take focus is already on screen
     const li = a.closest("li")!, s = walk.current;
     if (!s) { li.scrollIntoView({ inline: "center", block: "nearest", behavior: still() ? "auto" : "smooth" }); return; }
     const dist = track.current!.scrollWidth - stage.current!.clientWidth;
@@ -90,7 +114,7 @@ export default function GalleryWall() {
 
   const cur = ITEMS[hover].w;
   return (
-    <section ref={root} className={`lx-wall ${swipe ? "is-swipe" : ""} ${hovering ? "is-hovering" : ""} ${leaving ? "is-leaving" : ""}`} data-mood="black" onPointerMove={spot} aria-labelledby="wall-title">
+    <section ref={root} className={`lx-wall ${swipe ? "is-swipe" : ""} ${open ? "is-open" : ""} ${hovering ? "is-hovering" : ""} ${leaving ? "is-leaving" : ""}`} data-mood="black" onPointerMove={spot} aria-labelledby="wall-title">
       <div className="lx-wall__head">
         <div>
           <p className="c-kicker">The collection · Framed and hung</p>
@@ -100,7 +124,7 @@ export default function GalleryWall() {
       </div>
       <div className="lx-wall__stage" ref={stage}>
         <ul className="lx-wall__track" ref={track}>
-          {ITEMS.map(({ w, h, drop, tone, mat }, i) => (
+          {items.map(({ w, h, drop, tone, mat }, i) => (
             <li key={w.slug} data-i={i} className={`lx-wall__item ${hover === i ? "is-hover" : ""}`} style={{ ["--h" as string]: `${h}px`, ["--drop" as string]: `${drop}px`, ["--ar" as string]: w.ar }}>
               <Link href={`/shop/${w.slug}/`} transitionTypes={["art-open"]} className="lx-wall__piece" aria-label={`${w.t}: view the work`}
                 onPointerEnter={(e) => enter(i, e)} onPointerMove={tilt} onPointerLeave={leave} onFocus={(e) => reveal(i, e.currentTarget)} onClick={(e) => choose(i, e.currentTarget)}>
@@ -119,8 +143,13 @@ export default function GalleryWall() {
       <div className="lx-wall__foot">
         <p className="lx-wall__caption" aria-live="polite"><b>{cur.t}</b>{CAT_LABEL[cur.c]} · <span className="only-fine">Click</span><span className="only-touch">Tap</span> to view</p>
         <div className="lx-wall__ctas">
-          <div className="lx-wall__nav"><button aria-label="Previous works" onClick={() => nudge(-1)}>←</button><button aria-label="More works" onClick={() => nudge(1)}>→</button></div>
-          <Link href="/shop/" className="btn btn--line"><span>Explore all {WORKS.length} works</span><i>→</i></Link>
+          {open ? <>
+            <div className="lx-wall__nav"><button aria-label="Previous works" onClick={() => nudge(-1)}>←</button><button aria-label="More works" onClick={() => nudge(1)}>→</button></div>
+            <Link href="/shop/" className="btn btn--line"><span>Explore all {WORKS.length} works</span><i>→</i></Link>
+          </> : <>
+            <button type="button" className="btn btn--gold" onClick={explore}><span>Explore the Gallery</span><i aria-hidden>→</i></button>
+            <Link href="/shop/#paintings" className="btn btn--line"><span>Shop All Artwork</span><i>→</i></Link>
+          </>}
         </div>
       </div>
     </section>

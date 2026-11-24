@@ -4,6 +4,7 @@ import ProductView from "@/components/shop/ProductView";
 import Footer from "@/components/chrome/Footer";
 import { WORKS, bySlug, largest, fromPrice } from "@/lib/catalog";
 import "@/app/styles/product.css";
+import "@/app/styles/uvroom.css";
 
 export function generateStaticParams() {
   return WORKS.map((w) => ({ slug: w.slug }));
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: PageProps<"/shop/[slug]">): P
   if (!w) return {};
   return {
     title: w.t,
-    description: `${w.d} Art prints, canvases and UV canvases with a hand-signed certificate of authenticity, from $${fromPrice(w)} CAD.`,
+    description: `${w.d} Fine Art Prints, Premium Canvases and Signature UV Glow Canvases, each with a hand-signed certificate of authenticity, from $${fromPrice(w)} CAD.`,
     openGraph: { title: `${w.t} · Jyxdi`, images: [largest(w)] },
   };
 }

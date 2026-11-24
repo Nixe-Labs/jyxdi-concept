@@ -1,13 +1,13 @@
 /* ══════════════════════════════════════════════════════════════
    SHOP · THE COLLECTION (prefix sx-)
-   Daylight into night: the collection on cream (one work hung beside
-   the words, the glass toolbar, every work), three ways to own one on
-   burgundy, the manga glowing in the black room, then the footer.
+   Daylight into night: the head on cream (one work hung beside the
+   words), every painting three ways on burgundy (the scene, lives.css),
+   back to cream for the glass toolbar and every work, the manga glowing
+   in the black room, then the footer.
    Sections never paint a background: the page's mood does (lux.css).
    ══════════════════════════════════════════════════════════════ */
 
 /* ── 1 · the head: the words, and one work hung on the wall beside them ── */
-.sx-coll { padding-bottom: clamp(100px, 15vh, 180px); }
 .sx-head { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: center; gap: clamp(32px, 5vw, 96px); max-width: 1440px; margin: 0 auto; padding: clamp(10px, 2.4vh, 30px) var(--gutter) clamp(36px, 6vh, 72px); }
 .sx-head .crumbs { margin-bottom: clamp(24px, 4.6vh, 48px); }
 .sx-title { margin: 0 0 clamp(22px, 3.6vh, 34px); font-family: var(--font-serif); font-weight: 400; font-size: clamp(60px, 8.6vw, 144px); line-height: .9; letter-spacing: -.025em; }
@@ -15,6 +15,7 @@
 .sx-line > * { display: inline-block; }
 .sx-title em { font-style: italic; padding-right: .06em; color: var(--accent); }
 .sx-lede.lede { margin: 0; max-width: 46ch; }
+.sx-skip { display: flex; flex-wrap: wrap; gap: 12px 30px; margin: clamp(20px, 3.2vh, 30px) 0 0; }
 .sx-promise { display: grid; gap: 10px; max-width: 520px; margin: clamp(26px, 4.6vh, 44px) 0 0; padding: 22px 0 0; border-top: 1px solid var(--hair); list-style: none; font-size: 11px; line-height: 1.5; letter-spacing: .2em; text-transform: uppercase; color: var(--color-graphite); }
 .sx-promise li { display: flex; gap: 10px; }
 .sx-promise li::before { content: "✦"; color: var(--deco); }
@@ -35,9 +36,10 @@
 @media (prefers-reduced-motion: no-preference) {
   .sx-line > * { animation: sx-up 1.3s var(--ease) both; }
   .sx-line + .sx-line > * { animation-delay: .11s; }
-  .sx-head .crumbs, .sx-head .c-kicker, .sx-lede, .sx-promise, .sx-feature .lx-plaque { animation: sx-rise 1.2s var(--ease) both; }
+  .sx-head .crumbs, .sx-head .c-kicker, .sx-lede, .sx-skip, .sx-promise, .sx-feature .lx-plaque { animation: sx-rise 1.2s var(--ease) both; }
   .sx-head .c-kicker { animation-delay: .05s; }
   .sx-lede { animation-delay: .32s; }
+  .sx-skip { animation-delay: .38s; }
   .sx-promise { animation-delay: .44s; }
   .sx-feature .lx-plaque { animation-delay: .6s; }
   /* once the page has arrived, the work settles on its hook (starts square, so a glide back lands true) */
@@ -47,7 +49,12 @@
 @keyframes sx-rise { from { opacity: 0; transform: translateY(24px); } }
 @keyframes sx-settle { 0%, 100% { rotate: 0deg; } 14% { rotate: 1.7deg; } 37% { rotate: -1.15deg; } 60% { rotate: .6deg; } 81% { rotate: -.22deg; } }
 
-/* ── the toolbar: a glass pill under the nav, which takes the nav's place while the nav is away ── */
+/* ── 2 · every painting, three ways (burgundy): the scene is Lives, styled in lives.css ── */
+
+/* ── 3 · the paintings, back on cream (#paintings): the toolbar, then every work ── */
+.sx-works { padding-bottom: clamp(100px, 15vh, 180px); } /* in the cream part, so coming back up from the manga turns cream on time */
+
+/* the toolbar: a glass pill under the nav, which takes the nav's place while the nav is away */
 .sx-bar.toolbar { top: var(--nav-h); width: min(1320px, calc(100% - 2 * var(--edge))); margin: 0 auto; border: 1px solid var(--line); border-radius: 999px; background-color: color-mix(in srgb, var(--color-paper) 90%, transparent); /* denser than --glass: small text stays ≥ 4.5:1 over the darkest painting */ box-shadow: 0 14px 36px -26px rgb(34 27 29 / .55); transition: top .5s var(--ease); }
 html:has(.nav.is-hidden) .sx-bar.toolbar { top: 12px; }
 .sx-bar__in { display: flex; align-items: center; gap: 8px 12px; padding: 6px; }
@@ -74,7 +81,7 @@ html:has(.nav.is-hidden) .sx-bar.toolbar { top: 12px; }
 .sx-sort select option { background: var(--color-paper); color: var(--color-ink); text-transform: none; }
 .sx-count { flex: none; margin: 0 14px 0 4px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; color: var(--color-graphite); font-variant-numeric: tabular-nums; }
 
-/* ── the works: three to a row, a gallery's breathing room around each ── */
+/* the works: three to a row, a gallery's breathing room around each */
 .sx-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(60px, 8vh, 96px) clamp(22px, 3.2vw, 52px); max-width: 1440px; margin: 0 auto; padding: clamp(48px, 8vh, 90px) var(--gutter) 0; }
 /* the picture light again: a warm pool blooms on the wall behind the work you're looking at */
 .sx-grid .pcard { isolation: isolate; }
@@ -99,9 +106,7 @@ html:has(.nav.is-hidden) .sx-bar.toolbar { top: 12px; }
 .sx-empty .lede { margin: 20px auto 0; }
 .sx-empty__acts { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px 30px; margin-top: 36px; }
 
-/* ── 2 · three ways to own one (burgundy): the same painting as a print, a canvas, a canvas that glows ── */
-
-/* ── 3 · the manga, glowing in the black room ── */
+/* ── 4 · the manga, glowing in the black room ── */
 .sx-manga { padding-block: clamp(110px, 16vh, 190px) clamp(20px, 4vh, 50px); } /* the footer brings its own margin */
 .sx-manga__in { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); align-items: center; gap: clamp(40px, 6.5vw, 120px); max-width: 1320px; margin: 0 auto; }
 .sx-manga__media { overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--radius-lg); box-shadow: 0 0 0 1px var(--hair); }
@@ -140,3 +145,6 @@ html:has(.nav.is-hidden) .sx-bar.toolbar { top: 12px; }
   .sx-head { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .sx-manga__in { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* the #link targets ShopClient focuses (so the next Tab starts there): no ring around a whole section */
+.sx-works:focus, .lv:focus { outline: none; }
